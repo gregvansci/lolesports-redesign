@@ -1,0 +1,74 @@
+Lolesports Redesign
+This project is to update the lolesports UI/UX
+and challenge myself with fluid animations and
+responsive design.
+
+tech stack:
+- svelte
+- tailwindcss
+- vite
+- typescript
+
+design principles:
+- Segoe UI font
+- front end focus
+- light/dark mode
+- responsive eventually
+- appropriately size content to page
+- show spoilers button
+- combine pages (schedule and vods)
+- show live games in a better way
+- header is way too big
+- filters are saved globally
+- format explainations
+- international page with extra shine
+- header disappears when scrolling down,
+    reappears when scrolling up
+- show home page nav more clearly
+- clicking on a team shows their info in a popup
+
+
+home page:
+- follow certain team schedules
+- show most viewed current league
+
+schedule:
+- group emea regional leagues into a folder
+- tab between all games in filters and followed teams
+- animate tiles moving
+- teams are clickable
+
+filter:
+- intl ... international
+- lcs ... other na
+- lck ... other korea
+- lpl ... other china
+- lec ... other eu
+- other minor leagues
+- move to top/bottom to balance schedule
+
+clicking other button shows all other leagues
+
+standings:
+- add more statistics
+- show playoff locks and ellims
+- show correct order based on game score
+- opacity gradient at the bottom
+- what-if scenarios
+
+list of pages:
+- home
+- schedule
+- standings
+- international
+
+regions:
+- na
+- eu
+- kr
+- cn
+- vn
+- pcs (taiwan, hk, macao, SEA, OCE)
+- lat
+- br
+- jp
