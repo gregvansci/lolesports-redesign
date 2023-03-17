@@ -29,6 +29,7 @@ design principles:
     reappears when scrolling up
 - show home page nav more clearly
 - clicking on a team shows their info in a popup
+- home page is the live page, "big screen" is the focused game page
 
 
 home page:
