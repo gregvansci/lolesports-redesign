@@ -1,7 +1,5 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { browser } from '$app/environment';
-	import { page } from '$app/stores';
 	
 	import riotLogo from '$lib/images/riot-logo-black.png';
 	import riotLogoDark from '$lib/images/riot-logo-white.png';
@@ -15,12 +13,10 @@
 	let darkMode: boolean;
 
 	onMount(() => {
-		if (browser) {
-			if (localStorage.theme === "dark") {
-				darkMode = true;
-			} else {
-				darkMode = false;
-			}
+		if (localStorage.theme === "dark") {
+			darkMode = true;
+		} else {
+			darkMode = false;
 		}
 	});
 
