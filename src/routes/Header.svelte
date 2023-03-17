@@ -39,16 +39,27 @@
 </script>
 
 <header class="
-	h-[60px] w-full border-b-[1px] border-header-tertiary-light shadow-sm 
+	h-[60px] w-full border-b-[1px] shadow-sm dark:shadow-md 
+	border-header-tertiary-light dark:border-header-tertiary-dark
 	bg-header-bg-light dark:bg-header-bg-dark
-	text-header-text-light dark:text-header-text-dark  "
+	text-header-text-light dark:text-header-text-dark
+	transition ease-in-out duration-300"
 >
 	<div class="max-w-[1400px] flex flex-row justify-between h-full w-full m-auto">
 		<div class="flex flex-row gap-4 h-full">
 			<img src={darkMode ? riotLogoDark : riotLogo} alt="Riot Games" class="h-[20px] m-auto" />
-			<div class="m-auto px-2 py-1 bg-header-secondary-light dark:bg-header-secondary-dark rounded-full flex flex-row hover:bg-header-tertiary-light dark:hover:bg-header-tertiary-dark cursor-pointer">
-				<img src={lolesportsLogo} alt="LoL Esports" class="h-[20px] m-auto pl-2 {darkMode ? "logo-filter-dark" : "logo-filter"}" />
-				<img src={expandArrow} alt="Expand" class="h-[20px] m-auto" />
+			<div class="
+				m-auto px-2 py-1 rounded-full flex flex-row cursor-pointer
+				bg-header-secondary-light dark:bg-header-secondary-dark
+				hover:bg-header-tertiary-light dark:hover:bg-header-tertiary-dark
+				transition ease-in-out duration-300"
+			>
+				<img 
+					src={lolesportsLogo} 
+					alt="LoL Esports" 
+					class="h-[20px] m-auto pl-2 {darkMode ? "logo-filter-dark" : "logo-filter"}" 
+				/>
+				<img src={expandArrow} alt="Expand" class="h-[20px] m-auto {darkMode ? "svg-filter-dark" : "svg-filter"}"/>
 			</div>
 		</div>
 		<div class="flex flex-row h-full gap-8">
@@ -68,13 +79,28 @@
 					</li>
 				</ul>
 			</nav>
-			<div class="h-[23px] m-auto border-l-[2px] border-header-tertiary-light dark:border-header-tertiary-dark"/>
+			<div class="h-[23px] m-auto border-l-[2px]
+			border-header-tertiary-light dark:border-header-tertiary-dark
+			transition ease-in-out duration-300"
+			/>
 			<div class="flex flex-row gap-4">
 				<button on:click={toggleDarkMode}>
-					<img src={lightModeIcon} alt="Light Mode" class="h-[34px] m-auto cursor-pointer px-2 py-[6px] {darkMode ? "svg-filter-dark" : "svg-filter"}" />
+					<img 
+						src={lightModeIcon} 
+						alt="Light Mode" 
+						class="h-[34px] m-auto cursor-pointer px-2 py-[6px] {darkMode ? "svg-filter-dark" : "svg-filter"}" 
+					/>
 				</button>
-				<img src={settings} alt="Settings" class="h-[34px] m-auto cursor-pointer px-2 py-[6px] {darkMode ? "svg-filter-dark" : "svg-filter"}" />
-				<img src={login} alt="Login" class="h-[34px] m-auto cursor-pointer px-2 py-[6px] {darkMode ? "svg-filter-dark" : "svg-filter"}" />
+				<img 
+					src={settings} 
+					alt="Settings" 
+					class="h-[34px] m-auto cursor-pointer px-2 py-[6px] {darkMode ? "svg-filter-dark" : "svg-filter"}"
+				/>
+				<img 
+					src={login} 
+					alt="Login" 
+					class="h-[34px] m-auto cursor-pointer px-2 py-[6px] {darkMode ? "svg-filter-dark" : "svg-filter"}" 
+				/>
 			</div>
 		</div>
 	</div>
@@ -82,7 +108,6 @@
 
 
 <style>
-	/* Add a filter to the lolesports logo */
 	.logo-filter {
 		filter: invert(49%) sepia(10%) saturate(960%) hue-rotate(176deg) brightness(88%) contrast(86%);
 	}
