@@ -4,9 +4,9 @@
   </script>
 
 <div class="w-full h-full">
-	<Header />
+	<Header/>
 
-	<main class="border-t-[1px] border-header-tertiary-light">
+	<main>
 		<slot />
 	</main>
 

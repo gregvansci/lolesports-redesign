@@ -8,36 +8,38 @@
 	import login from '$lib/images/login.svg';
 </script>
 
-<header class="h-[60px] w-full max-w-[1400px] m-auto flex flex-row justify-between bg-header-bg-light text-header-text-light">
-	<div class="flex flex-row gap-4 h-full">
-		<img src={riotLogo} alt="Riot Games" class="h-[23px] m-auto" />
-		<div class="m-auto px-2 py-1 bg-header-secondary-light rounded-full flex flex-row hover:bg-header-tertiary-light cursor-pointer">
-			<img src={lolesportsLogo} alt="LoL Esports" class="h-[25px] m-auto pl-2 logo-filter" />
-			<img src={expandArrow} alt="Expand" class="h-[20px] m-auto" />
+<header class="h-[60px] w-full bg-header-bg-light text-header-text-light border-b-[1px] border-header-tertiary-light shadow-sm">
+	<div class="max-w-[1400px] flex flex-row justify-between h-full w-full m-auto">
+		<div class="flex flex-row gap-4 h-full">
+			<img src={riotLogo} alt="Riot Games" class="h-[23px] m-auto" />
+			<div class="m-auto px-2 py-1 bg-header-secondary-light rounded-full flex flex-row hover:bg-header-tertiary-light cursor-pointer">
+				<img src={lolesportsLogo} alt="LoL Esports" class="h-[25px] m-auto pl-2 logo-filter" />
+				<img src={expandArrow} alt="Expand" class="h-[20px] m-auto" />
+			</div>
 		</div>
-	</div>
-	<div class="flex flex-row h-full gap-8">
-		<nav class="h-full flex">
-			<ul class="flex flex-row font-title font-semibold text-lg gap-8 m-auto">
-				<li class="group border-b-2 border-transparent hover:border-highlight">
-					<a href="/" class="group-hover:text-highlight">Live</a>
-				</li>
-				<li class="group border-b-2 border-transparent hover:border-highlight">
-					<a href="/" class="group-hover:text-highlight">Schedule</a>
-				</li>
-				<li class="group border-b-2 border-transparent hover:border-highlight">
-					<a href="/" class="group-hover:text-highlight">Standings</a>
-				</li>
-				<li class="group border-b-2 border-transparent hover:border-highlight">
-					<a href="/" class="group-hover:text-highlight">International</a>
-				</li>
-			</ul>
-		</nav>
-		<div class="h-[23px] m-auto border-l-[2px] border-header-tertiary-light"/>
-		<div class="flex flex-row gap-6">
-			<img src={lightMode} alt="Light Mode" class="h-[20px] m-auto svg-filter cursor-pointer" />
-			<img src={settings} alt="Settings" class="h-[20px] m-auto svg-filter cursor-pointer" />
-			<img src={login} alt="Login" class="h-[20px] m-auto svg-filter cursor-pointer" />
+		<div class="flex flex-row h-full gap-8">
+			<nav class="h-full flex">
+				<ul class="flex flex-row font-title font-semibold text-lg gap-8 m-auto">
+					<li class="group border-b-2 border-transparent hover:border-highlight">
+						<a href="/" class="group-hover:text-highlight">Live</a>
+					</li>
+					<li class="group border-b-2 border-transparent hover:border-highlight">
+						<a href="/" class="group-hover:text-highlight">Schedule</a>
+					</li>
+					<li class="group border-b-2 border-transparent hover:border-highlight">
+						<a href="/" class="group-hover:text-highlight">Standings</a>
+					</li>
+					<li class="group border-b-2 border-transparent hover:border-highlight">
+						<a href="/" class="group-hover:text-highlight">International</a>
+					</li>
+				</ul>
+			</nav>
+			<div class="h-[23px] m-auto border-l-[2px] border-header-tertiary-light"/>
+			<div class="flex flex-row gap-6">
+				<img src={lightMode} alt="Light Mode" class="h-[20px] m-auto svg-filter cursor-pointer" />
+				<img src={settings} alt="Settings" class="h-[20px] m-auto svg-filter cursor-pointer" />
+				<img src={login} alt="Login" class="h-[20px] m-auto svg-filter cursor-pointer" />
+			</div>
 		</div>
 	</div>
 </header>
