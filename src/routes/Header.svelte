@@ -3,6 +3,9 @@
 	import riotLogo from '$lib/images/riot-logo-black.png';
 	import lolesportsLogo from '$lib/images/lolesports-logo-black.png';
 	import expandArrow from '$lib/images/expand-arrow.svg';
+	import lightMode from '$lib/images/light-mode.svg';
+	import settings from '$lib/images/settings.svg';
+	import login from '$lib/images/login.svg';
 </script>
 
 <header class="h-[60px] w-full max-w-[1400px] m-auto flex flex-row justify-between bg-header-bg-light text-header-text-light">
@@ -19,19 +22,22 @@
 				<li class="group border-b-2 border-transparent hover:border-highlight">
 					<a href="/" class="group-hover:text-highlight">Live</a>
 				</li>
-				<li>
-					<a href="/" class="hover:text-slate-300">Schedule</a>
+				<li class="group border-b-2 border-transparent hover:border-highlight">
+					<a href="/" class="group-hover:text-highlight">Schedule</a>
 				</li>
-				<li>
-					<a href="/" class="hover:text-slate-300">Standings</a>
+				<li class="group border-b-2 border-transparent hover:border-highlight">
+					<a href="/" class="group-hover:text-highlight">Standings</a>
 				</li>
-				<li>
-					<a href="/" class="hover:text-slate-300">International</a>
+				<li class="group border-b-2 border-transparent hover:border-highlight">
+					<a href="/" class="group-hover:text-highlight">International</a>
 				</li>
 			</ul>
 		</nav>
 		<div class="h-[23px] m-auto border-l-[2px] border-header-tertiary-light"/>
-		<div>
+		<div class="flex flex-row gap-6">
+			<img src={lightMode} alt="Light Mode" class="h-[20px] m-auto svg-filter cursor-pointer" />
+			<img src={settings} alt="Settings" class="h-[20px] m-auto svg-filter cursor-pointer" />
+			<img src={login} alt="Login" class="h-[20px] m-auto svg-filter cursor-pointer" />
 		</div>
 	</div>
 </header>
@@ -41,6 +47,12 @@
 	/* Add a filter to the lolesports logo */
 	.logo-filter {
 		filter: invert(49%) sepia(10%) saturate(960%) hue-rotate(176deg) brightness(88%) contrast(86%);
+	}
+	.svg-filter {
+		filter: invert(49%) sepia(10%) saturate(960%) hue-rotate(176deg) brightness(88%) contrast(86%);
+	}
+	.svg-filter:hover {
+		filter: invert(58%) sepia(92%) saturate(3440%) hue-rotate(145deg) brightness(106%) contrast(101%);
 	}
 </style>
 

@@ -6,7 +6,7 @@
 <div class="w-full h-full">
 	<Header />
 
-	<main class="border-t-2">
+	<main class="border-t-[1px] border-header-tertiary-light">
 		<slot />
 	</main>
 

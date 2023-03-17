@@ -9,6 +9,9 @@ tech stack:
 - vite
 - typescript
 
+resources:
+- https://www.svgrepo.com/collection/scarlab-duotone-line-vectors/
+
 design principles:
 - Segoe UI font
 - front end focus
