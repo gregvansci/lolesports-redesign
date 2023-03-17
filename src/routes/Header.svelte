@@ -6,8 +6,8 @@
 	import riotLogoDark from '$lib/images/riot-logo-white.png';
 	import lolesportsLogo from '$lib/images/lolesports-logo-black.png';
 	import expandArrow from '$lib/images/expand-arrow.svg';
-	import lightModeIcon from '$lib/images/light-mode.svg';
-	import darkModeIcon from '$lib/images/dark-mode.svg';
+	import lightModeIcon from '$lib/images/light.svg';
+	import darkModeIcon from '$lib/images/dark.svg';
 	import settings from '$lib/images/settings.svg';
 	import login from '$lib/images/login.svg';
 
@@ -101,7 +101,7 @@
 				<div class="flex flex-row gap-4">
 					<button on:click={toggleDarkMode}>
 						<img
-							src={lightModeIcon}
+							src={darkMode ? darkModeIcon : lightModeIcon}
 							alt="Light Mode"
 							class="h-[30px] desktop:h-[34px] desktop-lg:h-[40px] m-auto cursor-pointer px-2 py-[6px] {darkMode ? "svg-filter-dark" : "svg-filter"}"
 						/>
