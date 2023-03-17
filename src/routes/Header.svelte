@@ -11,34 +11,34 @@
 <header class="h-[60px] w-full bg-header-bg-light text-header-text-light border-b-[1px] border-header-tertiary-light shadow-sm">
 	<div class="max-w-[1400px] flex flex-row justify-between h-full w-full m-auto">
 		<div class="flex flex-row gap-4 h-full">
-			<img src={riotLogo} alt="Riot Games" class="h-[23px] m-auto" />
+			<img src={riotLogo} alt="Riot Games" class="h-[20px] m-auto" />
 			<div class="m-auto px-2 py-1 bg-header-secondary-light rounded-full flex flex-row hover:bg-header-tertiary-light cursor-pointer">
-				<img src={lolesportsLogo} alt="LoL Esports" class="h-[25px] m-auto pl-2 logo-filter" />
+				<img src={lolesportsLogo} alt="LoL Esports" class="h-[20px] m-auto pl-2 logo-filter" />
 				<img src={expandArrow} alt="Expand" class="h-[20px] m-auto" />
 			</div>
 		</div>
 		<div class="flex flex-row h-full gap-8">
 			<nav class="h-full flex">
-				<ul class="flex flex-row font-title font-semibold text-lg gap-8 m-auto">
-					<li class="group border-b-2 border-transparent hover:border-highlight">
-						<a href="/" class="group-hover:text-highlight">Live</a>
+				<ul class="flex flex-row font-title font-semibold text-md gap-8 m-auto">
+					<li class="group cursor-pointer">
+						<h2 class="group-hover:text-highlight">Live</h2>
 					</li>
-					<li class="group border-b-2 border-transparent hover:border-highlight">
-						<a href="/" class="group-hover:text-highlight">Schedule</a>
+					<li class="group cursor-pointer">
+						<h2 class="group-hover:text-highlight">Schedule</h2>
 					</li>
-					<li class="group border-b-2 border-transparent hover:border-highlight">
-						<a href="/" class="group-hover:text-highlight">Standings</a>
+					<li class="group cursor-pointer">
+						<h2 class="group-hover:text-highlight">Regions</h2>
 					</li>
-					<li class="group border-b-2 border-transparent hover:border-highlight">
-						<a href="/" class="group-hover:text-highlight">International</a>
+					<li class="group cursor-pointer">
+						<h2 class="group-hover:text-highlight">International</h2>
 					</li>
 				</ul>
 			</nav>
 			<div class="h-[23px] m-auto border-l-[2px] border-header-tertiary-light"/>
-			<div class="flex flex-row gap-6">
-				<img src={lightMode} alt="Light Mode" class="h-[20px] m-auto svg-filter cursor-pointer" />
-				<img src={settings} alt="Settings" class="h-[20px] m-auto svg-filter cursor-pointer" />
-				<img src={login} alt="Login" class="h-[20px] m-auto svg-filter cursor-pointer" />
+			<div class="flex flex-row gap-4">
+				<img src={lightMode} alt="Light Mode" class="h-[34px] m-auto svg-filter cursor-pointer px-2 py-[6px]" />
+				<img src={settings} alt="Settings" class="h-[34px] m-auto svg-filter cursor-pointer px-2 py-[6px]" />
+				<img src={login} alt="Login" class="h-[34px] m-auto svg-filter cursor-pointer px-2 py-[6px]" />
 			</div>
 		</div>
 	</div>
