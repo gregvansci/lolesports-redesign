@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	
+	import hamburger from '$lib/images/hamburger.svg';
 	import riotLogo from '$lib/images/riot-logo-black.png';
 	import riotLogoDark from '$lib/images/riot-logo-white.png';
 	import lolesportsLogo from '$lib/images/lolesports-logo-black.png';
@@ -32,6 +33,7 @@
 		}
 	}
 
+
 </script>
 
 <header class="
@@ -41,11 +43,16 @@
 	text-header-text-light dark:text-header-text-dark
 	transition ease-in-out duration-300"
 >
-	<div class="max-w-[1400px] flex flex-row justify-between h-full w-full m-auto">
+	<div class="max-w-[1600px] flex flex-row justify-between h-full w-full m-auto px-[25px]">
+		<img
+			src={hamburger}
+			alt="Settings"
+			class="h-[40px] my-auto cursor-pointer px-2 py-[6px] flex tablet:hidden {darkMode ? "svg-filter-dark" : "svg-filter"}"
+		/>
 		<div class="flex flex-row gap-4 h-full">
-			<img src={darkMode ? riotLogoDark : riotLogo} alt="Riot Games" class="h-[20px] m-auto" />
+			<img src={darkMode ? riotLogoDark : riotLogo} alt="Riot Games" class="h-[20px] desktop-lg:h-[25px] m-auto pl-2" />
 			<div class="
-				m-auto px-2 py-1 rounded-full flex flex-row cursor-pointer
+				m-auto px-2 py-1 mr-2 rounded-full flex flex-row cursor-pointer
 				bg-header-secondary-light dark:bg-header-secondary-dark
 				hover:bg-header-tertiary-light dark:hover:bg-header-tertiary-dark
 				transition ease-in-out duration-300"
@@ -53,14 +60,14 @@
 				<img 
 					src={lolesportsLogo} 
 					alt="LoL Esports" 
-					class="h-[20px] m-auto pl-2 {darkMode ? "logo-filter-dark" : "logo-filter"}" 
+					class="h-[20px] desktop-lg:h-[25px] m-auto pl-2 {darkMode ? "logo-filter-dark" : "logo-filter"}" 
 				/>
 				<img src={expandArrow} alt="Expand" class="h-[20px] m-auto {darkMode ? "svg-filter-dark" : "svg-filter"}"/>
 			</div>
 		</div>
-		<div class="flex flex-row h-full gap-8">
-			<nav class="h-full flex">
-				<ul class="flex flex-row font-title font-semibold text-md gap-8 m-auto">
+		<div class="flex flex-row h-full gap-6">
+			<nav class="h-full hidden tablet:flex">
+				<ul class="flex flex-row font-title font-semibold text-sm laptop:text-base desktop:text-lg desktop-lg:text-xl gap-8 m-auto">
 					<li class="group cursor-pointer">
 						<h2 class="group-hover:text-highlight">Live</h2>
 					</li>
@@ -71,32 +78,45 @@
 						<h2 class="group-hover:text-highlight">Regions</h2>
 					</li>
 					<li class="group cursor-pointer">
+						<h2 class="group-hover:text-highlight">Following</h2>
+					</li>
+					<li class="group cursor-pointer">
 						<h2 class="group-hover:text-highlight">International</h2>
 					</li>
 				</ul>
 			</nav>
-			<div class="h-[23px] m-auto border-l-[2px]
-			border-header-tertiary-light dark:border-header-tertiary-dark
-			transition ease-in-out duration-300"
+			<div class=
+				"h-[23px] m-auto border-l-[2px] ml-2 hidden tablet:block
+				border-header-tertiary-light dark:border-header-tertiary-dark
+				transition ease-in-out duration-300"
 			/>
-			<div class="flex flex-row gap-4">
-				<button on:click={toggleDarkMode}>
-					<img 
-						src={lightModeIcon} 
-						alt="Light Mode" 
-						class="h-[34px] m-auto cursor-pointer px-2 py-[6px] {darkMode ? "svg-filter-dark" : "svg-filter"}" 
+			<div class="flex laptop:hidden">
+				<img
+					src={settings}
+					alt="Settings"
+					class="h-[40px] tablet:h-[30px] m-auto cursor-pointer px-2 py-[6px] {darkMode ? "svg-filter-dark" : "svg-filter"}"
+				/>
+			</div>
+			<div class="hidden laptop:flex">
+				<div class="flex flex-row gap-4">
+					<button on:click={toggleDarkMode}>
+						<img
+							src={lightModeIcon}
+							alt="Light Mode"
+							class="h-[30px] desktop:h-[34px] desktop-lg:h-[40px] m-auto cursor-pointer px-2 py-[6px] {darkMode ? "svg-filter-dark" : "svg-filter"}"
+						/>
+					</button>
+					<img
+						src={settings}
+						alt="Settings"
+						class="h-[30px] desktop:h-[34px] desktop-lg:h-[40px] m-auto cursor-pointer px-2 py-[6px] {darkMode ? "svg-filter-dark" : "svg-filter"}"
 					/>
-				</button>
-				<img 
-					src={settings} 
-					alt="Settings" 
-					class="h-[34px] m-auto cursor-pointer px-2 py-[6px] {darkMode ? "svg-filter-dark" : "svg-filter"}"
-				/>
-				<img 
-					src={login} 
-					alt="Login" 
-					class="h-[34px] m-auto cursor-pointer px-2 py-[6px] {darkMode ? "svg-filter-dark" : "svg-filter"}" 
-				/>
+					<img
+						src={login}
+						alt="Login"
+						class="h-[30px] desktop:h-[34px] desktop-lg:h-[40px] m-auto cursor-pointer px-2 py-[6px] {darkMode ? "svg-filter-dark" : "svg-filter"}"
+					/>
+				</div>
 			</div>
 		</div>
 	</div>

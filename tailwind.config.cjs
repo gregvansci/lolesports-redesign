@@ -29,6 +29,13 @@ module.exports = {
         dark: '#F9F9F9'
       }
     },
+    screens: {
+      'phone': '640px',
+      'tablet': '940px',
+      'laptop': '1080px',
+      'desktop': '1280px',
+      'desktop-lg': '1600px',
+    },
     extend: {},
   },
   plugins: [],
