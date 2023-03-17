@@ -12,11 +12,19 @@ module.exports = {
       transparent: 'transparent',
       'highlight': '#00C8C8',
       'header-bg': {
-        light: '#F9F9F9',
+        light: '#FFF',
         dark: '#1A1A1A'
       },
+      'header-secondary': {
+        light: '#F4F7F9',
+        dark: '#2E2E2E'
+      },
+      'header-tertiary': {
+        light: '#E5E5E5',
+        dark: '#3F3F3F'
+      },
       'header-text': {
-        light: '#1A1A1A',
+        light: '#65748A',
         dark: '#F9F9F9'
       }
     },

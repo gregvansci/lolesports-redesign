@@ -6,7 +6,7 @@
 <div class="w-full h-full">
 	<Header />
 
-	<main>
+	<main class="border-t-2">
 		<slot />
 	</main>
 

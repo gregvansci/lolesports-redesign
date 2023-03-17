@@ -5,17 +5,17 @@
 	import expandArrow from '$lib/images/expand-arrow.svg';
 </script>
 
-<header class="h-[60px] w-full flex flex-row justify-between bg-header-bg-light text-header-text-light px-16">
+<header class="h-[60px] w-full max-w-[1400px] m-auto flex flex-row justify-between bg-header-bg-light text-header-text-light">
 	<div class="flex flex-row gap-4 h-full">
 		<img src={riotLogo} alt="Riot Games" class="h-[23px] m-auto" />
-		<div class="m-auto px-2 py-1 bg-slate-200 rounded-full flex flex-row hover:bg-slate-300 cursor-pointer">
-			<img src={lolesportsLogo} alt="LoL Esports" class="h-[25px] m-auto pl-2" />
+		<div class="m-auto px-2 py-1 bg-header-secondary-light rounded-full flex flex-row hover:bg-header-tertiary-light cursor-pointer">
+			<img src={lolesportsLogo} alt="LoL Esports" class="h-[25px] m-auto pl-2 logo-filter" />
 			<img src={expandArrow} alt="Expand" class="h-[20px] m-auto" />
 		</div>
 	</div>
-	<div class="flex flex-row h-full">
+	<div class="flex flex-row h-full gap-8">
 		<nav class="h-full flex">
-			<ul class="flex flex-row font-title font-bold text-xl gap-8 m-auto">
+			<ul class="flex flex-row font-title font-semibold text-lg gap-8 m-auto">
 				<li class="group border-b-2 border-transparent hover:border-highlight">
 					<a href="/" class="group-hover:text-highlight">Live</a>
 				</li>
@@ -30,14 +30,19 @@
 				</li>
 			</ul>
 		</nav>
+		<div class="h-[23px] m-auto border-l-[2px] border-header-tertiary-light"/>
 		<div>
-			
 		</div>
 	</div>
 </header>
 
 
-
+<style>
+	/* Add a filter to the lolesports logo */
+	.logo-filter {
+		filter: invert(49%) sepia(10%) saturate(960%) hue-rotate(176deg) brightness(88%) contrast(86%);
+	}
+</style>
 
 <!-- <script>
 	import { page } from '$app/stores';
