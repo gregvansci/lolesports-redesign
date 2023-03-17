@@ -1,11 +1,39 @@
 <script>
-
+	// get the black riot logo from the assets folder and save it as src
+	import riotLogo from '$lib/images/riot-logo-black.png';
+	import lolesportsLogo from '$lib/images/lolesports-logo-black.png';
+	import expandArrow from '$lib/images/expand-arrow.svg';
 </script>
 
-<header class="h-full w-full">
-	<nav>
-		<h1>nav</h1>
-	</nav>
+<header class="h-[60px] w-full flex flex-row justify-between bg-header-bg-light text-header-text-light px-16">
+	<div class="flex flex-row gap-4 h-full">
+		<img src={riotLogo} alt="Riot Games" class="h-[23px] m-auto" />
+		<div class="m-auto px-2 py-1 bg-slate-200 rounded-full flex flex-row hover:bg-slate-300 cursor-pointer">
+			<img src={lolesportsLogo} alt="LoL Esports" class="h-[25px] m-auto pl-2" />
+			<img src={expandArrow} alt="Expand" class="h-[20px] m-auto" />
+		</div>
+	</div>
+	<div class="flex flex-row h-full">
+		<nav class="h-full flex">
+			<ul class="flex flex-row font-title font-bold text-xl gap-8 m-auto">
+				<li class="group border-b-2 border-transparent hover:border-highlight">
+					<a href="/" class="group-hover:text-highlight">Live</a>
+				</li>
+				<li>
+					<a href="/" class="hover:text-slate-300">Schedule</a>
+				</li>
+				<li>
+					<a href="/" class="hover:text-slate-300">Standings</a>
+				</li>
+				<li>
+					<a href="/" class="hover:text-slate-300">International</a>
+				</li>
+			</ul>
+		</nav>
+		<div>
+			
+		</div>
+	</div>
 </header>
 
 
