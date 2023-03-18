@@ -75,21 +75,21 @@
 					/>
 					<img src={expandArrow} alt="Expand" class="h-[20px] m-auto pointer-events-none {darkMode ? "svg-filter-dark" : "svg-filter"}"/>
 				</div>
-				<div class="{showGameDropdown ? "flex flex-col" : "hidden"} absolute shadow-md py-2 w-[124px] top-[32px] left-0 border-[1px] border-header-secondary-light dark:border-header-secondary-dark bg-header-bg-light dark:bg-header-bg-dark rounded-lg">
+				<div class="{showGameDropdown ? "flex flex-col" : "hidden"} absolute shadow-md py-2 w-[124px] desktop-lg:w-[144px] top-[32px] desktop-lg:top-[36px] left-0 border-[1px] border-header-secondary-light dark:border-header-secondary-dark bg-header-bg-light dark:bg-header-bg-dark rounded-lg">
 					<button class="w-full hover:bg-header-secondary-light dark:hover:bg-header-secondary-dark">
-						<img src={lolLogo} alt="LoL" class="h-[40px] px m-auto"/>
+						<img src={lolLogo} alt="LoL" class="h-[45px] desktop-lg:h-[50px] px m-auto"/>
 					</button>
 					<button class="w-full hover:bg-header-secondary-light dark:hover:bg-header-secondary-dark">
-						<img src={tftLogo} alt="TFT" class="h-[40px] m-auto {darkMode ? "logo-filter-dark" : "logo-filter"}"/>
+						<img src={tftLogo} alt="TFT" class="h-[45px] desktop-lg:h-[50px] m-auto {darkMode ? "logo-filter-dark" : "logo-filter"}"/>
 					</button>
 					<button class="w-full hover:bg-header-secondary-light dark:hover:bg-header-secondary-dark">
-						<img src={lorLogo} alt="LoR" class="h-[40px] m-auto"/>
+						<img src={lorLogo} alt="LoR" class="h-[45px] desktop-lg:h-[50px] m-auto"/>
 					</button>
 					<button class="w-full hover:bg-header-secondary-light dark:hover:bg-header-secondary-dark">
-						<img src={valLogo} alt="VAL" class="h-[40px] m-auto"/>
+						<img src={valLogo} alt="VAL" class="h-[45px] desktop-lg:h-[50px] m-auto"/>
 					</button>
 					<button class="w-full hover:bg-header-secondary-light dark:hover:bg-header-secondary-dark">
-						<img src={wrLogo} alt="WR" class="h-[40px] m-auto"/>
+						<img src={wrLogo} alt="WR" class="h-[45px] desktop-lg:h-[50px] m-auto"/>
 					</button>
 				</div>
 			</div>
