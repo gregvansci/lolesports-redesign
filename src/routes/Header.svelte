@@ -171,6 +171,9 @@
 	.svg-filter-dark:hover {
 		filter: invert(58%) sepia(92%) saturate(3440%) hue-rotate(145deg) brightness(106%) contrast(101%);
 	}
+	img {
+		-webkit-user-drag: none;
+	}
 
 </style>
 
