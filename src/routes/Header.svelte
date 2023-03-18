@@ -11,6 +11,12 @@
 	import settings from '$lib/images/settings.svg';
 	import login from '$lib/images/login.svg';
 
+	import lolLogo from '$lib/images/lol-logo.png';
+	import tftLogo from '$lib/images/tft-logo.png';
+	import lorLogo from '$lib/images/lor-logo.png';
+	import valLogo from '$lib/images/val-logo.png';
+	import wrLogo from '$lib/images/wr-logo.png';
+
 	let darkMode: boolean;
 
 	onMount(() => {
@@ -33,11 +39,13 @@
 		}
 	}
 
+	export let showGameDropdown = false;
 
 </script>
 
+<!-- svelte-ignore a11y-click-events-have-key-events -->
 <header class="
-	h-[60px] w-full border-b-[1px] shadow-sm dark:shadow-md 
+	h-[60px] w-full border-b-[1px] shadow-sm dark:shadow-md select-none
 	border-header-tertiary-light dark:border-header-tertiary-dark
 	bg-header-bg-light dark:bg-header-bg-dark
 	text-header-text-light dark:text-header-text-dark
@@ -51,18 +59,39 @@
 		/>
 		<div class="flex flex-row gap-4 h-full">
 			<img src={darkMode ? riotLogoDark : riotLogo} alt="Riot Games" class="h-[20px] desktop-lg:h-[25px] m-auto pl-2" />
-			<div class="
-				m-auto px-2 py-1 mr-2 rounded-full flex flex-row cursor-pointer
-				bg-header-secondary-light dark:bg-header-secondary-dark
-				hover:bg-header-tertiary-light dark:hover:bg-header-tertiary-dark
-				transition ease-in-out duration-300"
-			>
-				<img 
-					src={lolesportsLogo} 
-					alt="LoL Esports" 
-					class="h-[20px] desktop-lg:h-[25px] m-auto pl-2 {darkMode ? "logo-filter-dark" : "logo-filter"}" 
-				/>
-				<img src={expandArrow} alt="Expand" class="h-[20px] m-auto {darkMode ? "svg-filter-dark" : "svg-filter"}"/>
+			<!-- svelte-ignore a11y-click-events-have-key-events -->
+			<div class="relative flex m-auto">
+				<div class="
+					m-auto px-2 py-1 mr-2 rounded-full flex flex-row cursor-pointer shadow-sm group
+					bg-header-secondary-light dark:bg-header-secondary-dark
+					hover:bg-header-tertiary-light dark:hover:bg-header-tertiary-dark
+					transition ease-in-out duration-300"
+					on:click={() => {showGameDropdown = !showGameDropdown}}
+				>
+					<img
+						src={lolesportsLogo}
+						alt="LoL Esports"
+						class="h-[20px] desktop-lg:h-[25px] m-auto pl-2 {darkMode ? "logo-filter-dark" : "logo-filter"}"
+					/>
+					<img src={expandArrow} alt="Expand" class="h-[20px] m-auto pointer-events-none {darkMode ? "svg-filter-dark" : "svg-filter"}"/>
+				</div>
+				<div class="{showGameDropdown ? "flex flex-col" : "hidden"} absolute shadow-md py-2 w-[124px] top-[32px] left-0 border-[1px] border-header-secondary-light dark:border-header-secondary-dark bg-header-bg-light dark:bg-header-bg-dark rounded-lg">
+					<button class="w-full hover:bg-header-secondary-light dark:hover:bg-header-secondary-dark">
+						<img src={lolLogo} alt="LoL" class="h-[40px] px m-auto"/>
+					</button>
+					<button class="w-full hover:bg-header-secondary-light dark:hover:bg-header-secondary-dark">
+						<img src={tftLogo} alt="TFT" class="h-[40px] m-auto {darkMode ? "logo-filter-dark" : "logo-filter"}"/>
+					</button>
+					<button class="w-full hover:bg-header-secondary-light dark:hover:bg-header-secondary-dark">
+						<img src={lorLogo} alt="LoR" class="h-[40px] m-auto"/>
+					</button>
+					<button class="w-full hover:bg-header-secondary-light dark:hover:bg-header-secondary-dark">
+						<img src={valLogo} alt="VAL" class="h-[40px] m-auto"/>
+					</button>
+					<button class="w-full hover:bg-header-secondary-light dark:hover:bg-header-secondary-dark">
+						<img src={wrLogo} alt="WR" class="h-[40px] m-auto"/>
+					</button>
+				</div>
 			</div>
 		</div>
 		<div class="flex flex-row h-full gap-6">
@@ -142,6 +171,7 @@
 	.svg-filter-dark:hover {
 		filter: invert(58%) sepia(92%) saturate(3440%) hue-rotate(145deg) brightness(106%) contrast(101%);
 	}
+
 </style>
 
 <!-- <script>
