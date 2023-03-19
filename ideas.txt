@@ -30,11 +30,22 @@ design principles:
 - show home page nav more clearly
 - clicking on a team shows their info in a popup
 - home page is the live page, "big screen" is the focused game page
+- start with 4 major regions, then expand to minor regions and regional leagues
+
+page development priority:
+- home (live)
+- schedule
+- following
+- regions
+- international
 
 
-home page:
-- follow certain team schedules
-- show most viewed current league
+home (live) page:
+- embed of most viewed live game w/ option to expand the stream
+- show list of live games
+- show time until followed teams next game
+- scroll down for vods of followed teams
+- live game is at the top of the page
 
 schedule:
 - group emea regional leagues into a folder

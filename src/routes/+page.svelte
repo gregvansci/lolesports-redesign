@@ -7,7 +7,7 @@
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<section>
+<section class="text-header-text-light dark:text-header-text-dark">
 	<h1>home page</h1>
 </section>
 

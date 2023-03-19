@@ -47,7 +47,6 @@
 <header class="
 	h-[60px] w-full border-b-[1px] shadow-sm dark:shadow-md select-none
 	border-header-tertiary-light dark:border-header-tertiary-dark
-	bg-header-bg-light dark:bg-header-bg-dark
 	text-header-text-light dark:text-header-text-dark
 	transition ease-in-out duration-300"
 >
@@ -55,10 +54,15 @@
 		<img
 			src={hamburger}
 			alt="Settings"
-			class="h-[40px] my-auto cursor-pointer px-2 py-[6px] flex tablet:hidden {darkMode ? "svg-filter-dark" : "svg-filter"}"
+			class="h-[40px] my-auto cursor-pointer px-2 py-[6px] flex tablet:hidden 
+			{darkMode ? "svg-filter-dark" : "svg-filter"}"
 		/>
 		<div class="flex flex-row gap-4 h-full">
-			<img src={darkMode ? riotLogoDark : riotLogo} alt="Riot Games" class="h-[20px] desktop-lg:h-[25px] m-auto pl-2" />
+			<img 
+				src={darkMode ? riotLogoDark : riotLogo} 
+				alt="Riot Games" 
+				class="h-[20px] desktop-lg:h-[25px] m-auto pl-2"
+			/>
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<div class="relative flex m-auto">
 				<div class="
@@ -73,14 +77,25 @@
 						alt="LoL Esports"
 						class="h-[20px] desktop-lg:h-[25px] m-auto pl-2 {darkMode ? "logo-filter-dark" : "logo-filter"}"
 					/>
-					<img src={expandArrow} alt="Expand" class="h-[20px] m-auto pointer-events-none {darkMode ? "svg-filter-dark" : "svg-filter"}"/>
+					<img src={expandArrow} alt="Expand" class="h-[20px] m-auto pointer-events-none 
+						{darkMode ? "svg-filter-dark" : "svg-filter"}"
+					/>
 				</div>
-				<div class="{showGameDropdown ? "flex flex-col" : "hidden"} absolute shadow-md py-2 w-[124px] desktop-lg:w-[144px] top-[32px] desktop-lg:top-[36px] left-0 border-[1px] border-header-secondary-light dark:border-header-secondary-dark bg-header-bg-light dark:bg-header-bg-dark rounded-lg">
+				<div class="
+					absolute shadow-md py-2  left-0 border-[1px] rounded-lg
+					top-[32px] desktop-lg:top-[36px] w-[124px] desktop-lg:w-[144px]
+					border-header-secondary-light dark:border-header-secondary-dark
+					bg-header-bg-light dark:bg-header-bg-dark
+					transition ease-in-out duration-300
+					{showGameDropdown ? "flex flex-col" : "hidden"}"
+				>	
 					<button class="w-full hover:bg-header-secondary-light dark:hover:bg-header-secondary-dark">
 						<img src={lolLogo} alt="LoL" class="h-[45px] desktop-lg:h-[50px] px m-auto"/>
 					</button>
 					<button class="w-full hover:bg-header-secondary-light dark:hover:bg-header-secondary-dark">
-						<img src={tftLogo} alt="TFT" class="h-[45px] desktop-lg:h-[50px] m-auto {darkMode ? "logo-filter-dark" : "logo-filter"}"/>
+						<img src={tftLogo} alt="TFT" class="h-[45px] desktop-lg:h-[50px] m-auto 
+							{darkMode ? "logo-filter-dark" : "logo-filter"}"
+						/>
 					</button>
 					<button class="w-full hover:bg-header-secondary-light dark:hover:bg-header-secondary-dark">
 						<img src={lorLogo} alt="LoR" class="h-[45px] desktop-lg:h-[50px] m-auto"/>
@@ -96,7 +111,9 @@
 		</div>
 		<div class="flex flex-row h-full gap-6">
 			<nav class="h-full hidden tablet:flex">
-				<ul class="flex flex-row font-title font-semibold text-sm laptop:text-base desktop:text-lg desktop-lg:text-xl gap-8 m-auto">
+				<ul class="flex flex-row font-title font-semibold gap-8 m-auto
+					text-sm laptop:text-base desktop:text-lg desktop-lg:text-xl"
+				>
 					<li class="group cursor-pointer">
 						<h2 class="group-hover:text-highlight">Live</h2>
 					</li>
@@ -115,7 +132,7 @@
 				</ul>
 			</nav>
 			<div class=
-				"h-[23px] m-auto border-l-[2px] ml-2 hidden tablet:block
+				"h-[24px] m-auto border-l-[2px] ml-2 hidden tablet:block
 				border-header-tertiary-light dark:border-header-tertiary-dark
 				transition ease-in-out duration-300"
 			/>
@@ -123,7 +140,8 @@
 				<img
 					src={settings}
 					alt="Settings"
-					class="h-[40px] tablet:h-[30px] m-auto cursor-pointer px-2 py-[6px] {darkMode ? "svg-filter-dark" : "svg-filter"}"
+					class="h-[40px] tablet:h-[30px] m-auto cursor-pointer px-2 py-[6px] 
+					{darkMode ? "svg-filter-dark" : "svg-filter"}"
 				/>
 			</div>
 			<div class="hidden laptop:flex">
@@ -132,18 +150,21 @@
 						<img
 							src={darkMode ? darkModeIcon : lightModeIcon}
 							alt="Light Mode"
-							class="h-[30px] desktop:h-[34px] desktop-lg:h-[40px] m-auto cursor-pointer px-2 py-[6px] {darkMode ? "svg-filter-dark" : "svg-filter"}"
+							class="h-[30px] desktop:h-[34px] desktop-lg:h-[40px] m-auto cursor-pointer px-2 py-[6px] 
+							{darkMode ? "svg-filter-dark" : "svg-filter"}"
 						/>
 					</button>
 					<img
 						src={settings}
 						alt="Settings"
-						class="h-[30px] desktop:h-[34px] desktop-lg:h-[40px] m-auto cursor-pointer px-2 py-[6px] {darkMode ? "svg-filter-dark" : "svg-filter"}"
+						class="h-[30px] desktop:h-[34px] desktop-lg:h-[40px] m-auto cursor-pointer px-2 py-[6px] 
+						{darkMode ? "svg-filter-dark" : "svg-filter"}"
 					/>
 					<img
 						src={login}
 						alt="Login"
-						class="h-[30px] desktop:h-[34px] desktop-lg:h-[40px] m-auto cursor-pointer px-2 py-[6px] {darkMode ? "svg-filter-dark" : "svg-filter"}"
+						class="h-[30px] desktop:h-[34px] desktop-lg:h-[40px] m-auto cursor-pointer px-2 py-[6px] 
+						{darkMode ? "svg-filter-dark" : "svg-filter"}"
 					/>
 				</div>
 			</div>
