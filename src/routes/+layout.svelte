@@ -5,7 +5,7 @@
 
 <div class="
 	w-full h-full min-h-screen 
-	bg-header-bg-light dark:bg-header-bg-dark 
+	bg-white dark:bg-gray-900
 	transition ease-in-out duration-300"
 >
 	<Header/>

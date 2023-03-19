@@ -46,8 +46,8 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <header class="
 	h-[60px] w-full border-b-[1px] shadow-sm dark:shadow-md select-none
-	border-header-tertiary-light dark:border-header-tertiary-dark
-	text-header-text-light dark:text-header-text-dark
+	border-gray-200 dark:border-gray-800
+	text-blue-gray-500 dark:text-blue-50
 	transition ease-in-out duration-300"
 >
 	<div class="max-w-[1600px] flex flex-row justify-between h-full w-full m-auto px-[25px]">
@@ -67,8 +67,8 @@
 			<div class="relative flex m-auto">
 				<div class="
 					m-auto px-2 py-1 mr-2 rounded-full flex flex-row cursor-pointer shadow-sm group
-					bg-header-secondary-light dark:bg-header-secondary-dark
-					hover:bg-header-tertiary-light dark:hover:bg-header-tertiary-dark
+					bg-gray-50 dark:bg-gray-800
+					hover:bg-gray-100 dark:hover:bg-gray-700
 					transition ease-in-out duration-300"
 					on:click={() => {showGameDropdown = !showGameDropdown}}
 				>
@@ -84,26 +84,26 @@
 				<div class="
 					absolute shadow-md py-2  left-0 border-[1px] rounded-lg
 					top-[32px] desktop-lg:top-[36px] w-[124px] desktop-lg:w-[144px]
-					border-header-secondary-light dark:border-header-secondary-dark
-					bg-header-bg-light dark:bg-header-bg-dark
+					border-gray-50 dark:border-gray-800
+					bg-white dark:bg-gray-900
 					transition ease-in-out duration-300
 					{showGameDropdown ? "flex flex-col" : "hidden"}"
 				>	
-					<button class="w-full hover:bg-header-secondary-light dark:hover:bg-header-secondary-dark">
+					<button class="w-full hover:bg-gray-50 dark:hover:bg-gray-800">
 						<img src={lolLogo} alt="LoL" class="h-[45px] desktop-lg:h-[50px] px m-auto"/>
 					</button>
-					<button class="w-full hover:bg-header-secondary-light dark:hover:bg-header-secondary-dark">
+					<button class="w-full hover:bg-gray-50 dark:hover:bg-gray-800">
 						<img src={tftLogo} alt="TFT" class="h-[45px] desktop-lg:h-[50px] m-auto 
 							{darkMode ? "logo-filter-dark" : "logo-filter"}"
 						/>
 					</button>
-					<button class="w-full hover:bg-header-secondary-light dark:hover:bg-header-secondary-dark">
+					<button class="w-full hover:bg-gray-50 dark:hover:bg-gray-800">
 						<img src={lorLogo} alt="LoR" class="h-[45px] desktop-lg:h-[50px] m-auto"/>
 					</button>
-					<button class="w-full hover:bg-header-secondary-light dark:hover:bg-header-secondary-dark">
+					<button class="w-full hover:bg-gray-50 dark:hover:bg-gray-800">
 						<img src={valLogo} alt="VAL" class="h-[45px] desktop-lg:h-[50px] m-auto"/>
 					</button>
-					<button class="w-full hover:bg-header-secondary-light dark:hover:bg-header-secondary-dark">
+					<button class="w-full hover:bg-gray-50 dark:hover:bg-gray-800">
 						<img src={wrLogo} alt="WR" class="h-[45px] desktop-lg:h-[50px] m-auto"/>
 					</button>
 				</div>
@@ -133,7 +133,7 @@
 			</nav>
 			<div class=
 				"h-[24px] m-auto border-l-[2px] ml-2 hidden tablet:block
-				border-header-tertiary-light dark:border-header-tertiary-dark
+				border-gray-100 dark:border-gray-700
 				transition ease-in-out duration-300"
 			/>
 			<div class="flex laptop:hidden">

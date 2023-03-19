@@ -12,22 +12,44 @@ module.exports = {
     colors: {
       transparent: 'transparent',
       'highlight': '#00C8C8',
-      'header-bg': {
-        light: '#FFF',
-        dark: '#1A1A1A'
+      'white': '#FFF',
+      'black': '#000',
+      'gray': {
+        50: '#F5F5F5',
+        100: '#E5E5E5',
+        200: '#D4D4D4',
+        300: '#A3A3A3',
+        400: '#737373',
+        500: '#525252',
+        600: '#404040',
+        700: '#3F3F3F',
+        800: '#2E2E2E',
+        900: '#1A1A1A',
       },
-      'header-secondary': {
-        light: '#F4F7F9',
-        dark: '#2E2E2E'
+      "blue": {
+        50: "#F2F5F8",
+        100: "#E5ECF1",
+        200: "#C7D6E0",
+        300: "#ADC3D2",
+        400: "#8FADC2",
+        500: "#749AB3",
+        600: "#537C98",
+        700: "#3F5E73",
+        800: "#293E4C",
+        900: "#162028"
       },
-      'header-tertiary': {
-        light: '#E5E5E5',
-        dark: '#3F3F3F'
+      "blue-gray": {
+        50: "#F0F2F4",
+        100: "#DFE2E7",
+        200: "#C1C8D2",
+        300: "#A1ABBA",
+        400: "#8391A5",
+        500: "#65748A",
+        600: "#525E70",
+        700: "#3C4552",
+        800: "#292F38",
+        900: "#13161B"
       },
-      'header-text': {
-        light: '#65748A',
-        dark: '#F9F9F9'
-      }
     },
     screens: {
       'phone': '640px',
