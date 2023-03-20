@@ -6,7 +6,7 @@
 	import { page } from "$app/stores";
 
 	let screenHeight = false;
-	if ($page.url.pathname === "/") {
+	if ($page.url.pathname === "/" || $page.url.pathname === "/live") {
 		screenHeight = true;
 	}
   </script>

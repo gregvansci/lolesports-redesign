@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { page } from '$app/stores';
 	
 	import hamburger from '$lib/images/hamburger.svg';
 	import riotLogo from '$lib/images/riot-logo-black.png';
@@ -115,7 +116,7 @@
 					text-sm laptop:text-base desktop:text-lg desktop-lg:text-xl"
 				>
 					<li class="group cursor-pointer">
-						<h2 class="group-hover:text-highlight">Live</h2>
+						<a class="group-hover:text-highlight" href="/">Live</a>
 					</li>
 					<li class="group cursor-pointer">
 						<h2 class="group-hover:text-highlight">Schedule</h2>
