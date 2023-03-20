@@ -7,7 +7,17 @@
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<section class="text-blue-gray-500 dark:text-white">
-	<h1>home page</h1>
+<section class="text-blue-gray-500 dark:text-white h-full flex flex-col justify-between pt-[60px]">
+	<div class="flex flex-row m-auto h-full pt-[32px] pb-[32px] gap-8">
+		<div class="bg-gray-50 dark:bg-gray-800 h-full w-[1000px] transition ease-in-out duration-300">
+			video
+		</div>
+		<div class="bg-gray-50 dark:bg-gray-800 h-full w-[200px] transition ease-in-out duration-300">
+			live games
+		</div>
+	</div>
+	<div class="w-full h-[200px] bg-gray-50 dark:bg-gray-800 transition ease-in-out duration-300">
+		followed teams
+	</div>
 </section>
 

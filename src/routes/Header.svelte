@@ -45,7 +45,7 @@
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <header class="
-	h-[60px] w-full border-b-[1px] shadow-sm dark:shadow-md select-none
+	h-[60px] w-full border-b-[1px] shadow-sm dark:shadow-md select-none absolute top-0 z-30
 	border-gray-200 dark:border-gray-800
 	text-blue-gray-500 dark:text-blue-50
 	transition ease-in-out duration-300"
