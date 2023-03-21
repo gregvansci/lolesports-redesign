@@ -1,6 +1,6 @@
 <script>
 	import "../app.css";
-	import Header from "../routes/Header.svelte";
+	import Header from "./Header.svelte";
 	
 	// get the current page
 	import { page } from "$app/stores";

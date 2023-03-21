@@ -1,5 +1,5 @@
 <script>
-	
+	import Footer from "./Footer.svelte"
 </script>
 
 <svelte:head>
@@ -30,5 +30,6 @@
 	<div class="w-full h-[200px] bg-gray-50 dark:bg-gray-800 transition ease-in-out duration-300">
 		followed teams
 	</div>
+	<Footer/>
 </section>
 
