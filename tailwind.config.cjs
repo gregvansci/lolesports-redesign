@@ -4,10 +4,10 @@ module.exports = {
   content: ['./src/**/*.{html,js,svelte,ts}'],
   theme: {
     fontFamily: {
-      'sans': ['Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+      'sans': ['Segoe UI', 'Inter', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
       'serif': ['Times New Roman', 'Times', 'serif'],
       'title': ['Work Sans', 'Roboto', 'sans-serif'],
-      'body': ['Work Sans', 'Roboto', 'sans-serif']
+      'body': ['Segoe UI', 'Roboto', 'sans-serif']
     },
     colors: {
       transparent: 'transparent',
