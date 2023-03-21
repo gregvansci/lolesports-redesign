@@ -181,7 +181,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="w-full h-[200px] flex bg-gray-50 dark:bg-gray-800 transition ease-in-out duration-300">
+	<div class="w-full h-[200px] flex bg-gray-50 dark:bg-gray-800 transition ease-in-out duration-300 font-body">
 		<h2 class="m-auto font-semibold text-lg">Not following any teams.</h2>
 	</div>
 	<Footer/>
