@@ -5,20 +5,20 @@
 	// get the current page
 	import { page } from "$app/stores";
 
-	let screenHeight = false;
-	if ($page.url.pathname === "/" || $page.url.pathname === "/live") {
-		screenHeight = true;
-	}
+	let screenHeight = true;
+	// $page.url.pathname === "/" || $page.url.pathname === "/live"
+	// 	? (screenHeight = true)
+	// 	: (screenHeight = false);
   </script>
 
 <div class="
-	w-full h-full min-h-screen {screenHeight ? 'h-screen' : ''} relative
+	w-full h-screen relative
 	bg-white dark:bg-gray-900
 	transition ease-in-out duration-300"
 >
 	<Header/>
 
-	<main class="h-full">
+	<main class="h-screen flex w-full">
 		<slot />
 	</main>
 </div>

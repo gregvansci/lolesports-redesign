@@ -46,7 +46,8 @@
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <header class="
-	h-[60px] w-full border-b-[1px] shadow-sm dark:shadow-md select-none absolute top-0 z-30
+	h-[60px] w-full border-b-[1px] shadow-sm dark:shadow-md select-none top-0 z-30 fixed
+	bg-white dark:bg-gray-900
 	border-gray-200 dark:border-gray-800
 	text-blue-gray-500 dark:text-blue-50
 	transition ease-in-out duration-300"
@@ -119,7 +120,7 @@
 						<a class="group-hover:text-highlight" href="/">Live</a>
 					</li>
 					<li class="group cursor-pointer">
-						<h2 class="group-hover:text-highlight">Schedule</h2>
+						<a class="group-hover:text-highlight" href="/schedule">Schedule</a>
 					</li>
 					<li class="group cursor-pointer">
 						<h2 class="group-hover:text-highlight">Regions</h2>
