@@ -14,11 +14,13 @@
 <div class="
 	w-full h-screen relative
 	bg-white dark:bg-gray-900
+	text-blue-gray-500 dark:text-blue-50
 	transition ease-in-out duration-300"
 >
 	<Header/>
 
-	<main class="h-screen flex w-full relative">
+	<main class="h-screen flex w-full relative
+	">
 		<slot />
 	</main>
 </div>
