@@ -18,7 +18,7 @@
 >
 	<Header/>
 
-	<main class="h-screen flex w-full">
+	<main class="h-screen flex w-full relative">
 		<slot />
 	</main>
 </div>
