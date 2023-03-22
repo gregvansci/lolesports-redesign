@@ -7,6 +7,8 @@
 
     let darkMode: boolean;
 
+    let streamId = "xqc";
+
     onMount(() => {
         if (localStorage.theme === "dark") {
             darkMode = true;
@@ -22,7 +24,7 @@
             <div class="h-full w-full">
                 <iframe
                     title="Target iframe page"
-                    src="https://player.twitch.tv/?channel=challengersleague&parent=streamernews.example.com"
+                    src="https://player.twitch.tv/?channel={streamId}&parent=streamernews.example.com"
                     height="100%"
                     width="100%"
                     allowfullscreen>
@@ -37,9 +39,15 @@
                     <img class="h-10 m-auto" src="https://am-a.akamaihd.net/image?resize=72:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1673260049703_DPlusKIALOGO11.png" alt="Logo">
                 </div>
                 <div class="flex flex-row">
-                    <img src={options} class="h-7 m-auto px-3 py-auto svg-filter-dark cursor-pointer" alt="Options" />
-                    <img src={hideHeader} class="h-7 m-auto px-3 py-auto svg-filter-dark cursor-pointer" alt="Hide Header" />
-                    <img src={chat} class="h-7 m-auto px-3 py-auto svg-filter-dark cursor-pointer" alt="Show Chat" />
+                    <div class="svg-filter-dark hover:bg-gray-800 m-auto p-[5px] rounded-md">
+                        <img src={options} class="h-6 m-auto cursor-pointer" alt="Options" />
+                    </div>
+                    <div class="svg-filter-dark hover:bg-gray-800 m-auto p-[5px] rounded-md">
+                        <img src={hideHeader} class="h-6 m-auto cursor-pointer" alt="Hide Header" />
+                    </div>
+                    <div class="svg-filter-dark hover:bg-gray-800 m-auto p-[5px] rounded-md">
+                        <img src={chat} class="h-6 m-auto cursor-pointer" alt="Show Chat" />
+                    </div>
                 </div>
             </div>
         </div>
@@ -49,7 +57,7 @@
             </div>
             <iframe 
                 title="Target iframe page"
-                src="https://www.twitch.tv/embed/challengersleague/chat?darkpopout&parent=streamernews.example.com"
+                src="https://www.twitch.tv/embed/{streamId}/chat?darkpopout&parent=streamernews.example.com"
                 height="100%"
                 width="100%">
             </iframe>
@@ -65,10 +73,10 @@
         color: #F2F5F8;
         text-align: center;
     }
-    .svg-filter-dark {
+	.svg-filter-dark img {
 		filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
 	}
-	.svg-filter-dark:hover {
-		filter: invert(58%) sepia(92%) saturate(3440%) hue-rotate(145deg) brightness(106%) contrast(101%);
+	img {
+		-webkit-user-drag: none;
 	}
 </style>

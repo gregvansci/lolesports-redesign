@@ -147,27 +147,38 @@
 				/>
 			</div>
 			<div class="hidden laptop:flex">
-				<div class="flex flex-row gap-4">
-					<button on:click={toggleDarkMode}>
+				<div class="flex flex-row gap-3">
+					<button on:click={toggleDarkMode} class="m-auto p-[6px] rounded-md 
+						hover:bg-gray-50 dark:hover:bg-gray-800
+						{darkMode ? "svg-filter-dark" : "svg-filter"}"
+					>
 						<img
 							src={darkMode ? darkModeIcon : lightModeIcon}
 							alt="Light Mode"
-							class="h-[30px] desktop:h-[34px] desktop-lg:h-[40px] m-auto cursor-pointer px-2 py-[6px] 
-							{darkMode ? "svg-filter-dark" : "svg-filter"}"
+							class="h-[20px] desktop:h-[24px] desktop-lg:h-[28px] m-auto cursor-pointer
+							"
 						/>
 					</button>
-					<img
-						src={settings}
-						alt="Settings"
-						class="h-[30px] desktop:h-[34px] desktop-lg:h-[40px] m-auto cursor-pointer px-2 py-[6px] 
+					<button class="m-auto p-[6px] rounded-md
+						hover:bg-gray-50 dark:hover:bg-gray-800
 						{darkMode ? "svg-filter-dark" : "svg-filter"}"
-					/>
-					<img
-						src={login}
-						alt="Login"
-						class="h-[30px] desktop:h-[34px] desktop-lg:h-[40px] m-auto cursor-pointer px-2 py-[6px] 
+					>
+						<img
+							src={settings}
+							alt="Settings"
+							class="h-[20px] desktop:h-[24px] desktop-lg:h-[28px] m-auto cursor-pointer"
+						/>
+					</button>
+					<button class="m-auto p-[6px] rounded-md
+						hover:bg-gray-50 dark:hover:bg-gray-800
 						{darkMode ? "svg-filter-dark" : "svg-filter"}"
-					/>
+					>
+						<img
+							src={login}
+							alt="Login"
+							class="h-[20px] desktop:h-[24px] desktop-lg:h-[28px] m-auto cursor-pointer"
+						/>
+					</button>
 				</div>
 			</div>
 		</div>
@@ -182,16 +193,16 @@
 	.logo-filter-dark {
 		filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
 	}
-	.svg-filter {
+	.svg-filter img {
 		filter: invert(49%) sepia(10%) saturate(960%) hue-rotate(176deg) brightness(88%) contrast(86%);
 	}
-	.svg-filter:hover {
+	.svg-filter:hover img {
 		filter: invert(58%) sepia(92%) saturate(3440%) hue-rotate(145deg) brightness(106%) contrast(101%);
 	}
-	.svg-filter-dark {
+	.svg-filter-dark img {
 		filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
 	}
-	.svg-filter-dark:hover {
+	.svg-filter-dark:hover img {
 		filter: invert(58%) sepia(92%) saturate(3440%) hue-rotate(145deg) brightness(106%) contrast(101%);
 	}
 	img {

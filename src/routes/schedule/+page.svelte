@@ -35,7 +35,7 @@
                 <div class="flex flex-col gap-6">
                     <div class="flex flex-row justify-between w-[200px]">
                         <h2>Show Following</h2>
-                        <div class="bg-gray-100 rounded-full w-12 flex">
+                        <div class="bg-gray-100  rounded-full w-12 flex">
                             <div class="bg-white rounded-full w-5 h-5 my-auto ml-[2px]"/>
                         </div>
                     </div>
@@ -70,6 +70,12 @@
                     </div>
                     <div class="flex flex-row justify-between bg-gray-100 border-2 border-transparent rounded-full p-2 px-4 cursor-pointer">
                         <h2 class="my-auto">LPL</h2>
+                        <div class="bg-gray-200 hover:bg-gray-300/50 cursor-pointer flex rounded-sm w-5 h-5 my-auto">
+                            <img src={expandArrow} class="m-auto w-4 h-4" alt="Open"/>
+                        </div>
+                    </div>
+                    <div class="flex flex-row justify-between bg-gray-100 border-2 border-transparent rounded-full p-2 px-4 cursor-pointer">
+                        <h2 class="my-auto">Minor</h2>
                         <div class="bg-gray-200 hover:bg-gray-300/50 cursor-pointer flex rounded-sm w-5 h-5 my-auto">
                             <img src={expandArrow} class="m-auto w-4 h-4" alt="Open"/>
                         </div>
