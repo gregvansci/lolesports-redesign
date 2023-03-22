@@ -23,7 +23,7 @@
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<section class="text-blue-gray-500 dark:text-white h-full flex flex-col justify-between pt-[60px]">
+<section class="text-blue-gray-500 dark:text-white h-full w-full flex flex-col justify-between pt-[60px]">
 	<div class="flex flex-row m-auto h-full">
 		<div 
 			class="h-full w-[1000px] ml-[5px]

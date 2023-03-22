@@ -52,6 +52,9 @@ schedule:
 - tab between all games in filters and followed teams
 - animate tiles moving
 - teams are clickable
+- center shows teams
+- left shows direction of today ()
+- right shows filters, show spoilers/following toggle on top
 
 filter:
 - intl ... international
@@ -61,6 +64,11 @@ filter:
 - lec ... other eu
 - other minor leagues
 - move to top/bottom to balance schedule
+
+if locale is "en-US", show int, na, eu, kr, cn, minor
+if locale is "ko", show int, kr, cn, eu, na, minor
+if locale is other, show int, eu, na, kr, cn, minor
+LCK LPL LEC LCS
 
 clicking other button shows all other leagues
 
