@@ -1,6 +1,9 @@
 <script lang="ts">
     import { onMount } from 'svelte';
 
+    import ScheduleGame from '../ScheduleGame.svelte';
+    import LiveGame from '../LiveGame.svelte';
+
     import expandArrow from '$lib/images/expand-arrow.svg';
 
     let darkMode: boolean;
@@ -15,34 +18,29 @@
 </script>
 
 <section class="mt-[60px] w-full overflow-y-scroll">
-    <div class="w-full justify-center flex flex-row">
-        <div class="w-[800px] flex flex-col gap-8 h-auto relative pt-4">
+    <div class="w-full justify-center flex flex-row pl-[128px] pr-[248px]">
+        <div class="w-[900px] flex flex-col h-auto relative pt-4">
             <div class="w-[80px] absolute -left-[128px] flex rounded-full top-4  py-1
                 bg-black dark:bg-gray-700
                 text-blue-50">
                 <h2 class="m-auto">Today</h2>
             </div>
-            <div class="bg-gray-50 dark:bg-gray-800 h-[150px] transition ease-in-out duration-300">
-                
-            </div>
-            <div class="bg-gray-50 dark:bg-gray-800 h-[150px] transition ease-in-out duration-300">
-                
-            </div>
-            <div class="bg-gray-50 dark:bg-gray-800 h-[150px] transition ease-in-out duration-300">
-                
-            </div>
-            <div class="bg-gray-50 dark:bg-gray-800 h-[150px] transition ease-in-out duration-300">
-                
-            </div>
-            <div class="bg-gray-50 dark:bg-gray-800 h-[150px] transition ease-in-out duration-300">
-                
-            </div>
-            <div class="bg-gray-50 dark:bg-gray-800 h-[150px] transition ease-in-out duration-300">
-                
-            </div>
-            <div class="bg-gray-50 dark:bg-gray-800 h-[150px] transition ease-in-out duration-300">
-                
-            </div>
+            <ScheduleGame team0="Dplus Kia" team0Score="0W-1L" team1="Hanwha Life Esports" team1Score="1W-0L" gameScore={[1,3]} region="LCK" season="Spring" stage="Playoffs" bestOf={5} past={true}
+                team0img="https://static.wikia.nocookie.net/lolesports_gamepedia_en/images/7/73/Dplus_KIAlogo_square.png"
+                team0imgInvert = {true}
+                team1img="https://am-a.akamaihd.net/image?resize=72:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1631819564399_hle-2021-worlds.png"
+            />
+            <LiveGame showLive={true}/>
+            <LiveGame />
+            <ScheduleGame team0="Thunder Talk Gaming" team1="Edward Gaming Hycan" region="LPL" season="Spring" bestOf={3}/>
+            <ScheduleGame team0="T1" team1="KT Rolster" region="LCK" season="Spring" stage="Playoffs" bestOf={5} 
+                team0img="https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1631819523085_t1-2021-worlds.png"
+                team1img="https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2Fkt_darkbackground.png"
+            />
+            <ScheduleGame region="EMEA Masters" season="Spring" bestOf={1}/>
+            <ScheduleGame region="LCK" season="Spring" stage="Regional Qualifier" bestOf={1}/>
+            <ScheduleGame region="LPL" season="Spring" stage="" bestOf={1}/>
+            <ScheduleGame />
         </div>
         <div class="">
             <div class="pl-12 absolute top-[10vh] flex flex-col gap-6">
