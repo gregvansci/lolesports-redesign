@@ -25,11 +25,11 @@
 <section class="mt-[60px] w-full overflow-y-scroll">
     <div class="w-full justify-center flex flex-row pl-[128px] pr-[248px]">
         <div class="w-[900px] flex flex-col h-auto relative pt-4">
-            <div class="w-[80px] absolute -left-[128px] flex rounded-full top-4  py-1
+            <!-- <div class="w-[80px] absolute -left-[128px] flex rounded-full top-4  py-1
                 bg-black dark:bg-gray-700
                 text-blue-50">
                 <h2 class="m-auto">Today</h2>
-            </div>
+            </div> -->
             <ScheduleGame team0="Dplus Kia" team0Score="0W-1L" team1="Hanwha Life Esports" team1Score="1W-0L" gameScore={[1,3]} region="LCK" season="Spring" stage="Playoffs" bestOf={5} past={true}
                 team0img="https://static.wikia.nocookie.net/lolesports_gamepedia_en/images/7/73/Dplus_KIAlogo_square.png"
                 team0imgInvert = {true}
