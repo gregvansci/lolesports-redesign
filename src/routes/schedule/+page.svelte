@@ -1,6 +1,7 @@
 <script lang="ts">
     import { onMount } from 'svelte';
 
+    import ScheduleNewDay from '../ScheduleNewDay.svelte';
     import ScheduleGame from '../ScheduleGame.svelte';
     import LiveGame from '../LiveGame.svelte';
 
@@ -15,6 +16,10 @@
 			darkMode = false;
 		}
 	});
+
+    // create a variable of tomorrows date
+    let tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
 </script>
 
 <section class="mt-[60px] w-full overflow-y-scroll">
@@ -30,6 +35,7 @@
                 team0imgInvert = {true}
                 team1img="https://am-a.akamaihd.net/image?resize=72:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1631819564399_hle-2021-worlds.png"
             />
+            <ScheduleNewDay date={new Date()}/>
             <LiveGame showLive={true}/>
             <LiveGame />
             <ScheduleGame team0="Thunder Talk Gaming" team1="Edward Gaming Hycan" region="LPL" season="Spring" bestOf={3}/>
@@ -38,6 +44,7 @@
                 team1img="https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2Fkt_darkbackground.png"
             />
             <ScheduleGame region="EMEA Masters" season="Spring" bestOf={1}/>
+            <ScheduleNewDay date={tomorrow}/>
             <ScheduleGame region="LCK" season="Spring" stage="Regional Qualifier" bestOf={1}/>
             <ScheduleGame region="LPL" season="Spring" stage="" bestOf={1}/>
             <ScheduleGame />
