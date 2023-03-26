@@ -1,19 +1,15 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { darkMode } from '../store';
 
 	import Footer from "./Footer.svelte"
 
 	import live from "$lib/images/live.svg"
 	import clock from "$lib/images/clock.svg"
 
-	let darkMode: boolean;
-
-	onMount(() => {
-		if (localStorage.theme === "dark") {
-			darkMode = true;
-		} else {
-			darkMode = false;
-		}
+	let darkModeValue: boolean;
+	darkMode.subscribe(value => {
+		darkModeValue = value;
 	});
 
 </script>
@@ -26,20 +22,18 @@
 <section class="text-blue-gray-500 dark:text-white h-full w-full flex flex-col justify-between pt-[60px]">
 	<div class="flex flex-row m-auto h-full">
 		<div 
-			class="h-full w-[1000px] ml-[5px]
-			bg-gray-50 dark:bg-gray-800	
-			transition ease-in-out duration-300 relative"
+			class="h-full w-[1000px] ml-[5px] bg-black relative"
 		>
 			<iframe
 				title="Target iframe page"
-				src="https://player.twitch.tv/?channel=lec&parent=streamernews.example.com&muted=true"
+				src="https://player.twitch.tv/?channel=lcs&parent=streamernews.example.com&muted=true&controls=false&autoplay=true"
 				height="100%"
 				width="100%"
 				allowfullscreen>
 			</iframe>
 			<a href="/live/lec" class="absolute w-full h-full top-0 flex cursor-pointer">
-				<div class="m-auto mb-8 bg-alert rounded-full px-6 py-1">
-					<h2 class="text-white font-semibold text-lg tracking-wide">Watch Live</h2>
+				<div class="m-auto mb-8 bg-alert rounded-full px-6 py-1 shadow-md">
+					<h2 class="text-white font-semibold text-lg">Watch Live</h2>
 				</div>
 			</a>
 		</div>
@@ -49,9 +43,9 @@
 				flex flex-col justify-between animate-to-left 
 				outline-gray-50 dark:outline-gray-800 
 				transition ease-in-out duration-300">
-				<div class="flex flex-row justify-center mx-auto my-2 gap-1">
-					<img src={live} alt="Live Icon" class="w-4 h-4 mt-[3px] svg-filter-red"/>
-					<h2 class="m-auto text-sm">LIVE - LCK</h2>
+				<div class="flex flex-row justify-center mx-auto mt-2 gap-1">
+					<img src={live} alt="Live Icon" class="w-[17px] mt-[2px] svg-filter-red"/>
+					<h2 class="m-auto text-base font-semibold">LIVE - LCK</h2>
 				</div>
 				<div class="flex flex-col justify-between h-full m-auto py-4">
 					<div class="flex flex-row gap-4">
@@ -117,7 +111,7 @@
 					<img 
 						src={clock} 
 						alt="Live Icon" 
-						class="w-4 h-4 mt-[3px] {darkMode ? "svg-filter-dark" : "svg-filter"}"
+						class="w-4 h-4 mt-[3px] {darkModeValue ? "svg-filter-dark" : "svg-filter"}"
 					/>
 					<h2 class="m-auto text-sm">1:30:22 - LPL</h2>
 				</div>
@@ -153,7 +147,7 @@
 					<img 
 						src={clock} 
 						alt="Live Icon" 
-						class="w-4 h-4 mt-[3px] {darkMode ? "svg-filter-dark" : "svg-filter"}"
+						class="w-4 h-4 mt-[3px] {darkModeValue ? "svg-filter-dark" : "svg-filter"}"
 					/>
 					<h2 class="m-auto text-sm">23:30:22 - LPL</h2>
 				</div>

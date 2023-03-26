@@ -1,5 +1,6 @@
 <script lang="ts">
     import { onMount } from 'svelte';
+    import { darkMode } from '../../store';
 
     import ScheduleNewDay from '../ScheduleNewDay.svelte';
     import ScheduleGame from '../ScheduleGame.svelte';
@@ -7,15 +8,11 @@
 
     import expandArrow from '$lib/images/expand-arrow.svg';
 
-    let darkMode: boolean;
+    let darkModeValue: boolean;
 
-	onMount(() => {
-		if (localStorage.theme === "dark") {
-			darkMode = true;
-		} else {
-			darkMode = false;
-		}
-	});
+    darkMode.subscribe(value => {
+        darkModeValue = value;
+    });
 
     // create a variable of tomorrows date
     let tomorrow = new Date();

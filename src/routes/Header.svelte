@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
+	import { darkMode } from '../store';
 	
 	import hamburger from '$lib/images/hamburger.svg';
 	import riotLogo from '$lib/images/riot-logo-black.png';
@@ -18,30 +19,23 @@
 	import valLogo from '$lib/images/val-logo.png';
 	import wrLogo from '$lib/images/wr-logo.png';
 
-	let darkMode: boolean;
+	export let showGameDropdown = false;
+	let darkModeValue: boolean;
 
-	onMount(() => {
-		if (localStorage.theme === "dark") {
-			darkMode = true;
-		} else {
-			darkMode = false;
-		}
+	darkMode.subscribe(value => {
+		darkModeValue = value;
 	});
 
 	function toggleDarkMode() {
-		if (darkMode) {
+		if (darkModeValue) {
 			localStorage.theme = "light";
 			document.documentElement.classList.remove("dark");
-			darkMode = false;
 		} else {
 			localStorage.theme = "dark";
 			document.documentElement.classList.add("dark");
-			darkMode = true;
 		}
+		darkMode.update(n => !n);
 	}
-
-	export let showGameDropdown = false;
-
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -57,11 +51,11 @@
 			src={hamburger}
 			alt="Settings"
 			class="h-[40px] my-auto cursor-pointer px-2 py-[6px] flex tablet:hidden 
-			{darkMode ? "svg-filter-dark" : "svg-filter"}"
+			{darkModeValue ? "svg-filter-dark" : "svg-filter"}"
 		/>
 		<div class="flex flex-row gap-4 h-full">
 			<img 
-				src={darkMode ? riotLogoDark : riotLogo} 
+				src={darkModeValue ? riotLogoDark : riotLogo} 
 				alt="Riot Games" 
 				class="h-[20px] desktop-lg:h-[25px] m-auto pl-2"
 			/>
@@ -77,10 +71,10 @@
 					<img
 						src={lolesportsLogo}
 						alt="LoL Esports"
-						class="h-[20px] desktop-lg:h-[25px] m-auto pl-2 {darkMode ? "logo-filter-dark" : "logo-filter"}"
+						class="h-[20px] desktop-lg:h-[25px] m-auto pl-2 {darkModeValue ? "logo-filter-dark" : "logo-filter"}"
 					/>
 					<img src={expandArrow} alt="Expand" class="h-[20px] m-auto pointer-events-none 
-						{darkMode ? "svg-filter-dark" : "svg-filter"}"
+						{darkModeValue ? "svg-filter-dark" : "svg-filter"}"
 					/>
 				</div>
 				<div class="
@@ -96,7 +90,7 @@
 					</button>
 					<button class="w-full hover:bg-gray-50 dark:hover:bg-gray-800">
 						<img src={tftLogo} alt="TFT" class="h-[45px] desktop-lg:h-[50px] m-auto 
-							{darkMode ? "logo-filter-dark" : "logo-filter"}"
+							{darkModeValue ? "logo-filter-dark" : "logo-filter"}"
 						/>
 					</button>
 					<button class="w-full hover:bg-gray-50 dark:hover:bg-gray-800">
@@ -143,17 +137,17 @@
 					src={settings}
 					alt="Settings"
 					class="h-[40px] tablet:h-[30px] m-auto cursor-pointer px-2 py-[6px] 
-					{darkMode ? "svg-filter-dark" : "svg-filter"}"
+					{darkModeValue ? "svg-filter-dark" : "svg-filter"}"
 				/>
 			</div>
 			<div class="hidden laptop:flex">
 				<div class="flex flex-row gap-3">
 					<button on:click={toggleDarkMode} class="m-auto p-[6px] rounded-md 
 						hover:bg-gray-50 dark:hover:bg-gray-800
-						{darkMode ? "svg-filter-dark" : "svg-filter"}"
+						{darkModeValue ? "svg-filter-dark" : "svg-filter"}"
 					>
 						<img
-							src={darkMode ? darkModeIcon : lightModeIcon}
+							src={darkModeValue ? darkModeIcon : lightModeIcon}
 							alt="Light Mode"
 							class="h-[20px] desktop:h-[24px] desktop-lg:h-[28px] m-auto cursor-pointer
 							"
@@ -161,7 +155,7 @@
 					</button>
 					<button class="m-auto p-[6px] rounded-md
 						hover:bg-gray-50 dark:hover:bg-gray-800
-						{darkMode ? "svg-filter-dark" : "svg-filter"}"
+						{darkModeValue ? "svg-filter-dark" : "svg-filter"}"
 					>
 						<img
 							src={settings}
@@ -171,7 +165,7 @@
 					</button>
 					<button class="m-auto p-[6px] rounded-md
 						hover:bg-gray-50 dark:hover:bg-gray-800
-						{darkMode ? "svg-filter-dark" : "svg-filter"}"
+						{darkModeValue ? "svg-filter-dark" : "svg-filter"}"
 					>
 						<img
 							src={login}

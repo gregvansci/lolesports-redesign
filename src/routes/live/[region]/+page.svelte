@@ -5,32 +5,24 @@
     import hideHeader from '$lib/images/hide-header.svg';
     import options from '$lib/images/options.svg';
 
-    let darkMode: boolean;
+    // export let darkMode = false;
 
-    let streamId = "xqc";
-
-    onMount(() => {
-        if (localStorage.theme === "dark") {
-            darkMode = true;
-        } else {
-            darkMode = false;
-        }
-    });
+    let streamId = "lcs";
 </script>
 
-<div class="pt-[60px] w-full h-full flex text-blue-50">
+<div class="pt-[60px]  w-full h-full flex text-blue-50">
     <div class="flex flex-row w-full h-full">
         <div class="flex flex-col h-full w-full">
-            <div class="h-full w-full">
+            <div class="h-full w-full bg-black">
                 <iframe
                     title="Target iframe page"
-                    src="https://player.twitch.tv/?channel={streamId}&parent=streamernews.example.com"
+                    src="https://player.twitch.tv/?channel={streamId}&parent=streamernews.example.com&muted=false"
                     height="100%"
                     width="100%"
                     allowfullscreen>
                 </iframe>
             </div>
-            <div class="flex flex-row justify-between w-full h-12 px-4 bg-gray-900">
+            <div class="flex flex-row justify-between w-full h-12 px-4 bg-[#18181B]">
                 <div class="flex flex-row h-full gap-2">
                     <img class="h-10 m-auto" src="https://am-a.akamaihd.net/image?resize=72:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1631819523085_t1-2021-worlds.png" alt="Logo">
                     <div class="m-auto pb-1">

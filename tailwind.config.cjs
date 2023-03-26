@@ -14,7 +14,7 @@ module.exports = {
       'highlight': '#00C8C8',
       'white': '#FFF',
       'black': '#000',
-      'alert': '#9d0208',
+      'alert': '#F44336',
       'gray': {
         50: '#F5F5F5',
         100: '#E5E5E5',

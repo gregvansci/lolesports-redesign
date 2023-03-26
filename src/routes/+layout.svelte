@@ -1,14 +1,8 @@
-<script>
+<script lang="ts">
 	import "../app.css";
 	import Header from "./Header.svelte";
-	
-	// get the current page
-	import { page } from "$app/stores";
+	import { onMount } from "svelte";
 
-	let screenHeight = true;
-	// $page.url.pathname === "/" || $page.url.pathname === "/live"
-	// 	? (screenHeight = true)
-	// 	: (screenHeight = false);
   </script>
 
 <div class="
@@ -17,10 +11,10 @@
 	text-blue-gray-500 dark:text-blue-50
 	transition ease-in-out duration-300"
 >
-	<Header/>
 
-	<main class="h-screen flex w-full relative
-	">
+  	<Header />
+	<main class="h-screen flex w-full relative">
 		<slot />
 	</main>
 </div>
+

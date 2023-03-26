@@ -1,5 +1,6 @@
 <script lang="ts">
     import { onMount } from 'svelte';
+    import { darkMode } from '../store';
 
     import defaultTeam from '$lib/images/lolesports-icon-black.png';
     import defaultTeamDark from '$lib/images/lolesports-icon-white.png';
@@ -7,11 +8,11 @@
     let date = new Date();
     export let team0 = "Left Team";
     export let team0img = "";
-    export let team0imgInvert = false;
+    export let team0imgInvert = team0img ? false : true;
     export let team0Score = "0-0";
     export let team1 = "Right Team";
     export let team1img = "";
-    export let team1imgInvert = false;
+    export let team1imgInvert = team1img ? false : true;
     export let team1Score: string | undefined = "0-0";
     export let gameScore: Array<Number> = [0, 0];
     export let region = "";
@@ -31,15 +32,12 @@
     // live games are taller
     // today markers follows top of live games or top of future games
 
-    let darkMode: boolean;
+    let darkModeValue: boolean;
+    darkMode.subscribe(value => {
+        darkModeValue = value;
+        console.log("updated dark mode value " + darkModeValue);
+    });
 
-	onMount(() => {
-		if (localStorage.theme === "dark") {
-			darkMode = true;
-		} else {
-			darkMode = false;
-		}
-	});
 </script>
 
 <div class="h-[85px] w-full flex flex-row justify-between border-y-[1px] border-gray-100 dark:border-gray-800 transition ease-in-out duration-300">
@@ -52,7 +50,7 @@
                     <h2 class="flex justify-end text-sm">{past ? team0Score : ""}</h2>
                 </div>
                 <div class="my-auto">
-                    <img class="w-[55px] {darkMode ? team0imgInvert ? "teamLogoInvert" : "" : ""}" src={team0img === "" ? darkMode ? defaultTeamDark : defaultTeam : team0img} alt={team0}>
+                    <img class="w-[55px] {darkModeValue ? team0imgInvert ? "teamLogoInvert" : "" : ""} transition ease-in-out duration-300" src={team0img === "" ? defaultTeam : team0img} alt={team0}>
                 </div>
             </div>        
         </div>
@@ -67,7 +65,7 @@
         <div class="w-[325px] flex justify-start">
             <div class="flex flex-row gap-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg px-4 cursor-pointer">
                 <div class="my-auto">
-                    <img class="w-[55px] {darkMode ? team1imgInvert ? "teamLogoInvert" : "" : ""}"  src={team1img === "" ? darkMode ? defaultTeamDark : defaultTeam : team1img} alt={team1}>
+                    <img class="w-[55px] {darkModeValue ? team1imgInvert ? "teamLogoInvert" : "" : ""} transition ease-in-out duration-300" src={team1img === "" ? defaultTeam : team1img} alt={team1}>
                 </div>
                 <div class="my-auto">
                     <h2 class="font-semibold text-xl">{team1}</h2>
