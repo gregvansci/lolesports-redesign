@@ -50,7 +50,7 @@
                     <h2 class="flex justify-end text-sm">{past ? team0Score : ""}</h2>
                 </div>
                 <div class="my-auto">
-                    <img class="w-[55px] {darkModeValue ? team0imgInvert ? "teamLogoInvert" : "" : ""}" src={team0img === "" ? defaultTeam : team0img} alt={team0}>
+                    <img class="w-[55px] {darkModeValue ? team0imgInvert ? "teamLogoInvert" : "" : ""} transition ease-in-out duration-300" src={team0img === "" ? defaultTeam : team0img} alt={team0}>
                 </div>
             </div>        
         </div>
@@ -65,7 +65,7 @@
         <div class="w-[325px] flex justify-start">
             <div class="flex flex-row gap-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg px-4 cursor-pointer">
                 <div class="my-auto">
-                    <img class="w-[55px] {darkModeValue ? team1imgInvert ? "teamLogoInvert" : "" : ""}" src={team1img === "" ? defaultTeam : team1img} alt={team1}>
+                    <img class="w-[55px] {darkModeValue ? team1imgInvert ? "teamLogoInvert" : "" : ""} transition ease-in-out duration-300" src={team1img === "" ? defaultTeam : team1img} alt={team1}>
                 </div>
                 <div class="my-auto">
                     <h2 class="font-semibold text-xl">{team1}</h2>
