@@ -26,7 +26,7 @@
 		>
 			<iframe
 				title="Target iframe page"
-				src="https://player.twitch.tv/?channel=lec&parent=streamernews.example.com&muted=true"
+				src="https://player.twitch.tv/?channel=lcs&parent=streamernews.example.com&muted=true&controls=false&autoplay=true"
 				height="100%"
 				width="100%"
 				allowfullscreen>

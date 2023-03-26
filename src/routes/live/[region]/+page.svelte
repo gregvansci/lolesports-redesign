@@ -10,13 +10,13 @@
     let streamId = "lcs";
 </script>
 
-<div class="pt-[60px] w-full h-full flex text-blue-50">
+<div class="pt-[60px]  w-full h-full flex text-blue-50">
     <div class="flex flex-row w-full h-full">
         <div class="flex flex-col h-full w-full">
-            <div class="h-full w-full">
+            <div class="h-full w-full bg-black">
                 <iframe
                     title="Target iframe page"
-                    src="https://player.twitch.tv/?channel={streamId}&parent=streamernews.example.com"
+                    src="https://player.twitch.tv/?channel={streamId}&parent=streamernews.example.com&muted=false"
                     height="100%"
                     width="100%"
                     allowfullscreen>
