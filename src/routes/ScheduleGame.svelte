@@ -8,11 +8,11 @@
     let date = new Date();
     export let team0 = "Left Team";
     export let team0img = "";
-    export let team0imgInvert = false;
+    export let team0imgInvert = team0img ? false : true;
     export let team0Score = "0-0";
     export let team1 = "Right Team";
     export let team1img = "";
-    export let team1imgInvert = false;
+    export let team1imgInvert = team1img ? false : true;
     export let team1Score: string | undefined = "0-0";
     export let gameScore: Array<Number> = [0, 0];
     export let region = "";
@@ -35,6 +35,7 @@
     let darkModeValue: boolean;
     darkMode.subscribe(value => {
         darkModeValue = value;
+        console.log("updated dark mode value " + darkModeValue);
     });
 
 </script>
@@ -49,7 +50,7 @@
                     <h2 class="flex justify-end text-sm">{past ? team0Score : ""}</h2>
                 </div>
                 <div class="my-auto">
-                    <img class="w-[55px] {darkModeValue ? team0imgInvert ? "teamLogoInvert" : "" : ""}" src={team0img === "" ? darkMode ? defaultTeamDark : defaultTeam : team0img} alt={team0}>
+                    <img class="w-[55px] {darkModeValue ? team0imgInvert ? "teamLogoInvert" : "" : ""}" src={team0img === "" ? defaultTeam : team0img} alt={team0}>
                 </div>
             </div>        
         </div>
@@ -64,7 +65,7 @@
         <div class="w-[325px] flex justify-start">
             <div class="flex flex-row gap-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg px-4 cursor-pointer">
                 <div class="my-auto">
-                    <img class="w-[55px] {darkModeValue ? team1imgInvert ? "teamLogoInvert" : "" : ""}"  src={team1img === "" ? darkMode ? defaultTeamDark : defaultTeam : team1img} alt={team1}>
+                    <img class="w-[55px] {darkModeValue ? team1imgInvert ? "teamLogoInvert" : "" : ""}" src={team1img === "" ? defaultTeam : team1img} alt={team1}>
                 </div>
                 <div class="my-auto">
                     <h2 class="font-semibold text-xl">{team1}</h2>
