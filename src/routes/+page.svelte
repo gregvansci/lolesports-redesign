@@ -43,9 +43,9 @@
 				flex flex-col justify-between animate-to-left 
 				outline-gray-50 dark:outline-gray-800 
 				transition ease-in-out duration-300">
-				<div class="flex flex-row justify-center mx-auto my-2 gap-1">
-					<img src={live} alt="Live Icon" class="w-4 h-4 mt-[3px] svg-filter-red"/>
-					<h2 class="m-auto text-sm">LIVE - LCK</h2>
+				<div class="flex flex-row justify-center mx-auto mt-2 gap-1">
+					<img src={live} alt="Live Icon" class="w-[17px] mt-[2px] svg-filter-red"/>
+					<h2 class="m-auto text-base font-semibold">LIVE - LCK</h2>
 				</div>
 				<div class="flex flex-col justify-between h-full m-auto py-4">
 					<div class="flex flex-row gap-4">
