@@ -7,7 +7,15 @@
 
     // export let darkMode = false;
 
-    let streamId = "lcs";
+    let streamId = "lec";
+
+    let optionsTooltip = false;
+    let expandTooltip = false;
+    let sidebarTooltip = false;
+
+    let showOptions = false;
+    let showHeader = true;
+    let showSidebar = true;
 </script>
 
 <div class="pt-[60px]  w-full h-full flex text-blue-50">
@@ -31,19 +39,42 @@
                     <img class="h-10 m-auto" src="https://am-a.akamaihd.net/image?resize=72:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1673260049703_DPlusKIALOGO11.png" alt="Logo">
                 </div>
                 <div class="flex flex-row">
-                    <div class="svg-filter-dark hover:bg-gray-800 m-auto p-[5px] rounded-md">
+                    <div
+                        on:pointerenter={() => {optionsTooltip = true}} 
+                        on:pointerleave={() => {optionsTooltip = false}} 
+                        class="relative svg-filter-dark hover:bg-gray-800 m-auto p-[5px] rounded-md">
                         <img src={options} class="h-6 m-auto cursor-pointer" alt="Options" />
+                        <div class="absolute bg-gray-800 bottom-[130%] rounded-md z-50 left-[50%] -ml-[60px] w-[120px] py-1 {optionsTooltip ? "inline" : "hidden"}">
+							<h2 class="text-center">Options</h2>
+						</div>
+						<div class="absolute bottom-[120%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-50 dark:bg-gray-800 transform rotate-45 {optionsTooltip ? "inline" : "hidden"}"></div>
                     </div>
-                    <div class="svg-filter-dark hover:bg-gray-800 m-auto p-[5px] rounded-md">
+                    <div 
+                        on:pointerenter={() => {expandTooltip = true}} 
+                        on:pointerleave={() => {expandTooltip = false}}
+                        class="relative svg-filter-dark hover:bg-gray-800 m-auto p-[5px] rounded-md">
                         <img src={hideHeader} class="h-6 m-auto cursor-pointer" alt="Hide Header" />
+                        <div class="absolute bg-gray-800 bottom-[130%] rounded-md z-50 left-[50%] -ml-[60px] w-[120px] py-1 {expandTooltip ? "inline" : "hidden"}">
+							<h2 class="text-center">Expand Page</h2>
+						</div>
+						<div class="absolute bottom-[120%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-50 dark:bg-gray-800 transform rotate-45 {expandTooltip ? "inline" : "hidden"}"></div>
                     </div>
-                    <div class="svg-filter-dark hover:bg-gray-800 m-auto p-[5px] rounded-md">
+                    <!-- svelte-ignore a11y-click-events-have-key-events -->
+                    <div
+                        on:pointerenter={() => {sidebarTooltip = true}} 
+                        on:pointerleave={() => {sidebarTooltip = false}}
+                        on:click={() => {showSidebar = !showSidebar}} 
+                        class="relative svg-filter-dark hover:bg-gray-800 m-auto p-[5px] rounded-md">
                         <img src={chat} class="h-6 m-auto cursor-pointer" alt="Show Chat" />
+                        <div class="absolute bg-gray-800 bottom-[130%] rounded-md z-50 {showSidebar ? "left-[50%] -ml-[60px]" : "right-0"}  w-[120px] py-1 {sidebarTooltip ? "inline" : "hidden"}">
+							<h2 class="text-center">Show Sidebar</h2>
+						</div>
+						<div class="absolute bottom-[120%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-50 dark:bg-gray-800 transform rotate-45 {sidebarTooltip ? "inline" : "hidden"}"></div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="h-full w-[400px] flex flex-col">
+        <div class="h-full w-[400px] flex-col {showSidebar ? "flex" : "hidden"}">
             <div class="h-16 w-full flex flex-row bg-[#18181B]">
                 <input class="h-6 rounded-md m-auto px-2 bg-gray-400 align-middle focus:outline-none" placeholder="Add Live View Channel">
             </div>
