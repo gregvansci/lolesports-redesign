@@ -7,3 +7,7 @@ if (typeof localStorage !== 'undefined') {
 }
 
 export const darkMode = writable(darkModeValue);
+
+let showHeaderValue = true;
+
+export const showHeader = writable(showHeaderValue);

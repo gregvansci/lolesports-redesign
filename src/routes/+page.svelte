@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { darkMode } from '../store';
+	import { showHeader } from '../store';
 
 	import Footer from "./Footer.svelte"
 
@@ -11,6 +12,8 @@
 	darkMode.subscribe(value => {
 		darkModeValue = value;
 	});
+
+	showHeader.update(() => true);
 
 </script>
 

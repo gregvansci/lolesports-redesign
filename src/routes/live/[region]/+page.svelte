@@ -1,11 +1,11 @@
 <script lang="ts">
     import { onMount } from 'svelte';
+    import { showHeader } from '../../../store';
 
     import chat from '$lib/images/chat.svg';
-    import hideHeader from '$lib/images/hide-header.svg';
+    import expandPage from '$lib/images/hide-header.svg';
+    import shrinkPage from '$lib/images/show-header.svg';
     import options from '$lib/images/options.svg';
-
-    // export let darkMode = false;
 
     let streamId = "lec";
 
@@ -14,13 +14,22 @@
     let sidebarTooltip = false;
 
     let showOptions = false;
-    let showHeader = true;
+    let showHeaderValue = true;
     let showSidebar = true;
+
+    showHeader.subscribe((value) => {
+		showHeaderValue = value;
+	});
+
+    function toggleHeader() {
+        showHeader.update(n => !n);
+    }
+
 </script>
 
-<div class="pt-[60px]  w-full h-full flex text-blue-50">
+<div class="{showHeaderValue ? "pt-[60px]" : "pt-0"} w-full h-full flex text-blue-50">
     <div class="flex flex-row w-full h-full">
-        <div class="flex flex-col h-full w-full">
+        <div class="flex flex-col h-full w-full select-none">
             <div class="h-full w-full bg-black">
                 <iframe
                     title="Target iframe page"
@@ -47,17 +56,19 @@
                         <div class="absolute bg-gray-800 bottom-[130%] rounded-md z-50 left-[50%] -ml-[60px] w-[120px] py-1 {optionsTooltip ? "inline" : "hidden"}">
 							<h2 class="text-center">Options</h2>
 						</div>
-						<div class="absolute bottom-[120%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-50 dark:bg-gray-800 transform rotate-45 {optionsTooltip ? "inline" : "hidden"}"></div>
+						<div class="absolute bottom-[120%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-800 transform rotate-45 {optionsTooltip ? "inline" : "hidden"}"></div>
                     </div>
+                    <!-- svelte-ignore a11y-click-events-have-key-events -->
                     <div 
                         on:pointerenter={() => {expandTooltip = true}} 
                         on:pointerleave={() => {expandTooltip = false}}
+                        on:click={() => {toggleHeader()}}
                         class="relative svg-filter-dark hover:bg-gray-800 m-auto p-[5px] rounded-md">
-                        <img src={hideHeader} class="h-6 m-auto cursor-pointer" alt="Hide Header" />
+                        <img src={showHeaderValue ? expandPage : shrinkPage} class="h-6 m-auto cursor-pointer" alt="Hide Header" />
                         <div class="absolute bg-gray-800 bottom-[130%] rounded-md z-50 left-[50%] -ml-[60px] w-[120px] py-1 {expandTooltip ? "inline" : "hidden"}">
-							<h2 class="text-center">Expand Page</h2>
+							<h2 class="text-center">{showHeaderValue ? "Expand Page" : "Shrink Page"}</h2>
 						</div>
-						<div class="absolute bottom-[120%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-50 dark:bg-gray-800 transform rotate-45 {expandTooltip ? "inline" : "hidden"}"></div>
+						<div class="absolute bottom-[120%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-800 transform rotate-45 {expandTooltip ? "inline" : "hidden"}"></div>
                     </div>
                     <!-- svelte-ignore a11y-click-events-have-key-events -->
                     <div
@@ -69,7 +80,7 @@
                         <div class="absolute bg-gray-800 bottom-[130%] rounded-md z-50 {showSidebar ? "left-[50%] -ml-[60px]" : "right-0"}  w-[120px] py-1 {sidebarTooltip ? "inline" : "hidden"}">
 							<h2 class="text-center">Show Sidebar</h2>
 						</div>
-						<div class="absolute bottom-[120%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-50 dark:bg-gray-800 transform rotate-45 {sidebarTooltip ? "inline" : "hidden"}"></div>
+						<div class="absolute bottom-[120%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-800 transform rotate-45 {sidebarTooltip ? "inline" : "hidden"}"></div>
                     </div>
                 </div>
             </div>
