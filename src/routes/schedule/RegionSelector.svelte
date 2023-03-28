@@ -9,6 +9,7 @@
     export let leagues = [ "Korea", "LCK", "LCK CL" ];
     export let leaguesActive = [ false, false, false ];
     export let dropdown = false;
+    export let minor = false;
     
     let darkModeValue: boolean;
 
@@ -17,15 +18,59 @@
     });
 
     // export toggle dropdown
-    export let toggleDropdown = (region: string) => {};
-    export let regionInput = (region: string, league: number) => {};
+    export let toggleDropdown = (region: number) => {};
+    export let regionInput = (region: number, league: number) => {};
 
     function handleToggleDropdown() {
-        toggleDropdown(leagues[0]);
+        switch(leagues[0]) {
+            case "International":
+                toggleDropdown(0);
+                break;
+            case "Korea":
+                toggleDropdown(1);
+                break;
+            case "China":
+                toggleDropdown(2);
+                break;
+            case "Europe":
+                toggleDropdown(3);
+                break;
+            case "N America":
+                toggleDropdown(4);
+                break;
+            case "Minor":
+                toggleDropdown(5);
+                break;
+            default:
+                console.log("Error: Region not found")
+                break;
+        }
     }
 
-    function handleRegionInput(region: string, league: number) {
-        regionInput(region, league);
+    function handleRegionInput(league: number) {
+        switch(leagues[0]) {
+            case "International":
+                regionInput(0, league);
+                break;
+            case "Korea":
+                regionInput(1, league);
+                break;
+            case "China":
+                regionInput(2, league);
+                break;
+            case "Europe":
+                regionInput(3, league);
+                break;
+            case "N America":
+                regionInput(4, league);
+                break;
+            case "Minor":
+                dropdown ? regionInput(5, league) : regionInput(5, 0);
+                break;
+            default:
+                console.log("Error: Region not found")
+                break;
+        }     
     }
 
 </script>
@@ -34,16 +79,15 @@
 <div class="flex flex-col bg-gray-50 dark:bg-gray-800 h-full rounded-[22px] border-2 overflow-hidden box-border 
     {leaguesActive[0] ? "border-highlight" : "border-gray-100 dark:border-gray-700"}"
 >
-    <button on:click={() => {dropdown ? handleToggleDropdown() : {}}} class="flex flex-row justify-between h-full 
-        {dropdown ? "hover:bg-gray-100 dark:hover:bg-gray-700" : ""}"
+    <button class="flex flex-row justify-between h-full"
     >
         <button 
-            on:click = {() => handleRegionInput(leagues[0], 0)} 
+            on:click = {() => { dropdown ? handleRegionInput(0) : handleRegionInput(1)}} 
             class="w-full py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
         >
-            <h2 class="my-auto w-full text-left pl-4  ">{dropdown ? leagues[0] : leagues[1]}</h2>
+            <h2 class="my-auto w-full text-left pl-4  ">{!dropdown && !minor ? leagues[1] : leagues[0]}</h2>
         </button>
-        <div class="h-[25px] border-[1px] m-auto border-gray-100 dark:border-gray-700 {dropdown ? "hidden" : "block"}" />
+        <div class="h-[25px] border-[1px] m-auto border-gray-100 dark:border-gray-700" />
         <button 
             on:click|stopPropagation = {() => handleToggleDropdown()} 
             class="w-full h-[40px] py-auto flex rounded-sm
@@ -55,22 +99,17 @@
     </button>
     <div class="flex-col {dropdown ? "flex" : "hidden"}">
         <div class="w-full border-[1px] border-gray-100/50 dark:border-gray-700/50"></div>
-        <button
-            on:click={() => handleRegionInput(leagues[0], 1)} 
-            class="flex flex-row justify-between p-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-700
-            {leaguesActive[1] ? "checked" : darkModeValue ? "unchecked-dark" : "unchecked"}"
-        >
-            <h2>{leagues[1]}</h2>
-            <img class="h-6" src={leaguesActive[1] ? checked : unchecked} alt={leaguesActive[1] ? "Checked" : "Unchecked"}/>
-        </button>
-        <button
-            on:click={() => handleRegionInput(leagues[0], 2)} 
-            class="flex flex-row justify-between p-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-700
-            {leaguesActive[2] ? "checked" : darkModeValue ? "unchecked-dark" : "unchecked"}"
-        >
-            <h2>{leagues[2]}</h2>
-            <img class="h-6" src={leaguesActive[2] ? checked : unchecked} alt={leaguesActive[2] ? "Checked" : "Unchecked"}/>
-        </button>
+        <!-- for each league in leagues after the 0th,  -->
+        {#each leagues.slice(1) as league, i}
+            <button
+                on:click={() => handleRegionInput(i+1)} 
+                class="flex flex-row justify-between p-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-700
+                {leaguesActive[i+1] ? "checked" : darkModeValue ? "unchecked-dark" : "unchecked"}"
+            >
+                <h2>{league}</h2>
+                <img class="h-6" src={leaguesActive[i+1] ? checked : unchecked} alt={leaguesActive[i+1] ? "Checked" : "Unchecked"}/>
+            </button>
+        {/each}
     </div>
 </div>
 
