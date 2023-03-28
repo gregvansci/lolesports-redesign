@@ -160,10 +160,10 @@
 							class="h-[20px] desktop:h-[24px] desktop-lg:h-[28px] m-auto cursor-pointer
 							"
 						/>
-						<div class="absolute bg-gray-50 dark:bg-gray-800 top-[120%] shadow-md rounded-md z-50 left-[50%] -ml-[60px] py-1 m-auto w-[120px] truncate {darkModeTooltip ? "inline" : "hidden"}">
-							<h2 class="w-full m-auto">{darkModeValue ? "Light Mode" : "Dark Mode"}</h2>
+						<div class="absolute bg-gray-800 dark:bg-gray-50 top-[120%] shadow-md rounded-md z-50 left-[50%] -ml-[60px] py-1 m-auto w-[120px] truncate {darkModeTooltip ? "inline" : "hidden"}">
+							<h2 class="w-full m-auto text-blue-50 dark:text-blue-gray-500">{darkModeValue ? "Light Mode" : "Dark Mode"}</h2>
 						</div>
-						<div class="absolute top-[110%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-50 dark:bg-gray-800 transform rotate-45 {darkModeTooltip ? "inline" : "hidden"}"></div>
+						<div class="absolute top-[110%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-800 dark:bg-gray-50 transform rotate-45 {darkModeTooltip ? "inline" : "hidden"}"></div>
 
 					</button>
 					<button 
@@ -178,10 +178,10 @@
 							alt="Settings"
 							class="h-[20px] desktop:h-[24px] desktop-lg:h-[28px] m-auto cursor-pointer"
 						/>
-						<div class="absolute bg-gray-50 dark:bg-gray-800 top-[120%] shadow-md rounded-md z-50 left-[50%] -ml-[60px] py-1 m-auto w-[120px] truncate {settingsTooltip ? "inline" : "hidden"}">
-							<h2 class="w-full m-auto">Settings</h2>
+						<div class="absolute bg-gray-800 dark:bg-gray-50 top-[120%] shadow-md rounded-md z-50 left-[50%] -ml-[60px] py-1 m-auto w-[120px] truncate {settingsTooltip ? "inline" : "hidden"}">
+							<h2 class="w-full m-auto text-blue-50 dark:text-blue-gray-500">Settings</h2>
 						</div>
-						<div class="absolute top-[110%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-50 dark:bg-gray-800 transform rotate-45 {settingsTooltip ? "inline" : "hidden"}"></div>
+						<div class="absolute top-[110%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-800 dark:bg-gray-50 transform rotate-45 {settingsTooltip ? "inline" : "hidden"}"></div>
 
 					</button>
 					<button 
@@ -196,11 +196,10 @@
 							alt="Login"
 							class="h-[20px] desktop:h-[24px] desktop-lg:h-[28px] m-auto cursor-pointer"
 						/>
-						<div class="absolute bg-gray-50 dark:bg-gray-800 top-[120%] shadow-md rounded-md z-50 right-0 py-1 m-auto w-[120px] truncate {loginTooltip ? "inline" : "hidden"}">
-							<h2 class="w-full m-auto">Log In</h2>
+						<div class="absolute bg-gray-800 dark:bg-gray-50 top-[120%] shadow-md rounded-md z-50 right-0 py-1 m-auto w-[190px] truncate {loginTooltip ? "inline" : "hidden"}">
+							<h2 class="w-full m-auto text-blue-50 dark:text-blue-gray-500">Log In To Save Follows</h2>
 						</div>
-						<div class="absolute top-[110%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-50 dark:bg-gray-800 transform rotate-45 {loginTooltip ? "inline" : "hidden"}"></div>
-
+						<div class="absolute top-[110%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-800 dark:bg-gray-50 transform rotate-45 {loginTooltip ? "inline" : "hidden"}"></div>
 					</button>
 				</div>
 			</div>
