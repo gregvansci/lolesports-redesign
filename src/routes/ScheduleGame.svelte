@@ -36,7 +36,6 @@
     let darkModeValue: boolean;
     darkMode.subscribe(value => {
         darkModeValue = value;
-        console.log("updated dark mode value " + darkModeValue);
     });
 
 </script>

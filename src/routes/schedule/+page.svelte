@@ -1,12 +1,10 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
     import { darkMode } from '../../store';
 
     import ScheduleNewDay from '../ScheduleNewDay.svelte';
     import ScheduleGame from '../ScheduleGame.svelte';
     import LiveGame from '../LiveGame.svelte';
-
-    import expandArrow from '$lib/images/expand-arrow.svg';
+    import RegionSelector from './RegionSelector.svelte';
 
     let darkModeValue: boolean;
 
@@ -22,6 +20,116 @@
     let showFollowing = false;
     let showSpoilersLeft = false;
     let showSpoilers = false;
+
+    // If any of the items in the array after the 0th index are true, the 0th index is true
+    let international = [ true ];               // All international tournaments
+    let korea = [ true, true, false ];          // Any, LCK, LCK Challengers
+    let china = [ false, false, false ];        // Any, LPL, LDL
+    let europe = [ false, false, false ];       // Any, LEC, EMEA Masters
+    let northAmerica = [ true, true, false ];   // Any, LCS, LCS Academy
+    let minorRegions = [ false ];               // Placeholder
+
+    let regionDropdown = [ false, false, false, false, false ];    // If true, dropdown is open. Only one dropdown can be open at a time
+
+    // NEEDS TO BE REFACTORED
+    function handleToggleDropdown(region: string) {
+        switch (region) {
+            case "Korea":
+                if (regionDropdown[0]) {
+                    regionDropdown[0] = false;
+                } else {
+                    regionDropdown = [ false, false, false, false, false ];
+                    regionDropdown[0] = true;
+                }
+                break;
+            case "China":
+                if (regionDropdown[1]) {
+                    regionDropdown[1] = false;
+                } else {
+                    regionDropdown = [ false, false, false, false, false ];
+                    regionDropdown[1] = true;
+                }
+                break;
+            case "Europe":
+                if (regionDropdown[2]) {
+                    regionDropdown[2] = false;
+                } else {
+                    regionDropdown = [ false, false, false, false, false ];
+                    regionDropdown[2] = true;
+                }
+                break;
+            case "N America":
+                if (regionDropdown[3]) {
+                    regionDropdown[3] = false;
+                } else {
+                    regionDropdown = [ false, false, false, false, false ];
+                    regionDropdown[3] = true;
+                }
+                break;
+        }
+    }
+
+    // NEEDS TO BE REFACTORED
+    function handleRegionInput(region: string, index: number) {
+        switch (region) {
+            case "Korea":
+                if (!regionDropdown[0] && korea[0]) {
+                    korea = [ false, false, false ];
+                } else if (!regionDropdown[0] && !korea[0]) {
+                    korea = [ true, true, false ];
+                }
+                else if (regionDropdown[0] && korea[index]) {
+                    korea[index] = false;
+                } else if (regionDropdown[0] && !korea[index]) {
+                    korea[index] = true;
+                }
+                korea[0] = korea[1] || korea[2];
+                break;
+            case "China":
+                if (!regionDropdown[1] && china[0]) {
+                    china = [ false, false, false ];
+                } else if (!regionDropdown[1] && !china[0]) {
+                    china = [ true, true, false ];
+                }
+                else if (regionDropdown[1] && china[index]) {
+                    china[index] = false;
+                } else if (regionDropdown[1] && !china[index]) {
+                    china[index] = true;
+                }
+
+                china[0] = china[1] || china[2];
+                break;
+            case "Europe":
+                if (!regionDropdown[2] && europe[0]) {
+                    europe = [ false, false, false ];
+                } else if (!regionDropdown[2] && !europe[0]) {
+                    europe = [ true, true, false ];
+                }
+                else if (regionDropdown[2] && europe[index]) {
+                    europe[index] = false;
+                } else if (regionDropdown[2] && !europe[index]) {
+                    europe[index] = true;
+                }
+
+                europe[0] = europe[1] || europe[2];
+                break;
+            case "N America":
+                if (!regionDropdown[3] && northAmerica[0]) {
+                    northAmerica = [ false, false, false ];
+                } else if (!regionDropdown[3] && !northAmerica[0]) {
+                    northAmerica = [ true, true, false ];
+                }
+                else if (regionDropdown[3] && northAmerica[index]) {
+                    northAmerica[index] = false;
+                } else if (regionDropdown[3] && !northAmerica[index]) {
+                    northAmerica[index] = true;
+                }
+
+                northAmerica[0] = northAmerica[1] || northAmerica[2];
+                break;
+        }
+    }
+
 </script>
 
 <section class="mt-[60px] w-full overflow-y-scroll">
@@ -32,7 +140,8 @@
                 text-blue-50">
                 <h2 class="m-auto">Today</h2>
             </div> -->
-            <ScheduleGame {showSpoilers} team0="Dplus Kia" team0Score="0W-1L" team1="Hanwha Life Esports" team1Score="1W-0L" gameScore={[1,3]} region="LCK" season="Spring" stage="Playoffs" bestOf={5} past={true}
+            <ScheduleGame {showSpoilers} team0="Dplus Kia" team0Score="0W-1L" team1="Hanwha Life Esports" team1Score="1W-0L" gameScore={[1,3]} 
+                region="LCK" season="Spring" stage="Playoffs" bestOf={5} past={true}
                 team0img="https://static.wikia.nocookie.net/lolesports_gamepedia_en/images/7/73/Dplus_KIAlogo_square.png"
                 team0imgInvert = {true}
                 team1img="https://am-a.akamaihd.net/image?resize=72:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1631819564399_hle-2021-worlds.png"
@@ -54,55 +163,32 @@
         <div class="select-none">
             <div class="pl-12 absolute top-[10vh] flex flex-col gap-6">
                 <div class="flex flex-col gap-6">
-                    <!-- svelte-ignore a11y-click-events-have-key-events -->
-                    <div on:click={() => {showFollowing = !showFollowing; showFollowingLeft = true}} class="flex flex-row justify-between cursor-pointer w-[200px]">
+                    <button on:click={() => {showFollowing = !showFollowing; showFollowingLeft = true}} class="flex flex-row justify-between w-[200px]">
                         <h2>Show Following</h2>
                         <div class="{ showFollowing ? "bg-highlight" : "bg-gray-100 dark:bg-gray-700"} rounded-full w-12 flex transition ease-in-out duration-300">
-                            <div class="bg-white rounded-full w-5 h-5 my-auto ml-[2px] transition ease-in-out duration-300 {showFollowing ? "animate-right" : showFollowingLeft ? "animate-left" : ""}"/>
+                            <div class="bg-white rounded-full w-5 h-5 m-[2px] transition ease-in-out duration-300 {showFollowing ? "animate-right" : showFollowingLeft ? "animate-left" : ""}"/>
                         </div>
-                    </div>
-                    <!-- svelte-ignore a11y-click-events-have-key-events -->
-                    <div on:click={() => {showSpoilers = !showSpoilers; showSpoilersLeft = true}} class="flex flex-row justify-between cursor-pointer w-[200px]">
+                    </button>
+                    <button on:click={() => {showSpoilers = !showSpoilers; showSpoilersLeft = true}} class="flex flex-row justify-between w-[200px]">
                         <h2>Show Spoilers</h2>
                         <div class="{ showSpoilers ? "bg-highlight" : "bg-gray-100 dark:bg-gray-700"} rounded-full w-12 flex transition ease-in-out duration-300">
-                            <div class="bg-white rounded-full w-5 h-5 my-auto ml-[2px] transition ease-in-out duration-300 {showSpoilers ? "animate-right" : showSpoilersLeft ? "animate-left" : ""}"/>
+                            <div class="bg-white rounded-full w-5 h-5 m-[2px] transition ease-in-out duration-300 {showSpoilers ? "animate-right" : showSpoilersLeft ? "animate-left" : ""}"/>
                         </div>
-                    </div>
+                    </button>
                 </div>
                 <div class="flex flex-col gap-6">
-                    <div class="flex flex-row justify-between bg-gray-100 dark:bg-gray-800 border-2 border-highlight rounded-full p-[10px] px-4 cursor-pointer">
+                    <button
+                        on:click = {() => {international[0] = !international[0];}} 
+                        class="flex flex-row justify-between bg-gray-50 dark:bg-gray-800 border-2  shadow-sm  rounded-full p-[10px] px-4
+                        hover:bg-gray-100 dark:hover:bg-gray-700
+                        {international[0] ? "border-highlight" : "border-gray-100 dark:border-gray-700"}"
+                    >
                         <h2 class="m-auto text-sm">International</h2>
-                    </div>
-                    <div class="flex flex-row justify-between bg-gray-100 dark:bg-gray-800 border-2 border-highlight rounded-full p-2 px-4 cursor-pointer">
-                        <h2 class="my-auto">LCS</h2>
-                        <div class="bg-gray-200 dark:bg-gray-500 hover:bg-gray-300/50 cursor-pointer flex rounded-sm w-5 h-5 my-auto {darkModeValue ? "svg-filter-dark" : "svg-filter"}">
-                            <img src={expandArrow} class="m-auto h-5" alt="Open"/>
-                        </div>
-                    </div>
-                    <div class="flex flex-row justify-between bg-gray-100 dark:bg-gray-800 border-2 border-transparent rounded-full p-2 px-4 cursor-pointer">
-                        <h2 class="my-auto">LEC</h2>
-                        <div class="bg-gray-200 dark:bg-gray-500 hover:bg-gray-300/50 cursor-pointer flex rounded-sm w-5 h-5 my-auto {darkModeValue ? "svg-filter-dark" : "svg-filter"}">
-                            <img src={expandArrow} class="m-auto h-5" alt="Open"/>
-                        </div>
-                    </div>
-                    <div class="flex flex-row justify-between bg-gray-100 dark:bg-gray-800 border-2 border-highlight rounded-full p-2 px-4 cursor-pointer">
-                        <h2 class="my-auto">LCK</h2>
-                        <div class="bg-gray-200 dark:bg-gray-500 hover:bg-gray-300/50 cursor-pointer flex rounded-sm w-5 h-5 my-auto {darkModeValue ? "svg-filter-dark" : "svg-filter"}">
-                            <img src={expandArrow} class="m-auto h-5" alt="Open"/>
-                        </div>
-                    </div>
-                    <div class="flex flex-row justify-between bg-gray-100 dark:bg-gray-800 border-2 border-transparent rounded-full p-2 px-4 cursor-pointer">
-                        <h2 class="my-auto">LPL</h2>
-                        <div class="bg-gray-200 dark:bg-gray-500 hover:bg-gray-300/50 cursor-pointer flex rounded-sm w-5 h-5 my-auto {darkModeValue ? "svg-filter-dark" : "svg-filter"}">
-                            <img src={expandArrow} class="m-auto h-5" alt="Open"/>
-                        </div>
-                    </div>
-                    <div class="flex flex-row justify-between bg-gray-100 dark:bg-gray-800 border-2 border-transparent rounded-full p-2 px-4 cursor-pointer">
-                        <h2 class="my-auto">Minor</h2>
-                        <div class="bg-gray-200 dark:bg-gray-500 hover:bg-gray-300/50 cursor-pointer flex rounded-sm w-5 h-5 my-auto {darkModeValue ? "svg-filter-dark" : "svg-filter"}">
-                            <img src={expandArrow} class="m-auto h-5" alt="Open"/>
-                        </div>
-                    </div>
+                    </button>
+                    <RegionSelector toggleDropdown={handleToggleDropdown} regionInput={handleRegionInput} leagues={["Korea", "LCK", "LCK CL"]} leaguesActive={korea} dropdown={regionDropdown[0]}/>
+                    <RegionSelector toggleDropdown={handleToggleDropdown} regionInput={handleRegionInput} leagues={["China", "LPL", "LDL"]} leaguesActive={china} dropdown={regionDropdown[1]}/>
+                    <RegionSelector toggleDropdown={handleToggleDropdown} regionInput={handleRegionInput} leagues={["Europe", "LEC", "EMEA Masters"]} leaguesActive={europe} dropdown={regionDropdown[2]}/>
+                    <RegionSelector toggleDropdown={handleToggleDropdown} regionInput={handleRegionInput} leagues={["N America", "LCS", "NACL"]} leaguesActive={northAmerica} dropdown={regionDropdown[3]}/>
                 </div>
             </div>
         </div>
@@ -110,12 +196,6 @@
 </section>
 
 <style>
-    .svg-filter img {
-		filter: invert(49%) sepia(10%) saturate(960%) hue-rotate(176deg) brightness(88%) contrast(86%);
-	}
-	.svg-filter-dark img {
-		filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
-	}
     .animate-right {
         animation: slide-right 0.2s ease forwards;
     }
