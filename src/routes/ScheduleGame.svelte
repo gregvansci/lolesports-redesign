@@ -19,6 +19,7 @@
     export let season = ""
     export let stage = "";
     export let bestOf = 1;
+    export let showSpoilers = false;
     let firstTo = bestOf / 2 + 0.5;
     export let past: boolean | undefined = false;
 
@@ -35,7 +36,6 @@
     let darkModeValue: boolean;
     darkMode.subscribe(value => {
         darkModeValue = value;
-        console.log("updated dark mode value " + darkModeValue);
     });
 
 </script>
@@ -56,10 +56,10 @@
         </div>
         <div class="m-auto mx-2 text-lg font-medium w-[28px] flex">
             <div class="m-auto flex flex-row">
-                <span class="{past ? 'hidden' : 'block'}">vs</span>
-                <span class="{past ? gameScore[0] === firstTo ? 'block text-blue-gray-700 dark:text-blue-gray-100 transition ease-in-out duration-300' : 'block text-blue-gray-400 dark:text-blue-gray-300 transition ease-in-out duration-300' : 'hidden'}">{gameScore[0]}</span>
-                <span class="{past ? 'block px-[1px]' : 'hidden'}">-</span>
-                <span class="{past ? gameScore[1] === firstTo ? 'block text-blue-gray-700 dark:text-blue-gray-100 transition ease-in-out duration-300' : 'block text-blue-gray-400 dark:text-blue-gray-300 transition ease-in-out duration-300' : 'hidden'}">{gameScore[1]}</span>
+                <span class="{past && showSpoilers ? 'hidden' : 'block'}">vs</span>
+                <span class="{past && showSpoilers ? gameScore[0] === firstTo ? 'block text-blue-gray-700 dark:text-blue-gray-100 transition ease-in-out duration-300' : 'block text-blue-gray-400 dark:text-blue-gray-300 transition ease-in-out duration-300' : 'hidden'}">{gameScore[0]}</span>
+                <span class="{past && showSpoilers ? 'block px-[1px]' : 'hidden'}">-</span>
+                <span class="{past && showSpoilers ? gameScore[1] === firstTo ? 'block text-blue-gray-700 dark:text-blue-gray-100 transition ease-in-out duration-300' : 'block text-blue-gray-400 dark:text-blue-gray-300 transition ease-in-out duration-300' : 'hidden'}">{gameScore[1]}</span>
             </div>
         </div>
         <div class="w-[325px] flex justify-start">

@@ -41,7 +41,7 @@
 
 </script>
 
-<div class="h-[135px] w-full flex flex-row justify-between bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition ease-in-out duration-300 cursor-pointer">
+<div class="h-[115px] w-full flex flex-row justify-between bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition ease-in-out duration-300 cursor-pointer">
     <div class="{showLive ? "visible" : "invisible"} my-auto ml-4 w-[80px] text-blue-gray-400 dark:text-blue-200 font-semibold text-xl flex flex-row transition ease-in-out duration-300">
         <img src={live} alt="Live SVG" class="my-auto w-[20px] h-[20px] svg-filter-red">
         <h2 class="pb-[1px] pl-[6px]">LIVE</h2>

@@ -1,7 +1,12 @@
 <script lang="ts">
 	import "../app.css";
 	import Header from "./Header.svelte";
-	import { onMount } from "svelte";
+	import { showHeader } from "../store";
+
+	let showHeaderValue = true;
+	showHeader.subscribe((value) => {
+		showHeaderValue = value;
+	});
 
   </script>
 
@@ -11,8 +16,9 @@
 	text-blue-gray-500 dark:text-blue-50
 	transition ease-in-out duration-300"
 >
-
-  	<Header />
+  	{#if showHeaderValue == true}
+  		<Header />
+  	{/if}
 	<main class="h-screen flex w-full relative">
 		<slot />
 	</main>

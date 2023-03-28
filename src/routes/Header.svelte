@@ -36,6 +36,10 @@
 		}
 		darkMode.update(n => !n);
 	}
+
+	let darkModeTooltip = false;
+	let settingsTooltip = false;
+	let loginTooltip = false;
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -142,18 +146,30 @@
 			</div>
 			<div class="hidden laptop:flex">
 				<div class="flex flex-row gap-3">
-					<button on:click={toggleDarkMode} class="m-auto p-[6px] rounded-md 
+					<button 
+						on:pointerenter={() => {darkModeTooltip = true}} 
+						on:pointerleave={() => {darkModeTooltip = false}} 
+						on:click={toggleDarkMode} 
+						class="m-auto p-[6px] rounded-md relative inline-block
 						hover:bg-gray-50 dark:hover:bg-gray-800
 						{darkModeValue ? "svg-filter-dark" : "svg-filter"}"
 					>
 						<img
-							src={darkModeValue ? darkModeIcon : lightModeIcon}
+							src={darkModeValue ? lightModeIcon : darkModeIcon}
 							alt="Light Mode"
 							class="h-[20px] desktop:h-[24px] desktop-lg:h-[28px] m-auto cursor-pointer
 							"
 						/>
+						<div class="absolute bg-gray-50 dark:bg-gray-800 top-[120%] shadow-md rounded-md z-50 left-[50%] -ml-[60px] py-1 m-auto w-[120px] truncate {darkModeTooltip ? "inline" : "hidden"}">
+							<h2 class="w-full m-auto">{darkModeValue ? "Light Mode" : "Dark Mode"}</h2>
+						</div>
+						<div class="absolute top-[110%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-50 dark:bg-gray-800 transform rotate-45 {darkModeTooltip ? "inline" : "hidden"}"></div>
+
 					</button>
-					<button class="m-auto p-[6px] rounded-md
+					<button 
+						on:pointerenter={() => {settingsTooltip = true}} 
+						on:pointerleave={() => {settingsTooltip = false}} 
+						class="m-auto p-[6px] rounded-md relative
 						hover:bg-gray-50 dark:hover:bg-gray-800
 						{darkModeValue ? "svg-filter-dark" : "svg-filter"}"
 					>
@@ -162,8 +178,16 @@
 							alt="Settings"
 							class="h-[20px] desktop:h-[24px] desktop-lg:h-[28px] m-auto cursor-pointer"
 						/>
+						<div class="absolute bg-gray-50 dark:bg-gray-800 top-[120%] shadow-md rounded-md z-50 left-[50%] -ml-[60px] py-1 m-auto w-[120px] truncate {settingsTooltip ? "inline" : "hidden"}">
+							<h2 class="w-full m-auto">Settings</h2>
+						</div>
+						<div class="absolute top-[110%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-50 dark:bg-gray-800 transform rotate-45 {settingsTooltip ? "inline" : "hidden"}"></div>
+
 					</button>
-					<button class="m-auto p-[6px] rounded-md
+					<button 
+						on:pointerenter={() => {loginTooltip = true}} 
+						on:pointerleave={() => {loginTooltip = false}} 
+						class="m-auto p-[6px] rounded-md relative
 						hover:bg-gray-50 dark:hover:bg-gray-800
 						{darkModeValue ? "svg-filter-dark" : "svg-filter"}"
 					>
@@ -172,6 +196,11 @@
 							alt="Login"
 							class="h-[20px] desktop:h-[24px] desktop-lg:h-[28px] m-auto cursor-pointer"
 						/>
+						<div class="absolute bg-gray-50 dark:bg-gray-800 top-[120%] shadow-md rounded-md z-50 right-0 py-1 m-auto w-[120px] truncate {loginTooltip ? "inline" : "hidden"}">
+							<h2 class="w-full m-auto">Log In</h2>
+						</div>
+						<div class="absolute top-[110%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-50 dark:bg-gray-800 transform rotate-45 {loginTooltip ? "inline" : "hidden"}"></div>
+
 					</button>
 				</div>
 			</div>
