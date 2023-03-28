@@ -129,8 +129,12 @@
                 break;
         }
     }
-
 </script>
+
+<svelte:head>
+	<title>Schedule</title>
+	<meta name="description" content="Schedule page" />
+</svelte:head>
 
 <section class="mt-[60px] w-full overflow-y-scroll">
     <div class="w-full justify-center flex flex-row pl-[128px] pr-[248px]">

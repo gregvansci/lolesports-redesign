@@ -26,6 +26,11 @@
 
 </script>
 
+<svelte:head>
+	<title>Live</title>
+	<meta name="description" content="Live page" />
+</svelte:head>
+
 <div class="{showHeaderValue ? "pt-[60px]" : "pt-0"} w-full h-full flex text-blue-50">
     <div class="flex flex-row w-full h-full">
         <div class="flex flex-col h-full w-full select-none">
