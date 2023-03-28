@@ -22,115 +22,74 @@
     let showSpoilers = false;
 
     // If any of the items in the array after the 0th index are true, the 0th index is true
-    let international = [ true ];               // All international tournaments
-    let korea = [ true, true, false ];          // Any, LCK, LCK Challengers
-    let china = [ false, false, false ];        // Any, LPL, LDL
-    let europe = [ false, false, false ];       // Any, LEC, EMEA Masters
-    let northAmerica = [ true, true, false ];   // Any, LCS, LCS Academy
-    let minorRegions = [ false ];               // Placeholder
+    let regionShown = [ 
+        [ true ],                                           // International
+        [ true, true, false ],                              // Korea, LCK, LCK CL
+        [ false, false, false ],                            // China, LPL, LDL
+        [ false, false, false ],                            // Europe, LEC, EMEA Masters
+        [ true, true, false ],                              // North America, LCS, NACL
+        [ false, false, false, false, false, false, false ] // Minor Regions, PCS, VCS, LJL, CBLOL, LLA, LCO
+    ];
+    
+    // If true, dropdown is open. Only one dropdown can be open at a time
+    let regionDropdown = [ false, false, false, false, false, false ];    
 
-    let regionDropdown = [ false, false, false, false, false ];    // If true, dropdown is open. Only one dropdown can be open at a time
-
-    // NEEDS TO BE REFACTORED
-    function handleToggleDropdown(region: string) {
-        switch (region) {
-            case "Korea":
-                if (regionDropdown[0]) {
-                    regionDropdown[0] = false;
-                } else {
-                    regionDropdown = [ false, false, false, false, false ];
-                    regionDropdown[0] = true;
-                }
-                break;
-            case "China":
-                if (regionDropdown[1]) {
-                    regionDropdown[1] = false;
-                } else {
-                    regionDropdown = [ false, false, false, false, false ];
-                    regionDropdown[1] = true;
-                }
-                break;
-            case "Europe":
-                if (regionDropdown[2]) {
-                    regionDropdown[2] = false;
-                } else {
-                    regionDropdown = [ false, false, false, false, false ];
-                    regionDropdown[2] = true;
-                }
-                break;
-            case "N America":
-                if (regionDropdown[3]) {
-                    regionDropdown[3] = false;
-                } else {
-                    regionDropdown = [ false, false, false, false, false ];
-                    regionDropdown[3] = true;
-                }
-                break;
+    function handleToggleDropdown(region: number) {
+        if (regionDropdown[region]) {
+            regionDropdown[region] = false;
+        } else {
+            regionDropdown.fill(false);
+            regionDropdown[region] = true;
         }
+
     }
 
-    // NEEDS TO BE REFACTORED
-    function handleRegionInput(region: string, index: number) {
-        switch (region) {
-            case "Korea":
-                if (!regionDropdown[0] && korea[0]) {
-                    korea = [ false, false, false ];
-                } else if (!regionDropdown[0] && !korea[0]) {
-                    korea = [ true, true, false ];
+    function handleRegionInput(region: number, index: number) {
+        if (regionDropdown[region]) {
+            if (index == 0) {
+                if (regionShown[region][0]) {
+                    regionShown[region].fill(false);
+                } else {
+                    regionShown[region].fill(true);
                 }
-                else if (regionDropdown[0] && korea[index]) {
-                    korea[index] = false;
-                } else if (regionDropdown[0] && !korea[index]) {
-                    korea[index] = true;
+            } else {
+                if (regionShown[region][index]) {
+                    regionShown[region][index] = false;
+                } else {
+                    regionShown[region][index] = true;
                 }
-                korea[0] = korea[1] || korea[2];
-                break;
-            case "China":
-                if (!regionDropdown[1] && china[0]) {
-                    china = [ false, false, false ];
-                } else if (!regionDropdown[1] && !china[0]) {
-                    china = [ true, true, false ];
+            }
+        } else {
+            if (region == 5) {
+                if (regionShown[region][0]) {
+                    regionShown[region].fill(false);
+                } else {
+                    regionShown[region].fill(true);
                 }
-                else if (regionDropdown[1] && china[index]) {
-                    china[index] = false;
-                } else if (regionDropdown[1] && !china[index]) {
-                    china[index] = true;
+            } else {
+                if (regionShown[region][0]) {
+                    regionShown[region] = [ false, false, false ];
+                } else {
+                    regionShown[region] = [ true, true, false ];
                 }
-
-                china[0] = china[1] || china[2];
-                break;
-            case "Europe":
-                if (!regionDropdown[2] && europe[0]) {
-                    europe = [ false, false, false ];
-                } else if (!regionDropdown[2] && !europe[0]) {
-                    europe = [ true, true, false ];
-                }
-                else if (regionDropdown[2] && europe[index]) {
-                    europe[index] = false;
-                } else if (regionDropdown[2] && !europe[index]) {
-                    europe[index] = true;
-                }
-
-                europe[0] = europe[1] || europe[2];
-                break;
-            case "N America":
-                if (!regionDropdown[3] && northAmerica[0]) {
-                    northAmerica = [ false, false, false ];
-                } else if (!regionDropdown[3] && !northAmerica[0]) {
-                    northAmerica = [ true, true, false ];
-                }
-                else if (regionDropdown[3] && northAmerica[index]) {
-                    northAmerica[index] = false;
-                } else if (regionDropdown[3] && !northAmerica[index]) {
-                    northAmerica[index] = true;
-                }
-
-                northAmerica[0] = northAmerica[1] || northAmerica[2];
-                break;
+            }
         }
-    }
 
+        // if any after 0th are true, then set 0th to true
+        // otherwise set 0th to false
+        if (regionShown[region].slice(1).some((value) => value)) {
+            regionShown[region][0] = true;
+        } else {
+            regionShown[region][0] = false;
+        }
+        
+    }
 </script>
+
+<svelte:head>
+	<title>Schedule</title>
+	<meta name="description" content="Schedule page" />
+</svelte:head>
 
 <section class="mt-[60px] w-full overflow-y-scroll">
     <div class="w-full justify-center flex flex-row pl-[128px] pr-[248px]">
@@ -178,17 +137,18 @@
                 </div>
                 <div class="flex flex-col gap-6">
                     <button
-                        on:click = {() => {international[0] = !international[0];}} 
+                        on:click = {() => {regionShown[0][0] = !regionShown[0][0];}} 
                         class="flex flex-row justify-between bg-gray-50 dark:bg-gray-800 border-2  shadow-sm  rounded-full p-[10px] px-4
                         hover:bg-gray-100 dark:hover:bg-gray-700
-                        {international[0] ? "border-highlight" : "border-gray-100 dark:border-gray-700"}"
+                        {regionShown[0][0] ? "border-highlight" : "border-gray-100 dark:border-gray-700"}"
                     >
                         <h2 class="m-auto text-sm">International</h2>
                     </button>
-                    <RegionSelector toggleDropdown={handleToggleDropdown} regionInput={handleRegionInput} leagues={["Korea", "LCK", "LCK CL"]} leaguesActive={korea} dropdown={regionDropdown[0]}/>
-                    <RegionSelector toggleDropdown={handleToggleDropdown} regionInput={handleRegionInput} leagues={["China", "LPL", "LDL"]} leaguesActive={china} dropdown={regionDropdown[1]}/>
-                    <RegionSelector toggleDropdown={handleToggleDropdown} regionInput={handleRegionInput} leagues={["Europe", "LEC", "EMEA Masters"]} leaguesActive={europe} dropdown={regionDropdown[2]}/>
-                    <RegionSelector toggleDropdown={handleToggleDropdown} regionInput={handleRegionInput} leagues={["N America", "LCS", "NACL"]} leaguesActive={northAmerica} dropdown={regionDropdown[3]}/>
+                    <RegionSelector toggleDropdown={handleToggleDropdown} regionInput={handleRegionInput} leagues={["Korea", "LCK", "LCK CL"]} leaguesActive={regionShown[1]} dropdown={regionDropdown[1]}/>
+                    <RegionSelector toggleDropdown={handleToggleDropdown} regionInput={handleRegionInput} leagues={["China", "LPL", "LDL"]} leaguesActive={regionShown[2]} dropdown={regionDropdown[2]}/>
+                    <RegionSelector toggleDropdown={handleToggleDropdown} regionInput={handleRegionInput} leagues={["Europe", "LEC", "EMEA Masters"]} leaguesActive={regionShown[3]} dropdown={regionDropdown[3]}/>
+                    <RegionSelector toggleDropdown={handleToggleDropdown} regionInput={handleRegionInput} leagues={["N America", "LCS", "NACL"]} leaguesActive={regionShown[4]} dropdown={regionDropdown[4]}/>
+                    <RegionSelector toggleDropdown={handleToggleDropdown} regionInput={handleRegionInput} leagues={["Minor", "PCS", "VCS", "LJL", "CBLOL", "LLA", "LCO"]} leaguesActive={regionShown[5]} dropdown={regionDropdown[5]} minor={true}/>
                 </div>
             </div>
         </div>

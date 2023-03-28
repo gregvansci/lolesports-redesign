@@ -19,7 +19,7 @@
 
 <svelte:head>
 	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
+	<meta name="description" content="Home page" />
 </svelte:head>
 
 <section class="text-blue-gray-500 dark:text-white h-full w-full flex flex-col justify-between pt-[60px]">

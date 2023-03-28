@@ -1,13 +1,12 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
     import { showHeader } from '../../../store';
 
-    import chat from '$lib/images/chat.svg';
     import expandPage from '$lib/images/hide-header.svg';
     import shrinkPage from '$lib/images/show-header.svg';
     import options from '$lib/images/options.svg';
+    import sidebar from '$lib/images/sidebar.svg';
 
-    let streamId = "lec";
+    let streamId = "challengersleague";
 
     let optionsTooltip = false;
     let expandTooltip = false;
@@ -26,6 +25,11 @@
     }
 
 </script>
+
+<svelte:head>
+	<title>Live</title>
+	<meta name="description" content="Live page" />
+</svelte:head>
 
 <div class="{showHeaderValue ? "pt-[60px]" : "pt-0"} w-full h-full flex text-blue-50">
     <div class="flex flex-row w-full h-full">
@@ -53,10 +57,10 @@
                         on:pointerleave={() => {optionsTooltip = false}} 
                         class="relative svg-filter-dark hover:bg-gray-800 m-auto p-[5px] rounded-md">
                         <img src={options} class="h-6 m-auto cursor-pointer" alt="Options" />
-                        <div class="absolute bg-gray-800 bottom-[130%] rounded-md z-50 left-[50%] -ml-[60px] w-[120px] py-1 {optionsTooltip ? "inline" : "hidden"}">
-							<h2 class="text-center">Options</h2>
+                        <div class="absolute bg-gray-50 bottom-[130%] rounded-md z-50 left-[50%] -ml-[60px] w-[120px] py-1 {optionsTooltip ? "inline" : "hidden"}">
+							<h2 class="text-center text-blue-gray-500">Options</h2>
 						</div>
-						<div class="absolute bottom-[120%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-800 transform rotate-45 {optionsTooltip ? "inline" : "hidden"}"></div>
+						<div class="absolute bottom-[120%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-50 transform rotate-45 {optionsTooltip ? "inline" : "hidden"}"></div>
                     </div>
                     <!-- svelte-ignore a11y-click-events-have-key-events -->
                     <div 
@@ -65,10 +69,10 @@
                         on:click={() => {toggleHeader()}}
                         class="relative svg-filter-dark hover:bg-gray-800 m-auto p-[5px] rounded-md">
                         <img src={showHeaderValue ? expandPage : shrinkPage} class="h-6 m-auto cursor-pointer" alt="Hide Header" />
-                        <div class="absolute bg-gray-800 bottom-[130%] rounded-md z-50 left-[50%] -ml-[60px] w-[120px] py-1 {expandTooltip ? "inline" : "hidden"}">
-							<h2 class="text-center">{showHeaderValue ? "Expand Page" : "Shrink Page"}</h2>
+                        <div class="absolute bg-gray-50 bottom-[130%] rounded-md z-50 left-[50%] -ml-[60px] w-[120px] py-1 {expandTooltip ? "inline" : "hidden"}">
+							<h2 class="text-center text-blue-gray-500">{showHeaderValue ? "Hide Header" : "Show Header"}</h2>
 						</div>
-						<div class="absolute bottom-[120%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-800 transform rotate-45 {expandTooltip ? "inline" : "hidden"}"></div>
+						<div class="absolute bottom-[120%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-50 transform rotate-45 {expandTooltip ? "inline" : "hidden"}"></div>
                     </div>
                     <!-- svelte-ignore a11y-click-events-have-key-events -->
                     <div
@@ -76,11 +80,11 @@
                         on:pointerleave={() => {sidebarTooltip = false}}
                         on:click={() => {showSidebar = !showSidebar}} 
                         class="relative svg-filter-dark hover:bg-gray-800 m-auto p-[5px] rounded-md">
-                        <img src={chat} class="h-6 m-auto cursor-pointer" alt="Show Chat" />
-                        <div class="absolute bg-gray-800 bottom-[130%] rounded-md z-50 {showSidebar ? "left-[50%] -ml-[60px]" : "right-0"}  w-[120px] py-1 {sidebarTooltip ? "inline" : "hidden"}">
-							<h2 class="text-center">Show Sidebar</h2>
+                        <img src={sidebar} class="h-6 m-auto cursor-pointer" alt="Show Chat" />
+                        <div class="absolute bg-gray-50 bottom-[130%] rounded-md z-50 {showSidebar ? "left-[50%] -ml-[60px]" : "right-0"}  w-[120px] py-1 {sidebarTooltip ? "inline" : "hidden"}">
+							<h2 class="text-center text-blue-gray-500">{showSidebar ? "Hide Sidebar" : "Show Sidebar"}</h2>
 						</div>
-						<div class="absolute bottom-[120%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-800 transform rotate-45 {sidebarTooltip ? "inline" : "hidden"}"></div>
+						<div class="absolute bottom-[120%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-50 transform rotate-45 {sidebarTooltip ? "inline" : "hidden"}"></div>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { page } from '$app/stores';
 	import { darkMode } from '../store';
 	
 	import hamburger from '$lib/images/hamburger.svg';
@@ -160,10 +158,10 @@
 							class="h-[20px] desktop:h-[24px] desktop-lg:h-[28px] m-auto cursor-pointer
 							"
 						/>
-						<div class="absolute bg-gray-50 dark:bg-gray-800 top-[120%] shadow-md rounded-md z-50 left-[50%] -ml-[60px] py-1 m-auto w-[120px] truncate {darkModeTooltip ? "inline" : "hidden"}">
-							<h2 class="w-full m-auto">{darkModeValue ? "Light Mode" : "Dark Mode"}</h2>
+						<div class="absolute bg-gray-800 dark:bg-gray-50 top-[120%] shadow-md rounded-md z-50 left-[50%] -ml-[60px] py-1 m-auto w-[120px] truncate {darkModeTooltip ? "inline" : "hidden"}">
+							<h2 class="w-full m-auto text-blue-50 dark:text-blue-gray-500">{darkModeValue ? "Light Mode" : "Dark Mode"}</h2>
 						</div>
-						<div class="absolute top-[110%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-50 dark:bg-gray-800 transform rotate-45 {darkModeTooltip ? "inline" : "hidden"}"></div>
+						<div class="absolute top-[110%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-800 dark:bg-gray-50 transform rotate-45 {darkModeTooltip ? "inline" : "hidden"}"></div>
 
 					</button>
 					<button 
@@ -178,10 +176,10 @@
 							alt="Settings"
 							class="h-[20px] desktop:h-[24px] desktop-lg:h-[28px] m-auto cursor-pointer"
 						/>
-						<div class="absolute bg-gray-50 dark:bg-gray-800 top-[120%] shadow-md rounded-md z-50 left-[50%] -ml-[60px] py-1 m-auto w-[120px] truncate {settingsTooltip ? "inline" : "hidden"}">
-							<h2 class="w-full m-auto">Settings</h2>
+						<div class="absolute bg-gray-800 dark:bg-gray-50 top-[120%] shadow-md rounded-md z-50 left-[50%] -ml-[60px] py-1 m-auto w-[120px] truncate {settingsTooltip ? "inline" : "hidden"}">
+							<h2 class="w-full m-auto text-blue-50 dark:text-blue-gray-500">Settings</h2>
 						</div>
-						<div class="absolute top-[110%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-50 dark:bg-gray-800 transform rotate-45 {settingsTooltip ? "inline" : "hidden"}"></div>
+						<div class="absolute top-[110%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-800 dark:bg-gray-50 transform rotate-45 {settingsTooltip ? "inline" : "hidden"}"></div>
 
 					</button>
 					<button 
@@ -196,11 +194,10 @@
 							alt="Login"
 							class="h-[20px] desktop:h-[24px] desktop-lg:h-[28px] m-auto cursor-pointer"
 						/>
-						<div class="absolute bg-gray-50 dark:bg-gray-800 top-[120%] shadow-md rounded-md z-50 right-0 py-1 m-auto w-[120px] truncate {loginTooltip ? "inline" : "hidden"}">
-							<h2 class="w-full m-auto">Log In</h2>
+						<div class="absolute bg-gray-800 dark:bg-gray-50 top-[120%] shadow-md rounded-md z-50 right-0 py-1 m-auto w-[190px] truncate {loginTooltip ? "inline" : "hidden"}">
+							<h2 class="w-full m-auto text-blue-50 dark:text-blue-gray-500">Log In To Save Follows</h2>
 						</div>
-						<div class="absolute top-[110%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-50 dark:bg-gray-800 transform rotate-45 {loginTooltip ? "inline" : "hidden"}"></div>
-
+						<div class="absolute top-[110%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-800 dark:bg-gray-50 transform rotate-45 {loginTooltip ? "inline" : "hidden"}"></div>
 					</button>
 				</div>
 			</div>
@@ -233,43 +230,3 @@
 	}
 
 </style>
-
-<!-- <script>
-	import { page } from '$app/stores';
-	import logo from '$lib/images/svelte-logo.svg';
-	import github from '$lib/images/github.svg';
-</script>
-
-<header>
-	<div class="corner">
-		<a href="https://kit.svelte.dev">
-			<img src={logo} alt="SvelteKit" />
-		</a>
-	</div>
-
-	<nav>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
-		</svg>
-		<ul>
-			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
-				<a href="/">Home</a>
-			</li>
-			<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
-				<a href="/about">About</a>
-			</li>
-			<li aria-current={$page.url.pathname.startsWith('/sverdle') ? 'page' : undefined}>
-				<a href="/sverdle">Sverdle</a>
-			</li>
-		</ul>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
-		</svg>
-	</nav>
-
-	<div class="corner">
-		<a href="https://github.com/sveltejs/kit">
-			<img src={github} alt="GitHub" />
-		</a>
-	</div>
-</header> -->
