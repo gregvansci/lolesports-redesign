@@ -7,12 +7,12 @@ def get_region_past_games(region):
         limit="max",
         tables="MatchSchedule=MS",
         fields="MS.MatchId, MS.Team1, MS.Team1Score, MS.Team2, MS.Team2Score, MS.BestOf, MS.DateTime_UTC",
-        where="MS.MatchId LIKE '" + region + "/%' AND MS.DateTime_UTC < NOW() AND MS.DateTime_UTC > '2020-06-01 00:00:00'",
+        where="MS.MatchId LIKE '" + region + "/%' AND MS.DateTime_UTC < NOW() AND MS.DateTime_UTC > '2023-01-01 00:00:00'",
         order_by="MS.DateTime_UTC DESC",
     )
     return response['cargoquery']
 
-region = "lpl"
+region = "lcs"
 response = get_region_past_games(region.upper())
 matches = []
 

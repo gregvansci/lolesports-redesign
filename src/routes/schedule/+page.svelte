@@ -2,6 +2,8 @@
     import { darkMode } from '../../store';
     import lck from '$lib/data/curSplit/lck.json';
     import lpl from '$lib/data/curSplit/lpl.json';
+    import lec from '$lib/data/curSplit/lec.json';
+    import lcs from '$lib/data/curSplit/lcs.json';
 
     import ScheduleNewDay from '../ScheduleNewDay.svelte';
     import ScheduleGame from '../ScheduleGame.svelte';
@@ -15,8 +17,8 @@
         darkModeValue = value;
     });
 
-    // create a type for match
-    type Match = {
+    // create an interface for matches
+    interface Match {
         matchId: string;
         matchDate: string;
         team1: string;
@@ -29,50 +31,7 @@
         bestOf: number;
     }
 
-    // create an array of future matches, rerender every time futureMatches changes
-    let futureMatches: Match[] = [];
-    
-    // for each match in lck future, add it to futureMatches with locale time string
-    lck.future.forEach(match => {
-        futureMatches.push({
-            matchId: match.matchId,
-            matchDate: new Date(match.matchDate).toLocaleString(),
-            team1: match.team1,
-            team1Score: match.team1Score,
-            team2: match.team2,
-            team2Score: match.team2Score,
-            region: match.region,
-            season: match.season,
-            stage: match.stage,
-            bestOf: match.bestOf
-        });
-    });
 
-    // for each match in lpl future, add it to futureMatches with locale time string
-    lpl.future.forEach(match => {
-        futureMatches.push({
-            matchId: match.matchId,
-            matchDate: new Date(match.matchDate).toLocaleString(),
-            team1: match.team1,
-            team1Score: match.team1Score,
-            team2: match.team2,
-            team2Score: match.team2Score,
-            region: match.region,
-            season: match.season,
-            stage: match.stage,
-            bestOf: match.bestOf
-        });
-    });
-
-    // sort futureMatches by matchDate
-    futureMatches.sort((a, b) => {
-        return new Date(a.matchDate).getTime() - new Date(b.matchDate).getTime();
-    });
-    
-
-    // create a variable of tomorrows date
-    let tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
 
     let showFollowingLeft = false;
     let showFollowing = false;
@@ -88,6 +47,14 @@
         [ true, true, false ],                              // North America, LCS, NACL
         [ false, false, false, false, false, false, false ] // Minor Regions, PCS, VCS, LJL, CBLOL, LLA, LCO
     ];
+
+    function isRegionShown(region: string): boolean {
+        if (region === 'LCK') return regionShown[1][1];
+        if (region === 'LPL') return regionShown[2][1];
+        if (region === 'LEC') return regionShown[3][1];
+        if (region === 'LCS') return regionShown[4][1];
+        return false;
+    }
     
     // If true, dropdown is open. Only one dropdown can be open at a time
     let regionDropdown = [ false, false, false, false, false, false ];    
@@ -140,7 +107,6 @@
         } else {
             regionShown[region][0] = false;
         }
-        
     }
 </script>
 
@@ -156,16 +122,15 @@
             <LiveGame showLive={true}/>
             <LiveGame />
             <!-- Add future matches as scheduleGame's -->
-            {#each futureMatches as match, i}
-                <!-- All first games of the day, unless also today, have a schedulenewday -->
+            <!-- {#each shownFutureMatches as match, i}
                 {#if i == 0 && new Date(match.matchDate).getDate() != new Date().getDate()}
                     <ScheduleNewDay date={new Date(match.matchDate)}/>
                 {/if}
-                {#if i != 0 && new Date(match.matchDate).getDate() != new Date(futureMatches[i-1].matchDate).getDate()}
+                {#if i != 0 && new Date(match.matchDate).getDate() != new Date(shownFutureMatches[i-1].matchDate).getDate()}
                     <ScheduleNewDay date={new Date(match.matchDate)}/>
                 {/if}
                 <ScheduleGame matchDate={match.matchDate} team1={match.team1} team1Score={match.team1Score} team2={match.team2} team2Score={match.team2Score} region={match.region} season={match.season} stage={match.stage} bestOf={match.bestOf} {showSpoilers} past={false}/> 
-            {/each}
+            {/each} -->
         </div>
         <div class="select-none">
             <div class="pl-12 absolute top-[10vh] flex flex-col gap-6">
