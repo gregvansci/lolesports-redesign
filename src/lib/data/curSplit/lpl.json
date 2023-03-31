@@ -1,18 +1,6 @@
 {
     "future": [
         {
-            "matchId": "LPL/2023 Season/Spring Playoffs_Round 1_2",
-            "matchDate": "2023-03-31T09:00:00Z",
-            "team1": "Top Esports",
-            "team1Score": 0,
-            "team2": "Team WE",
-            "team2Score": 0,
-            "region": "LPL",
-            "season": "Spring",
-            "stage": "Playoffs",
-            "bestOf": 5
-        },
-        {
             "matchId": "LPL/2023 Season/Spring Playoffs_Round 2_1",
             "matchDate": "2023-04-01T09:00:00Z",
             "team1": "Bilibili Gaming",
@@ -29,7 +17,7 @@
             "matchDate": "2023-04-02T09:00:00Z",
             "team1": "Oh My God",
             "team1Score": 0,
-            "team2": "TBD",
+            "team2": "Top Esports",
             "team2Score": 0,
             "region": "LPL",
             "season": "Spring",

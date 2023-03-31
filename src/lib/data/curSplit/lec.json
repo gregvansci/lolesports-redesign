@@ -1,0 +1,172 @@
+{
+    "future": [
+        {
+            "matchId": "LEC/2023 Season/Spring Groups_Week 1_1",
+            "matchDate": "2023-04-08T16:00:00Z",
+            "team1": "Astralis",
+            "team1Score": 0,
+            "team2": "Fnatic",
+            "team2Score": 0,
+            "region": "LEC",
+            "season": "Spring",
+            "stage": "Groups",
+            "bestOf": 3
+        },
+        {
+            "matchId": "LEC/2023 Season/Spring Groups_Week 1_2",
+            "matchDate": "2023-04-08T19:00:00Z",
+            "team1": "Team Vitality",
+            "team1Score": 0,
+            "team2": "MAD Lions",
+            "team2Score": 0,
+            "region": "LEC",
+            "season": "Spring",
+            "stage": "Groups",
+            "bestOf": 3
+        },
+        {
+            "matchId": "LEC/2023 Season/Spring Groups_Week 1_3",
+            "matchDate": "2023-04-09T16:00:00Z",
+            "team1": "Team BDS",
+            "team1Score": 0,
+            "team2": "SK Gaming",
+            "team2Score": 0,
+            "region": "LEC",
+            "season": "Spring",
+            "stage": "Groups",
+            "bestOf": 3
+        },
+        {
+            "matchId": "LEC/2023 Season/Spring Groups_Week 1_4",
+            "matchDate": "2023-04-09T19:00:00Z",
+            "team1": "G2 Esports",
+            "team1Score": 0,
+            "team2": "KOI (Spanish Team)",
+            "team2Score": 0,
+            "region": "LEC",
+            "season": "Spring",
+            "stage": "Groups",
+            "bestOf": 3
+        },
+        {
+            "matchId": "LEC/2023 Season/Spring Groups_Week 1_5",
+            "matchDate": "2023-04-10T16:00:00Z",
+            "team1": "TBD",
+            "team1Score": 0,
+            "team2": "TBD",
+            "team2Score": 0,
+            "region": "LEC",
+            "season": "Spring",
+            "stage": "Groups",
+            "bestOf": 3
+        },
+        {
+            "matchId": "LEC/2023 Season/Spring Groups_Week 1_6",
+            "matchDate": "2023-04-10T19:00:00Z",
+            "team1": "TBD",
+            "team1Score": 0,
+            "team2": "TBD",
+            "team2Score": 0,
+            "region": "LEC",
+            "season": "Spring",
+            "stage": "Groups",
+            "bestOf": 3
+        },
+        {
+            "matchId": "LEC/2023 Season/Spring Groups_Week 2_1",
+            "matchDate": "2023-04-15T16:00:00Z",
+            "team1": "TBD",
+            "team1Score": 0,
+            "team2": "TBD",
+            "team2Score": 0,
+            "region": "LEC",
+            "season": "Spring",
+            "stage": "Groups",
+            "bestOf": 3
+        },
+        {
+            "matchId": "LEC/2023 Season/Spring Groups_Week 2_2",
+            "matchDate": "2023-04-15T19:00:00Z",
+            "team1": "TBD",
+            "team1Score": 0,
+            "team2": "TBD",
+            "team2Score": 0,
+            "region": "LEC",
+            "season": "Spring",
+            "stage": "Groups",
+            "bestOf": 3
+        },
+        {
+            "matchId": "LEC/2023 Season/Spring Groups_Week 2_3",
+            "matchDate": "2023-04-16T16:00:00Z",
+            "team1": "TBD",
+            "team1Score": 0,
+            "team2": "TBD",
+            "team2Score": 0,
+            "region": "LEC",
+            "season": "Spring",
+            "stage": "Groups",
+            "bestOf": 3
+        },
+        {
+            "matchId": "LEC/2023 Season/Spring Groups_Week 2_4",
+            "matchDate": "2023-04-16T19:00:00Z",
+            "team1": "TBD",
+            "team1Score": 0,
+            "team2": "TBD",
+            "team2Score": 0,
+            "region": "LEC",
+            "season": "Spring",
+            "stage": "Groups",
+            "bestOf": 3
+        },
+        {
+            "matchId": "LEC/2023 Season/Spring Playoffs_Round 1_1",
+            "matchDate": "2023-04-17T16:00:00Z",
+            "team1": "TBD",
+            "team1Score": 0,
+            "team2": "TBD",
+            "team2Score": 0,
+            "region": "LEC",
+            "season": "Spring",
+            "stage": "Playoffs",
+            "bestOf": 5
+        },
+        {
+            "matchId": "LEC/2023 Season/Spring Playoffs_Round 1_2",
+            "matchDate": "2023-04-21T16:00:00Z",
+            "team1": "TBD",
+            "team1Score": 0,
+            "team2": "TBD",
+            "team2Score": 0,
+            "region": "LEC",
+            "season": "Spring",
+            "stage": "Playoffs",
+            "bestOf": 5
+        },
+        {
+            "matchId": "LEC/2023 Season/Spring Playoffs_Round 2_1",
+            "matchDate": "2023-04-22T16:00:00Z",
+            "team1": "TBD",
+            "team1Score": 0,
+            "team2": "TBD",
+            "team2Score": 0,
+            "region": "LEC",
+            "season": "Spring",
+            "stage": "Playoffs",
+            "bestOf": 5
+        },
+        {
+            "matchId": "LEC/2023 Season/Spring Playoffs_Finals_1",
+            "matchDate": "2023-04-23T16:00:00Z",
+            "team1": "TBD",
+            "team1Score": 0,
+            "team2": "TBD",
+            "team2Score": 0,
+            "region": "LEC",
+            "season": "Spring",
+            "stage": "Playoffs",
+            "bestOf": 5
+        }
+    ]
+}
