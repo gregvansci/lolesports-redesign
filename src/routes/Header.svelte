@@ -24,6 +24,8 @@
 		darkModeValue = value;
 	});
 
+	$: console.log(darkModeValue)
+
 	function toggleDarkMode() {
 		if (darkModeValue) {
 			localStorage.theme = "light";
@@ -75,9 +77,9 @@
 						alt="LoL Esports"
 						class="h-[20px] desktop-lg:h-[25px] m-auto pl-2 {darkModeValue ? "logo-filter-dark" : "logo-filter"}"
 					/>
-					<img src={expandArrow} alt="Expand" class="h-[20px] m-auto pointer-events-none 
-						{darkModeValue ? "svg-filter-dark" : "svg-filter"}"
-					/>
+					<div class="{darkModeValue ? "svg-filter-dark" : "svg-filter"}">
+						<img src={expandArrow} alt="Expand" class="h-[20px] m-auto pointer-events-none"/>
+					</div>
 				</div>
 				<div class="
 					absolute shadow-md py-2  left-0 border-[1px] rounded-lg
