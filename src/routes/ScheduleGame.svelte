@@ -45,30 +45,30 @@
         <div class="w-[325px] flex justify-end">
             <div class="flex flex-row gap-2 justify-end hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg px-4 py-[6px] cursor-pointer">
                 <div class="my-auto">
-                    <h2 class="font-semibold text-xl">{team1}</h2>
-                    <h2 class="flex justify-end text-sm">{past && showSpoilers ? team1History : ""}</h2>
+                    <h2 class="font-semibold text-xl">{team2}</h2>
+                    <h2 class="flex justify-end text-sm">{past && showSpoilers ? team2History : ""}</h2>
                 </div>
                 <div class="my-auto">
-                    <img class="w-[55px] {darkModeValue && team1Invert ? "teamLogoInvert" : ""} transition ease-in-out duration-300" src={team1img === "" ? defaultTeam : team1img} alt={team1}>
+                    <img class="w-[55px] {darkModeValue && team2Invert ? "teamLogoInvert" : ""} transition ease-in-out duration-300" src={team2img === "" ? defaultTeam : team2img} alt={team2}>
                 </div>
             </div>        
         </div>
         <div class="m-auto mx-2 text-lg font-medium w-[28px] flex">
             <div class="m-auto flex flex-row">
                 <span class="{past && showSpoilers ? 'hidden' : 'block'}">vs</span>
-                <span class="{past && showSpoilers ? team1Score === firstTo ? 'block text-blue-gray-700 dark:text-blue-gray-100 transition ease-in-out duration-300' : 'block text-blue-gray-400 dark:text-blue-gray-300 transition ease-in-out duration-300' : 'hidden'}">{team1Score}</span>
+                <span class="{past && showSpoilers ? team2Score === firstTo ? 'block text-blue-gray-700 dark:text-blue-gray-100 transition ease-in-out duration-300' : 'block text-blue-gray-400 dark:text-blue-gray-300 transition ease-in-out duration-300' : 'hidden'}">{team1Score}</span>
                 <span class="{past && showSpoilers ? 'block px-[1px]' : 'hidden'}">-</span>
-                <span class="{past && showSpoilers ? team2Score === firstTo ? 'block text-blue-gray-700 dark:text-blue-gray-100 transition ease-in-out duration-300' : 'block text-blue-gray-400 dark:text-blue-gray-300 transition ease-in-out duration-300' : 'hidden'}">{team2Score}</span>
+                <span class="{past && showSpoilers ? team1Score === firstTo ? 'block text-blue-gray-700 dark:text-blue-gray-100 transition ease-in-out duration-300' : 'block text-blue-gray-400 dark:text-blue-gray-300 transition ease-in-out duration-300' : 'hidden'}">{team2Score}</span>
             </div>
         </div>
         <div class="w-[325px] flex justify-start">
             <div class="flex flex-row gap-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg px-4 cursor-pointer">
                 <div class="my-auto">
-                    <img class="w-[55px] {darkModeValue ? team2Invert ? "teamLogoInvert" : "" : ""} transition ease-in-out duration-300" src={team2img === "" ? defaultTeam : team2img} alt={team2}>
+                    <img class="w-[55px] {darkModeValue ? team1Invert ? "teamLogoInvert" : "" : ""} transition ease-in-out duration-300" src={team1img === "" ? defaultTeam : team1img} alt={team1}>
                 </div>
                 <div class="my-auto">
-                    <h2 class="font-semibold text-xl">{team2}</h2>
-                    <h2 class="flex justify-start text-sm">{past && showSpoilers ? team2History : ""}</h2>
+                    <h2 class="font-semibold text-xl">{team1}</h2>
+                    <h2 class="flex justify-start text-sm">{past && showSpoilers ? team1History : ""}</h2>
                 </div>
             </div>
         </div>
