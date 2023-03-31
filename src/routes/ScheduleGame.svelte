@@ -2,7 +2,6 @@
     import { darkMode } from '../store';
 
     import defaultTeam from '$lib/images/lolesports-icon-black.png';
-    
     export let matchDate = "";
     export let team1 = "Team 1";
     export let team1Score = 0;
@@ -19,7 +18,7 @@
     export let team2Invert = true;
     
     export let showSpoilers = false;
-    export let past: false;
+    export let past = false;
 
     let team1img = "";
     let team2img = "";
@@ -69,7 +68,7 @@
                 </div>
                 <div class="my-auto">
                     <h2 class="font-semibold text-xl">{team2}</h2>
-                    <h2 class="flex justify-start text-sm">{past && showSpoilers ? team2Score : ""}</h2>
+                    <h2 class="flex justify-start text-sm">{past && showSpoilers ? team2History : ""}</h2>
                 </div>
             </div>
         </div>

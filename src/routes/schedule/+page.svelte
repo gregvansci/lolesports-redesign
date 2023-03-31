@@ -1,16 +1,74 @@
 <script lang="ts">
     import { darkMode } from '../../store';
+    import lck from '$lib/data/curSplit/lck.json';
+    import lpl from '$lib/data/curSplit/lpl.json';
 
     import ScheduleNewDay from '../ScheduleNewDay.svelte';
     import ScheduleGame from '../ScheduleGame.svelte';
     import LiveGame from '../LiveGame.svelte';
     import RegionSelector from './RegionSelector.svelte';
+    import { onMount } from 'svelte';
 
     let darkModeValue: boolean;
 
     darkMode.subscribe(value => {
         darkModeValue = value;
     });
+
+    // create a type for match
+    type Match = {
+        matchId: string;
+        matchDate: string;
+        team1: string;
+        team1Score: number;
+        team2: string;
+        team2Score: number;
+        region: string;
+        season: string;
+        stage: string;
+        bestOf: number;
+    }
+
+    // create an array of future matches, rerender every time futureMatches changes
+    let futureMatches: Match[] = [];
+    
+    // for each match in lck future, add it to futureMatches with locale time string
+    lck.future.forEach(match => {
+        futureMatches.push({
+            matchId: match.matchId,
+            matchDate: new Date(match.matchDate).toLocaleString(),
+            team1: match.team1,
+            team1Score: match.team1Score,
+            team2: match.team2,
+            team2Score: match.team2Score,
+            region: match.region,
+            season: match.season,
+            stage: match.stage,
+            bestOf: match.bestOf
+        });
+    });
+
+    // for each match in lpl future, add it to futureMatches with locale time string
+    lpl.future.forEach(match => {
+        futureMatches.push({
+            matchId: match.matchId,
+            matchDate: new Date(match.matchDate).toLocaleString(),
+            team1: match.team1,
+            team1Score: match.team1Score,
+            team2: match.team2,
+            team2Score: match.team2Score,
+            region: match.region,
+            season: match.season,
+            stage: match.stage,
+            bestOf: match.bestOf
+        });
+    });
+
+    // sort futureMatches by matchDate
+    futureMatches.sort((a, b) => {
+        return new Date(a.matchDate).getTime() - new Date(b.matchDate).getTime();
+    });
+    
 
     // create a variable of tomorrows date
     let tomorrow = new Date();
@@ -94,30 +152,20 @@
 <section class="mt-[60px] w-full overflow-y-scroll">
     <div class="w-full justify-center flex flex-row pl-[128px] pr-[248px]">
         <div class="w-[900px] flex flex-col h-auto relative pt-4">
-            <!-- <div class="w-[80px] absolute -left-[128px] flex rounded-full top-4  py-1
-                bg-black dark:bg-gray-700
-                text-blue-50">
-                <h2 class="m-auto">Today</h2>
-            </div> -->
-            <ScheduleGame {showSpoilers} team0="Dplus Kia" team0Score="0W-1L" team1="Hanwha Life Esports" team1Score="1W-0L" gameScore={[1,3]} 
-                region="LCK" season="Spring" stage="Playoffs" bestOf={5} past={true}
-                team0img="https://static.wikia.nocookie.net/lolesports_gamepedia_en/images/7/73/Dplus_KIAlogo_square.png"
-                team0imgInvert = {true}
-                team1img="https://am-a.akamaihd.net/image?resize=72:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1631819564399_hle-2021-worlds.png"
-            />
             <ScheduleNewDay date={new Date()}/>
             <LiveGame showLive={true}/>
             <LiveGame />
-            <ScheduleGame team0="Thunder Talk Gaming" team1="Edward Gaming Hycan" region="LPL" season="Spring" bestOf={3}/>
-            <ScheduleGame team0="T1" team1="KT Rolster" region="LCK" season="Spring" stage="Playoffs" bestOf={5} 
-                team0img="https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1631819523085_t1-2021-worlds.png"
-                team1img="https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2Fkt_darkbackground.png"
-            />
-            <ScheduleGame region="EMEA Masters" season="Spring" bestOf={1}/>
-            <ScheduleNewDay date={tomorrow}/>
-            <ScheduleGame region="LCK" season="Spring" stage="Regional Qualifier" bestOf={1}/>
-            <ScheduleGame region="LPL" season="Spring" stage="" bestOf={1}/>
-            <ScheduleGame />
+            <!-- Add future matches as scheduleGame's -->
+            {#each futureMatches as match, i}
+                <!-- All first games of the day, unless also today, have a schedulenewday -->
+                {#if i == 0 && new Date(match.matchDate).getDate() != new Date().getDate()}
+                    <ScheduleNewDay date={new Date(match.matchDate)}/>
+                {/if}
+                {#if i != 0 && new Date(match.matchDate).getDate() != new Date(futureMatches[i-1].matchDate).getDate()}
+                    <ScheduleNewDay date={new Date(match.matchDate)}/>
+                {/if}
+                <ScheduleGame matchDate={match.matchDate} team1={match.team1} team1Score={match.team1Score} team2={match.team2} team2Score={match.team2Score} region={match.region} season={match.season} stage={match.stage} bestOf={match.bestOf} {showSpoilers} past={false}/> 
+            {/each}
         </div>
         <div class="select-none">
             <div class="pl-12 absolute top-[10vh] flex flex-col gap-6">
@@ -179,3 +227,9 @@
         }
     }
 </style>
+
+<!-- <div class="w-[80px] absolute -left-[128px] flex rounded-full top-4  py-1
+    bg-black dark:bg-gray-700
+    text-blue-50">
+    <h2 class="m-auto">Today</h2>
+</div> -->
