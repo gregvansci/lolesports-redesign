@@ -30,11 +30,11 @@
     }
 </script>
 
-<div class="relative h-[60px] w-full flex flex-col justify-end text-blue-gray-500 dark:text-blue-50 border-y-[1px] border-gray-100 dark:border-gray-800 transition ease-in-out duration-300">
+<div class="relative h-[60px] w-full flex flex-col justify-end text-blue-gray-500 dark:text-blue-50 border-y-[1px] border-gray-100 dark:border-steel-800 transition ease-in-out duration-300">
     <h2 class="ml-4 mb-2 text-xl font-semibold">{dayOfWeek} - {monthNames[date.getMonth()]} {date.getDate()}</h2>
     <div class="{isToday(date) ? "block" : "hidden"}">
         <div class="w-[80px] absolute -left-[128px] flex rounded-full   py-1
-            bg-black dark:bg-gray-700
+            bg-black dark:bg-steel-700
             text-blue-50">
             <h2 class="m-auto">Now</h2>
         </div>

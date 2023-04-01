@@ -76,34 +76,34 @@
 </script>
 
 
-<div class="flex flex-col bg-gray-50 dark:bg-gray-800 h-full rounded-[22px] border-2 overflow-hidden box-border 
-    {leaguesActive[0] ? "border-highlight" : "border-gray-100 dark:border-gray-700"}"
+<div class="flex flex-col bg-gray-50 dark:bg-steel-800 h-full rounded-[22px] border-2 overflow-hidden box-border 
+    {leaguesActive[0] ? "border-highlight" : "border-gray-100 dark:border-steel-700"}"
 >
     <button class="flex flex-row justify-between h-full"
     >
         <button 
             on:click = {() => { dropdown ? handleRegionInput(0) : handleRegionInput(1)}} 
-            class="w-full py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+            class="w-full py-2 hover:bg-gray-100 dark:hover:bg-steel-700"
         >
             <h2 class="my-auto w-full text-left pl-4  ">{!dropdown && !minor ? leagues[1] : leagues[0]}</h2>
         </button>
-        <div class="h-[25px] border-[1px] m-auto border-gray-100 dark:border-gray-700" />
+        <div class="h-[25px] border-[1px] m-auto border-gray-100 dark:border-steel-700" />
         <button 
             on:click|stopPropagation = {() => handleToggleDropdown()} 
             class="w-full h-[40px] py-auto flex rounded-sm
-            hover:bg-gray-100 dark:hover:bg-gray-700
+            hover:bg-gray-100 dark:hover:bg-steel-700
             {darkModeValue ? "svg-filter-dark" : "svg-filter"}"
         >
             <img src={dropdown ? dropdownClose : dropdownOpen} class="m-auto mr-0 h-6 pr-4" alt="Open"/>
         </button>
     </button>
     <div class="flex-col {dropdown ? "flex" : "hidden"}">
-        <div class="w-full border-[1px] border-gray-100/50 dark:border-gray-700/50"></div>
+        <div class="w-full border-[1px] border-gray-100/50 dark:border-steel-700/50"></div>
         <!-- for each league in leagues after the 0th,  -->
         {#each leagues.slice(1) as league, i}
             <button
                 on:click={() => handleRegionInput(i+1)} 
-                class="flex flex-row justify-between p-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-700
+                class="flex flex-row justify-between p-2 px-4 hover:bg-gray-100 dark:hover:bg-steel-700
                 {leaguesActive[i+1] ? "checked" : darkModeValue ? "unchecked-dark" : "unchecked"}"
             >
                 <h2>{league}</h2>

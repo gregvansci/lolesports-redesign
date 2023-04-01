@@ -44,7 +44,7 @@
 			<div 
 				class="h-full w-[250px] rounded-xl row-span-2 outline outline-8 cursor-pointer
 				flex flex-col justify-between animate-to-left 
-				outline-gray-50 dark:outline-gray-800 
+				outline-gray-50 dark:outline-steel-800 
 				transition ease-in-out duration-300">
 				<div class="flex flex-row justify-center mx-auto mt-2 gap-1">
 					<img src={live} alt="Live Icon" class="w-[17px] mt-[2px] svg-filter-red"/>
@@ -56,7 +56,7 @@
 							src="https://am-a.akamaihd.net/image?resize=72:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2Fliiv-sandbox-new.png" 
 							alt="Logo" 
 							class="w-14 h-14 rounded-full p-1 border-2 
-							border-gray-50 dark:border-gray-700"
+							border-gray-50 dark:border-steel-700"
 						/>
 						<h2 class="m-auto">Liiv Sandbox</h2>
 					</div>
@@ -66,7 +66,7 @@
 							src="https://am-a.akamaihd.net/image?resize=72:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2Fkt_darkbackground.png" 
 							alt="Logo" 
 							class="w-14 h-14 rounded-full p-1 border-2 
-							border-gray-50 dark:border-gray-700"
+							border-gray-50 dark:border-steel-700"
 						/>
 						<h2 class="m-auto">KT Rolster</h2>
 					</div>
@@ -74,7 +74,7 @@
 			</div>
 			<div 
 				class="flex flex-col w-[250px] rounded-xl row-span-1 outline outline-8 cursor-pointer 
-				outline-gray-50 dark:outline-gray-800 
+				outline-gray-50 dark:outline-steel-800 
 				animate-to-left animate-to-right 
 				transition ease-in-out duration-300"
 			>
@@ -89,7 +89,7 @@
 							src="https://am-a.akamaihd.net/image?resize=72:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2Fultraprime.png" 
 							alt="Logo" 
 							class="w-10 h-10 rounded-full p-1 border-2 
-							border-gray-50 dark:border-gray-700"
+							border-gray-50 dark:border-steel-700"
 						/>
 					</div>
 					<h2 class="m-auto text-gray-300">vs</h2>
@@ -98,7 +98,7 @@
 							src="https://am-a.akamaihd.net/image?resize=72:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1631819402484_lng-2021-worlds.png" 
 							alt="Logo" 
 							class="w-10 h-10 rounded-full p-1 border-2 
-							border-gray-50 dark:border-gray-700"
+							border-gray-50 dark:border-steel-700"
 						/>
 						<h2 class="m-auto text-sm max-w-[50px]">LNG</h2>
 					</div>
@@ -106,7 +106,7 @@
 			</div>
 			<div 
 				class="flex flex-col w-[250px] rounded-xl row-span-1 outline outline-8 cursor-pointer 
-				outline-gray-50 dark:outline-gray-800 
+				outline-gray-50 dark:outline-steel-800 
 				animate-to-left animate-to-right 
 				transition ease-in-out duration-300"
 			>
@@ -125,7 +125,7 @@
 							src="https://am-a.akamaihd.net/image?resize=72:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1634762917340_300px-Invictus_Gaming_logo.png" 
 							alt="Logo" 
 							class="w-10 h-10 rounded-full p-1 border-2 
-							border-gray-50 dark:border-gray-700"
+							border-gray-50 dark:border-steel-700"
 						/>
 					</div>
 					<h2 class="m-auto text-gray-300">vs</h2>
@@ -134,7 +134,7 @@
 							src="https://am-a.akamaihd.net/image?resize=72:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1641200475679_Bilibili_Gaminglogo_profile.png" 
 							alt="Logo" 
 							class="w-10 h-10 rounded-full p-1 border-2 
-							border-gray-50 dark:border-gray-700"
+							border-gray-50 dark:border-steel-700"
 						/>
 						<h2 class="m-auto text-sm max-w-[50px]">BLG</h2>
 					</div>
@@ -142,7 +142,7 @@
 			</div>
 			<div 
 				class="flex flex-col w-[250px] rounded-xl row-span-1 outline outline-8 cursor-pointer 
-				outline-gray-50 dark:outline-gray-800 
+				outline-gray-50 dark:outline-steel-800 
 				animate-to-left animate-to-right 
 				transition ease-in-out duration-300"
 			>
@@ -161,7 +161,7 @@
 							src="https://am-a.akamaihd.net/image?resize=72:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1631819360134_rng-2021-worlds.png" 
 							alt="Logo" 
 							class="w-10 h-10 rounded-full p-1 border-2 
-							border-gray-50 dark:border-gray-700"
+							border-gray-50 dark:border-steel-700"
 						/>
 					</div>
 					<h2 class="m-auto text-gray-300">vs</h2>
@@ -170,7 +170,7 @@
 							src="https://am-a.akamaihd.net/image?resize=72:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2FRA-FullonDark.png" 
 							alt="Logo" 
 							class="w-10 h-10 rounded-full p-1 border-2 
-							border-gray-50 dark:border-gray-700"
+							border-gray-50 dark:border-steel-700"
 						/>
 						<h2 class="m-auto text-sm max-w-[50px]">RA</h2>
 					</div>
@@ -178,7 +178,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="w-full h-[200px] flex bg-gray-50 dark:bg-gray-800 transition ease-in-out duration-300 font-body">
+	<div class="w-full h-[200px] flex bg-gray-50 dark:bg-steel-800 transition ease-in-out duration-300 font-body">
 		<h2 class="m-auto font-semibold text-lg">Not following any teams.</h2>
 	</div>
 	<Footer/>

@@ -137,13 +137,13 @@
                 <div class="flex flex-col gap-6">
                     <button on:click={() => {showFollowing = !showFollowing; showFollowingLeft = true}} class="flex flex-row justify-between w-[200px]">
                         <h2>Show Following</h2>
-                        <div class="{ showFollowing ? "bg-highlight" : "bg-gray-100 dark:bg-gray-700"} rounded-full w-12 flex transition ease-in-out duration-300">
+                        <div class="{ showFollowing ? "bg-highlight" : "bg-gray-100 dark:bg-steel-700"} rounded-full w-12 flex transition ease-in-out duration-300">
                             <div class="bg-white rounded-full w-5 h-5 m-[2px] transition ease-in-out duration-300 {showFollowing ? "animate-right" : showFollowingLeft ? "animate-left" : ""}"/>
                         </div>
                     </button>
                     <button on:click={() => {showSpoilers = !showSpoilers; showSpoilersLeft = true}} class="flex flex-row justify-between w-[200px]">
                         <h2>Show Spoilers</h2>
-                        <div class="{ showSpoilers ? "bg-highlight" : "bg-gray-100 dark:bg-gray-700"} rounded-full w-12 flex transition ease-in-out duration-300">
+                        <div class="{ showSpoilers ? "bg-highlight" : "bg-gray-100 dark:bg-steel-700"} rounded-full w-12 flex transition ease-in-out duration-300">
                             <div class="bg-white rounded-full w-5 h-5 m-[2px] transition ease-in-out duration-300 {showSpoilers ? "animate-right" : showSpoilersLeft ? "animate-left" : ""}"/>
                         </div>
                     </button>
@@ -151,9 +151,9 @@
                 <div class="flex flex-col gap-6">
                     <button
                         on:click = {() => {regionShown[0][0] = !regionShown[0][0];}} 
-                        class="flex flex-row justify-between bg-gray-50 dark:bg-gray-800 border-2  shadow-sm  rounded-full p-[10px] px-4
-                        hover:bg-gray-100 dark:hover:bg-gray-700
-                        {regionShown[0][0] ? "border-highlight" : "border-gray-100 dark:border-gray-700"}"
+                        class="flex flex-row justify-between bg-gray-50 dark:bg-steel-800 border-2  shadow-sm  rounded-full p-[10px] px-4
+                        hover:bg-gray-100 dark:hover:bg-steel-700
+                        {regionShown[0][0] ? "border-highlight" : "border-gray-100 dark:border-steel-700"}"
                     >
                         <h2 class="m-auto text-sm">International</h2>
                     </button>
