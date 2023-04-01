@@ -43,8 +43,8 @@
 
 <div class="h-[115px] w-full flex flex-row justify-between bg-gray-50 dark:bg-steel-800 hover:bg-gray-100 dark:hover:bg-steel-700 transition ease-in-out duration-300 cursor-pointer">
     <div class="{showLive ? "visible" : "invisible"} my-auto ml-4 w-[80px] text-blue-gray-400 dark:text-blue-200 font-semibold text-xl flex flex-row transition ease-in-out duration-300">
-        <img src={live} alt="Live SVG" class="my-auto w-[20px] h-[20px] svg-filter-red">
-        <h2 class="pb-[1px] pl-[6px]">LIVE</h2>
+        <img src={live} alt="Live SVG" class="my-auto w-[20px] h-[20px] svg-filter-red select-none">
+        <h2 class="pb-[2px] pl-[6px]">LIVE</h2>
     </div>
     <div class="flex m-auto text-blue-gray-500 dark:text-blue-50 transition ease-in-out duration-300">
         <div class="w-[325px] flex justify-end">

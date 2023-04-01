@@ -25,7 +25,7 @@
 <section class="text-blue-gray-500 dark:text-white h-full w-full flex flex-col justify-between pt-[60px]">
 	<div class="flex flex-row m-auto h-full">
 		<div 
-			class="h-full w-[1000px] ml-[5px] bg-black relative"
+			class="h-full w-[1000px] ml-[5px] bg-black relative select-none"
 		>
 			<iframe
 				title="Target iframe page"
@@ -47,7 +47,7 @@
 				outline-gray-50 dark:outline-steel-800 
 				transition ease-in-out duration-300">
 				<div class="flex flex-row justify-center mx-auto mt-2 gap-1">
-					<img src={live} alt="Live Icon" class="w-[17px] mt-[2px] svg-filter-red"/>
+					<img src={live} alt="Live Icon" class="w-[17px] mt-[2px] svg-filter-red select-none"/>
 					<h2 class="m-auto text-base font-semibold">LIVE - LCK</h2>
 				</div>
 				<div class="flex flex-col justify-between h-full m-auto py-4">
@@ -79,7 +79,7 @@
 				transition ease-in-out duration-300"
 			>
 				<div class="flex flex-row justify-center mx-auto my-2 gap-1">
-					<img src={live} alt="Live Icon" class="w-4 h-4 mt-[3px] svg-filter-red"/>
+					<img src={live} alt="Live Icon" class="w-4 h-4 mt-[3px] svg-filter-red select-none"/>
 					<h2 class="m-auto text-sm">LIVE - LPL</h2>
 				</div>
 				<div class="flex flex-row w-full justify-between px-4">
@@ -114,7 +114,7 @@
 					<img 
 						src={clock} 
 						alt="Live Icon" 
-						class="w-4 h-4 mt-[3px] {darkModeValue ? "svg-filter-dark" : "svg-filter"}"
+						class="w-4 h-4 mt-[3px] select-none {darkModeValue ? "svg-filter-dark" : "svg-filter"}"
 					/>
 					<h2 class="m-auto text-sm">1:30:22 - LPL</h2>
 				</div>
@@ -150,7 +150,7 @@
 					<img 
 						src={clock} 
 						alt="Live Icon" 
-						class="w-4 h-4 mt-[3px] {darkModeValue ? "svg-filter-dark" : "svg-filter"}"
+						class="w-4 h-4 mt-[3px] select-none {darkModeValue ? "svg-filter-dark" : "svg-filter"}"
 					/>
 					<h2 class="m-auto text-sm">23:30:22 - LPL</h2>
 				</div>
