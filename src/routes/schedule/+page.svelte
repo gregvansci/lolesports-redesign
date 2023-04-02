@@ -1,10 +1,15 @@
 <script lang="ts">
     import { darkMode } from '../../store';
+    import lck from '$lib/data/curSplit/lck.json';
+    import lpl from '$lib/data/curSplit/lpl.json';
+    import lec from '$lib/data/curSplit/lec.json';
+    import lcs from '$lib/data/curSplit/lcs.json';
 
     import ScheduleNewDay from '../ScheduleNewDay.svelte';
     import ScheduleGame from '../ScheduleGame.svelte';
     import LiveGame from '../LiveGame.svelte';
     import RegionSelector from './RegionSelector.svelte';
+    import { onMount } from 'svelte';
 
     let darkModeValue: boolean;
 
@@ -12,9 +17,21 @@
         darkModeValue = value;
     });
 
-    // create a variable of tomorrows date
-    let tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
+    // create an interface for matches
+    interface Match {
+        matchId: string;
+        matchDate: string;
+        team1: string;
+        team1Score: number;
+        team2: string;
+        team2Score: number;
+        region: string;
+        season: string;
+        stage: string;
+        bestOf: number;
+    }
+
+
 
     let showFollowingLeft = false;
     let showFollowing = false;
@@ -30,6 +47,14 @@
         [ true, true, false ],                              // North America, LCS, NACL
         [ false, false, false, false, false, false, false ] // Minor Regions, PCS, VCS, LJL, CBLOL, LLA, LCO
     ];
+
+    function isRegionShown(region: string): boolean {
+        if (region === 'LCK') return regionShown[1][1];
+        if (region === 'LPL') return regionShown[2][1];
+        if (region === 'LEC') return regionShown[3][1];
+        if (region === 'LCS') return regionShown[4][1];
+        return false;
+    }
     
     // If true, dropdown is open. Only one dropdown can be open at a time
     let regionDropdown = [ false, false, false, false, false, false ];    
@@ -82,7 +107,6 @@
         } else {
             regionShown[region][0] = false;
         }
-        
     }
 </script>
 
@@ -94,43 +118,32 @@
 <section class="mt-[60px] w-full overflow-y-scroll">
     <div class="w-full justify-center flex flex-row pl-[128px] pr-[248px]">
         <div class="w-[900px] flex flex-col h-auto relative pt-4">
-            <!-- <div class="w-[80px] absolute -left-[128px] flex rounded-full top-4  py-1
-                bg-black dark:bg-gray-700
-                text-blue-50">
-                <h2 class="m-auto">Today</h2>
-            </div> -->
-            <ScheduleGame {showSpoilers} team0="Dplus Kia" team0Score="0W-1L" team1="Hanwha Life Esports" team1Score="1W-0L" gameScore={[1,3]} 
-                region="LCK" season="Spring" stage="Playoffs" bestOf={5} past={true}
-                team0img="https://static.wikia.nocookie.net/lolesports_gamepedia_en/images/7/73/Dplus_KIAlogo_square.png"
-                team0imgInvert = {true}
-                team1img="https://am-a.akamaihd.net/image?resize=72:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1631819564399_hle-2021-worlds.png"
-            />
             <ScheduleNewDay date={new Date()}/>
             <LiveGame showLive={true}/>
             <LiveGame />
-            <ScheduleGame team0="Thunder Talk Gaming" team1="Edward Gaming Hycan" region="LPL" season="Spring" bestOf={3}/>
-            <ScheduleGame team0="T1" team1="KT Rolster" region="LCK" season="Spring" stage="Playoffs" bestOf={5} 
-                team0img="https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1631819523085_t1-2021-worlds.png"
-                team1img="https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2Fkt_darkbackground.png"
-            />
-            <ScheduleGame region="EMEA Masters" season="Spring" bestOf={1}/>
-            <ScheduleNewDay date={tomorrow}/>
-            <ScheduleGame region="LCK" season="Spring" stage="Regional Qualifier" bestOf={1}/>
-            <ScheduleGame region="LPL" season="Spring" stage="" bestOf={1}/>
-            <ScheduleGame />
+            <!-- Add future matches as scheduleGame's -->
+            <!-- {#each shownFutureMatches as match, i}
+                {#if i == 0 && new Date(match.matchDate).getDate() != new Date().getDate()}
+                    <ScheduleNewDay date={new Date(match.matchDate)}/>
+                {/if}
+                {#if i != 0 && new Date(match.matchDate).getDate() != new Date(shownFutureMatches[i-1].matchDate).getDate()}
+                    <ScheduleNewDay date={new Date(match.matchDate)}/>
+                {/if}
+                <ScheduleGame matchDate={match.matchDate} team1={match.team1} team1Score={match.team1Score} team2={match.team2} team2Score={match.team2Score} region={match.region} season={match.season} stage={match.stage} bestOf={match.bestOf} {showSpoilers} past={false}/> 
+            {/each} -->
         </div>
         <div class="select-none">
             <div class="pl-12 absolute top-[10vh] flex flex-col gap-6">
                 <div class="flex flex-col gap-6">
                     <button on:click={() => {showFollowing = !showFollowing; showFollowingLeft = true}} class="flex flex-row justify-between w-[200px]">
                         <h2>Show Following</h2>
-                        <div class="{ showFollowing ? "bg-highlight" : "bg-gray-100 dark:bg-gray-700"} rounded-full w-12 flex transition ease-in-out duration-300">
+                        <div class="{ showFollowing ? "bg-highlight" : "bg-gray-100 dark:bg-steel-700"} rounded-full w-12 flex transition ease-in-out duration-300">
                             <div class="bg-white rounded-full w-5 h-5 m-[2px] transition ease-in-out duration-300 {showFollowing ? "animate-right" : showFollowingLeft ? "animate-left" : ""}"/>
                         </div>
                     </button>
                     <button on:click={() => {showSpoilers = !showSpoilers; showSpoilersLeft = true}} class="flex flex-row justify-between w-[200px]">
                         <h2>Show Spoilers</h2>
-                        <div class="{ showSpoilers ? "bg-highlight" : "bg-gray-100 dark:bg-gray-700"} rounded-full w-12 flex transition ease-in-out duration-300">
+                        <div class="{ showSpoilers ? "bg-highlight" : "bg-gray-100 dark:bg-steel-700"} rounded-full w-12 flex transition ease-in-out duration-300">
                             <div class="bg-white rounded-full w-5 h-5 m-[2px] transition ease-in-out duration-300 {showSpoilers ? "animate-right" : showSpoilersLeft ? "animate-left" : ""}"/>
                         </div>
                     </button>
@@ -138,9 +151,9 @@
                 <div class="flex flex-col gap-6">
                     <button
                         on:click = {() => {regionShown[0][0] = !regionShown[0][0];}} 
-                        class="flex flex-row justify-between bg-gray-50 dark:bg-gray-800 border-2  shadow-sm  rounded-full p-[10px] px-4
-                        hover:bg-gray-100 dark:hover:bg-gray-700
-                        {regionShown[0][0] ? "border-highlight" : "border-gray-100 dark:border-gray-700"}"
+                        class="flex flex-row justify-between bg-gray-50 dark:bg-steel-800 border-2  shadow-sm  rounded-full p-[10px] px-4
+                        hover:bg-gray-100 dark:hover:bg-steel-700
+                        {regionShown[0][0] ? "border-highlight" : "border-gray-100 dark:border-steel-700"}"
                     >
                         <h2 class="m-auto text-sm">International</h2>
                     </button>
@@ -179,3 +192,9 @@
         }
     }
 </style>
+
+<!-- <div class="w-[80px] absolute -left-[128px] flex rounded-full top-4  py-1
+    bg-black dark:bg-gray-700
+    text-blue-50">
+    <h2 class="m-auto">Today</h2>
+</div> -->

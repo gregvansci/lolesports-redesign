@@ -11,8 +11,8 @@
   </script>
 
 <div class="
-	w-full h-screen relative
-	bg-white dark:bg-gray-900
+	w-full h-screen relative selection:bg-highlight selection:text-blue-50
+	bg-white dark:bg-steel-900
 	text-blue-gray-500 dark:text-blue-50
 	transition ease-in-out duration-300"
 >

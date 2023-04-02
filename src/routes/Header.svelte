@@ -43,8 +43,8 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <header class="
 	h-[60px] w-full border-b-[1px] shadow-sm dark:shadow-md select-none top-0 z-30 fixed
-	bg-white dark:bg-gray-900
-	border-gray-200 dark:border-gray-800
+	bg-white dark:bg-steel-900
+	border-gray-200 dark:border-steel-800
 	text-blue-gray-500 dark:text-blue-50
 	transition ease-in-out duration-300"
 >
@@ -65,8 +65,8 @@
 			<div class="relative flex m-auto">
 				<div class="
 					m-auto px-2 py-1 mr-2 rounded-full flex flex-row cursor-pointer shadow-sm group
-					bg-gray-50 dark:bg-gray-800
-					hover:bg-gray-100 dark:hover:bg-gray-700
+					bg-gray-50 dark:bg-steel-800
+					hover:bg-gray-100 dark:hover:bg-steel-700
 					transition ease-in-out duration-300"
 					on:click={() => {showGameDropdown = !showGameDropdown}}
 				>
@@ -75,33 +75,33 @@
 						alt="LoL Esports"
 						class="h-[20px] desktop-lg:h-[25px] m-auto pl-2 {darkModeValue ? "logo-filter-dark" : "logo-filter"}"
 					/>
-					<img src={expandArrow} alt="Expand" class="h-[20px] m-auto pointer-events-none 
-						{darkModeValue ? "svg-filter-dark" : "svg-filter"}"
-					/>
+					<div class="{darkModeValue ? "svg-filter-dark" : "svg-filter"}">
+						<img src={expandArrow} alt="Expand" class="h-[20px] m-auto pointer-events-none"/>
+					</div>
 				</div>
 				<div class="
 					absolute shadow-md py-2  left-0 border-[1px] rounded-lg
 					top-[32px] desktop-lg:top-[36px] w-[124px] desktop-lg:w-[144px]
-					border-gray-50 dark:border-gray-800
-					bg-white dark:bg-gray-900
+					border-gray-50 dark:border-steel-800
+					bg-white dark:bg-steel-900
 					transition ease-in-out duration-300
 					{showGameDropdown ? "flex flex-col" : "hidden"}"
 				>	
-					<button class="w-full hover:bg-gray-50 dark:hover:bg-gray-800">
+					<button class="w-full hover:bg-gray-50 dark:hover:bg-steel-800">
 						<img src={lolLogo} alt="LoL" class="h-[45px] desktop-lg:h-[50px] px m-auto"/>
 					</button>
-					<button class="w-full hover:bg-gray-50 dark:hover:bg-gray-800">
+					<button class="w-full hover:bg-gray-50 dark:hover:bg-steel-800">
 						<img src={tftLogo} alt="TFT" class="h-[45px] desktop-lg:h-[50px] m-auto 
 							{darkModeValue ? "logo-filter-dark" : "logo-filter"}"
 						/>
 					</button>
-					<button class="w-full hover:bg-gray-50 dark:hover:bg-gray-800">
+					<button class="w-full hover:bg-gray-50 dark:hover:bg-steel-800">
 						<img src={lorLogo} alt="LoR" class="h-[45px] desktop-lg:h-[50px] m-auto"/>
 					</button>
-					<button class="w-full hover:bg-gray-50 dark:hover:bg-gray-800">
+					<button class="w-full hover:bg-gray-50 dark:hover:bg-steel-800">
 						<img src={valLogo} alt="VAL" class="h-[45px] desktop-lg:h-[50px] m-auto"/>
 					</button>
-					<button class="w-full hover:bg-gray-50 dark:hover:bg-gray-800">
+					<button class="w-full hover:bg-gray-50 dark:hover:bg-steel-800">
 						<img src={wrLogo} alt="WR" class="h-[45px] desktop-lg:h-[50px] m-auto"/>
 					</button>
 				</div>
@@ -131,7 +131,7 @@
 			</nav>
 			<div class=
 				"h-[24px] m-auto border-l-[2px] ml-2 hidden tablet:block
-				border-gray-100 dark:border-gray-700
+				border-gray-100 dark:border-steel-700
 				transition ease-in-out duration-300"
 			/>
 			<div class="flex laptop:hidden">
@@ -149,7 +149,7 @@
 						on:pointerleave={() => {darkModeTooltip = false}} 
 						on:click={toggleDarkMode} 
 						class="m-auto p-[6px] rounded-md relative inline-block
-						hover:bg-gray-50 dark:hover:bg-gray-800
+						hover:bg-gray-50 dark:hover:bg-steel-800
 						{darkModeValue ? "svg-filter-dark" : "svg-filter"}"
 					>
 						<img
@@ -158,17 +158,17 @@
 							class="h-[20px] desktop:h-[24px] desktop-lg:h-[28px] m-auto cursor-pointer
 							"
 						/>
-						<div class="absolute bg-gray-800 dark:bg-gray-50 top-[120%] shadow-md rounded-md z-50 left-[50%] -ml-[60px] py-1 m-auto w-[120px] truncate {darkModeTooltip ? "inline" : "hidden"}">
+						<div class="absolute bg-steel-800 dark:bg-gray-50 top-[120%] shadow-md rounded-md z-50 left-[50%] -ml-[60px] py-1 m-auto w-[120px] truncate {darkModeTooltip ? "inline" : "hidden"}">
 							<h2 class="w-full m-auto text-blue-50 dark:text-blue-gray-500">{darkModeValue ? "Light Mode" : "Dark Mode"}</h2>
 						</div>
-						<div class="absolute top-[110%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-800 dark:bg-gray-50 transform rotate-45 {darkModeTooltip ? "inline" : "hidden"}"></div>
+						<div class="absolute top-[110%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-steel-800 dark:bg-gray-50 transform rotate-45 {darkModeTooltip ? "inline" : "hidden"}"></div>
 
 					</button>
 					<button 
 						on:pointerenter={() => {settingsTooltip = true}} 
 						on:pointerleave={() => {settingsTooltip = false}} 
 						class="m-auto p-[6px] rounded-md relative
-						hover:bg-gray-50 dark:hover:bg-gray-800
+						hover:bg-gray-50 dark:hover:bg-steel-800
 						{darkModeValue ? "svg-filter-dark" : "svg-filter"}"
 					>
 						<img
@@ -176,17 +176,17 @@
 							alt="Settings"
 							class="h-[20px] desktop:h-[24px] desktop-lg:h-[28px] m-auto cursor-pointer"
 						/>
-						<div class="absolute bg-gray-800 dark:bg-gray-50 top-[120%] shadow-md rounded-md z-50 left-[50%] -ml-[60px] py-1 m-auto w-[120px] truncate {settingsTooltip ? "inline" : "hidden"}">
+						<div class="absolute bg-steel-800 dark:bg-gray-50 top-[120%] shadow-md rounded-md z-50 left-[50%] -ml-[60px] py-1 m-auto w-[120px] truncate {settingsTooltip ? "inline" : "hidden"}">
 							<h2 class="w-full m-auto text-blue-50 dark:text-blue-gray-500">Settings</h2>
 						</div>
-						<div class="absolute top-[110%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-800 dark:bg-gray-50 transform rotate-45 {settingsTooltip ? "inline" : "hidden"}"></div>
+						<div class="absolute top-[110%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-steel-800 dark:bg-gray-50 transform rotate-45 {settingsTooltip ? "inline" : "hidden"}"></div>
 
 					</button>
 					<button 
 						on:pointerenter={() => {loginTooltip = true}} 
 						on:pointerleave={() => {loginTooltip = false}} 
 						class="m-auto p-[6px] rounded-md relative
-						hover:bg-gray-50 dark:hover:bg-gray-800
+						hover:bg-gray-50 dark:hover:bg-steel-800
 						{darkModeValue ? "svg-filter-dark" : "svg-filter"}"
 					>
 						<img
@@ -194,10 +194,10 @@
 							alt="Login"
 							class="h-[20px] desktop:h-[24px] desktop-lg:h-[28px] m-auto cursor-pointer"
 						/>
-						<div class="absolute bg-gray-800 dark:bg-gray-50 top-[120%] shadow-md rounded-md z-50 right-0 py-1 m-auto w-[190px] truncate {loginTooltip ? "inline" : "hidden"}">
+						<div class="absolute bg-steel-800 dark:bg-gray-50 top-[120%] shadow-md rounded-md z-50 right-0 py-1 m-auto w-[190px] truncate {loginTooltip ? "inline" : "hidden"}">
 							<h2 class="w-full m-auto text-blue-50 dark:text-blue-gray-500">Log In To Save Follows</h2>
 						</div>
-						<div class="absolute top-[110%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-800 dark:bg-gray-50 transform rotate-45 {loginTooltip ? "inline" : "hidden"}"></div>
+						<div class="absolute top-[110%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-steel-800 dark:bg-gray-50 transform rotate-45 {loginTooltip ? "inline" : "hidden"}"></div>
 					</button>
 				</div>
 			</div>

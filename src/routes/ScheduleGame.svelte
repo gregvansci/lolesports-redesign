@@ -1,75 +1,74 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
     import { darkMode } from '../store';
 
     import defaultTeam from '$lib/images/lolesports-icon-black.png';
-    import defaultTeamDark from '$lib/images/lolesports-icon-white.png';
-
-    let date = new Date();
-    export let team0 = "Left Team";
-    export let team0img = "";
-    export let team0imgInvert = team0img ? false : true;
-    export let team0Score = "0-0";
-    export let team1 = "Right Team";
-    export let team1img = "";
-    export let team1imgInvert = team1img ? false : true;
-    export let team1Score: string | undefined = "0-0";
-    export let gameScore: Array<Number> = [0, 0];
+    export let matchDate = "";
+    export let team1 = "Team 1";
+    export let team1Score = 0;
+    let team1History = "0-0";
+    export let team2 = "Team 2";
+    export let team2Score = 0;
+    let team2History = "0-0";
     export let region = "";
-    export let season = ""
+    export let season = "";
     export let stage = "";
     export let bestOf = 1;
+
+    export let team1Invert = true;
+    export let team2Invert = true;
+    
     export let showSpoilers = false;
+    export let past = false;
+
+    let team1img = "";
+    let team2img = "";
+
     let firstTo = bestOf / 2 + 0.5;
-    export let past: boolean | undefined = false;
-
-
-    // things to have: date, time, team1, team2, team images, region, best of, ? split info (LPL Spring (Playoffs))
-    // past games have a max score equal to best of number
-    // live games have date after now but less than max games won
-    // all other are future games
-
-    // when adding a game, unless there is a game above with the same date, add a space with the date
-    // live games are taller
-    // today markers follows top of live games or top of future games
-
     let darkModeValue: boolean;
+
     darkMode.subscribe(value => {
         darkModeValue = value;
     });
 
+    // get date hour, if it's past 12, subtract 12 and add PM, else add AM
+    // 
+    let date = new Date(matchDate);
+    let hour = date.getHours();
+    let convertedHour = hour > 12 ? hour - 12 : hour;
+    let AM = hour > 12 ? "PM" : "AM";
+
 </script>
 
-<div class="h-[85px] w-full flex flex-row justify-between border-y-[1px] border-gray-100 dark:border-gray-800 transition ease-in-out duration-300">
-    <div class="my-auto ml-4 w-[80px] text-blue-gray-400 dark:text-blue-200 font-bold text-3xl flex flex-row transition ease-in-out duration-300">1<span class="text-sm pt-[3px] pl-[2px]">AM</span></div>
+<div class="h-[85px] w-full flex flex-row justify-between border-y-[1px] border-gray-100 dark:border-steel-800 transition ease-in-out duration-300">
+    <div class="my-auto ml-4 w-[80px] text-blue-gray-400 dark:text-blue-200 font-bold text-3xl flex flex-row transition ease-in-out duration-300">{convertedHour}<span class="text-sm pt-[3px] pl-[2px]">{AM}</span></div>
     <div class="flex m-auto text-blue-gray-500 dark:text-blue-50 transition ease-in-out duration-300">
         <div class="w-[325px] flex justify-end">
-            <div class="flex flex-row gap-2 justify-end hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg px-4 py-[6px] cursor-pointer">
+            <div class="flex flex-row gap-2 justify-end hover:bg-gray-50 dark:hover:bg-steel-800 rounded-lg px-4 py-[6px] cursor-pointer">
                 <div class="my-auto">
-                    <h2 class="font-semibold text-xl">{team0}</h2>
-                    <h2 class="flex justify-end text-sm">{past && showSpoilers ? team0Score : ""}</h2>
+                    <h2 class="font-semibold text-xl">{team2}</h2>
+                    <h2 class="flex justify-end text-sm">{past && showSpoilers ? team2History : ""}</h2>
                 </div>
                 <div class="my-auto">
-                    <img class="w-[55px] {darkModeValue ? team0imgInvert ? "teamLogoInvert" : "" : ""} transition ease-in-out duration-300" src={team0img === "" ? defaultTeam : team0img} alt={team0}>
+                    <img class="w-[55px] {darkModeValue && team2Invert ? "teamLogoInvert" : ""} transition ease-in-out duration-300" src={team2img === "" ? defaultTeam : team2img} alt={team2}>
                 </div>
             </div>        
         </div>
         <div class="m-auto mx-2 text-lg font-medium w-[28px] flex">
             <div class="m-auto flex flex-row">
                 <span class="{past && showSpoilers ? 'hidden' : 'block'}">vs</span>
-                <span class="{past && showSpoilers ? gameScore[0] === firstTo ? 'block text-blue-gray-700 dark:text-blue-gray-100 transition ease-in-out duration-300' : 'block text-blue-gray-400 dark:text-blue-gray-300 transition ease-in-out duration-300' : 'hidden'}">{gameScore[0]}</span>
+                <span class="{past && showSpoilers ? team2Score === firstTo ? 'block text-blue-gray-700 dark:text-blue-gray-100 transition ease-in-out duration-300' : 'block text-blue-gray-400 dark:text-blue-gray-300 transition ease-in-out duration-300' : 'hidden'}">{team1Score}</span>
                 <span class="{past && showSpoilers ? 'block px-[1px]' : 'hidden'}">-</span>
-                <span class="{past && showSpoilers ? gameScore[1] === firstTo ? 'block text-blue-gray-700 dark:text-blue-gray-100 transition ease-in-out duration-300' : 'block text-blue-gray-400 dark:text-blue-gray-300 transition ease-in-out duration-300' : 'hidden'}">{gameScore[1]}</span>
+                <span class="{past && showSpoilers ? team1Score === firstTo ? 'block text-blue-gray-700 dark:text-blue-gray-100 transition ease-in-out duration-300' : 'block text-blue-gray-400 dark:text-blue-gray-300 transition ease-in-out duration-300' : 'hidden'}">{team2Score}</span>
             </div>
         </div>
         <div class="w-[325px] flex justify-start">
-            <div class="flex flex-row gap-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg px-4 cursor-pointer">
+            <div class="flex flex-row gap-2 hover:bg-gray-50 dark:hover:bg-steel-800 rounded-lg px-4 cursor-pointer">
                 <div class="my-auto">
-                    <img class="w-[55px] {darkModeValue ? team1imgInvert ? "teamLogoInvert" : "" : ""} transition ease-in-out duration-300" src={team1img === "" ? defaultTeam : team1img} alt={team1}>
+                    <img class="w-[55px] {darkModeValue ? team1Invert ? "teamLogoInvert" : "" : ""} transition ease-in-out duration-300" src={team1img === "" ? defaultTeam : team1img} alt={team1}>
                 </div>
                 <div class="my-auto">
                     <h2 class="font-semibold text-xl">{team1}</h2>
-                    <h2 class="flex justify-start text-sm">{past && showSpoilers ? team1Score : ""}</h2>
+                    <h2 class="flex justify-start text-sm">{past && showSpoilers ? team1History : ""}</h2>
                 </div>
             </div>
         </div>
