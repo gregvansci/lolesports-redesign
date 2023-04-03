@@ -32,7 +32,7 @@
 </svelte:head>
 
 <div class="{showHeaderValue ? "pt-[60px]" : "pt-0"} w-full h-full flex text-blue-50">
-    <div class="flex flex-row w-full h-full">
+    <div class="flex flex-col laptop:flex-row w-full h-full">
         <div class="flex flex-col h-full w-full select-none">
             <div class="h-full w-full bg-black">
                 <iframe
@@ -89,16 +89,18 @@
                 </div>
             </div>
         </div>
-        <div class="h-full w-[400px] flex-col {showSidebar ? "flex" : "hidden"}">
-            <div class="h-16 w-full flex flex-row bg-[#18181B]">
+        <div class="h-full w-full laptop:w-[400px] flex-row laptop:flex-col {showSidebar ? "flex" : "hidden"}">
+            <div class="h-full laptop:h-16 w-2/3 laptop:w-full flex flex-row bg-[#18181B]">
                 <input class="h-6 rounded-md m-auto px-2 bg-gray-400 align-middle focus:outline-none" placeholder="Add Live View Channel">
             </div>
-            <iframe 
-                title="Target iframe page"
-                src="https://www.twitch.tv/embed/{streamId}/chat?darkpopout&parent=streamernews.example.com"
-                height="100%"
-                width="100%">
-            </iframe>
+            <div class="h-full w-1/3 laptop:w-full">
+                <iframe
+                    title="Target iframe page"
+                    src="https://www.twitch.tv/embed/{streamId}/chat?darkpopout&parent=streamernews.example.com"
+                    height="100%"
+                    width="100%">
+                </iframe>
+            </div>
         </div>
     </div>
 </div>
