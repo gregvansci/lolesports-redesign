@@ -7,7 +7,9 @@ module.exports = {
       'sans': ['Segoe UI', 'Inter', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
       'serif': ['Times New Roman', 'Times', 'serif'],
       'title': ['Work Sans', 'Roboto', 'sans-serif'],
-      'body': ['Segoe UI', 'Roboto', 'sans-serif']
+      'body': ['Segoe UI', 'Roboto', 'sans-serif'],
+      'msi-title': ['Wallpoet', 'Roboto', 'sans-serif'],
+      'msi-body': ['DM Mono', 'Roboto', 'sans-serif']
     },
     colors: {
       transparent: 'transparent',
