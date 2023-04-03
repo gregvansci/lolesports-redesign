@@ -48,7 +48,7 @@
     </div>
     <div class="flex m-auto text-blue-gray-500 dark:text-blue-50 transition ease-in-out duration-300">
         <div class="w-[325px] flex justify-end">
-            <div class="flex flex-row gap-2 justify-end hover:bg-gray-200 dark:hover:bg-steel-500 rounded-lg px-4 py-[6px] cursor-pointer">
+            <div class="flex flex-row gap-2 justify-end hover:bg-gray-200 dark:hover:bg-steel-600 rounded-lg px-4 py-[6px] cursor-pointer">
                 <div class="my-auto">
                     <h2 class="font-semibold text-xl">{team0}</h2>
                     <h2 class="flex justify-end text-sm">{past ? team0Score : ""}</h2>
@@ -67,7 +67,7 @@
             </div>
         </div>
         <div class="w-[325px] flex justify-start">
-            <div class="flex flex-row gap-2 hover:bg-gray-200 dark:hover:bg-steel-500 rounded-lg px-4 cursor-pointer">
+            <div class="flex flex-row gap-2 hover:bg-gray-200 dark:hover:bg-steel-600 rounded-lg px-4 cursor-pointer">
                 <div class="my-auto">
                     <img class="w-[55px] {darkModeValue ? team1imgInvert ? "teamLogoInvert" : "" : ""} transition ease-in-out duration-300" src={team1img === "" ? defaultTeam : team1img} alt={team1}>
                 </div>

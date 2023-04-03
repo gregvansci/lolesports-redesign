@@ -32,7 +32,7 @@
 </svelte:head>
 
 <div class="{showHeaderValue ? "pt-[60px]" : "pt-0"} w-full h-full flex text-blue-50">
-    <div class="flex flex-row w-full h-full">
+    <div class="flex flex-col laptop:flex-row w-full h-full">
         <div class="flex flex-col h-full w-full select-none">
             <div class="h-full w-full bg-black">
                 <iframe
@@ -81,7 +81,7 @@
                         on:click={() => {showSidebar = !showSidebar}} 
                         class="relative svg-filter-dark hover:bg-gray-800 m-auto p-[5px] rounded-md">
                         <img src={sidebar} class="h-6 m-auto cursor-pointer" alt="Show Chat" />
-                        <div class="absolute bg-gray-50 bottom-[130%] rounded-md z-50 {showSidebar ? "left-[50%] -ml-[60px]" : "right-0"}  w-[120px] py-1 {sidebarTooltip ? "inline" : "hidden"}">
+                        <div class="absolute bg-gray-50 bottom-[130%] rounded-md z-50 {showSidebar ? "right-0 laptop:right-auto laptop:left-[50%] laptop:-ml-[60px]" : "right-0"}  w-[120px] py-1 {sidebarTooltip ? "inline" : "hidden"}">
 							<h2 class="text-center text-blue-gray-500">{showSidebar ? "Hide Sidebar" : "Show Sidebar"}</h2>
 						</div>
 						<div class="absolute bottom-[120%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-50 transform rotate-45 {sidebarTooltip ? "inline" : "hidden"}"></div>
@@ -89,16 +89,20 @@
                 </div>
             </div>
         </div>
-        <div class="h-full w-[400px] flex-col {showSidebar ? "flex" : "hidden"}">
-            <div class="h-16 w-full flex flex-row bg-[#18181B]">
+        <div class="laptop:hidden border-b-[1px] border-[#35353B]" />
+        <div class="h-full w-full laptop:w-[400px] flex-row laptop:flex-col {showSidebar ? "flex" : "hidden"}">
+            <div class="h-full laptop:h-16 w-2/3 laptop:w-full flex flex-row bg-[#18181B]">
                 <input class="h-6 rounded-md m-auto px-2 bg-gray-400 align-middle focus:outline-none" placeholder="Add Live View Channel">
             </div>
-            <iframe 
-                title="Target iframe page"
-                src="https://www.twitch.tv/embed/{streamId}/chat?darkpopout&parent=streamernews.example.com"
-                height="100%"
-                width="100%">
-            </iframe>
+            <div class="laptop:hidden h-full border-r-[1px] border-[#35353B]" />
+            <div class="h-full w-1/3 laptop:w-full">
+                <iframe
+                    title="Target iframe page"
+                    src="https://www.twitch.tv/embed/{streamId}/chat?darkpopout&parent=streamernews.example.com"
+                    height="100%"
+                    width="100%">
+                </iframe>
+            </div>
         </div>
     </div>
 </div>

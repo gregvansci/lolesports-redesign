@@ -49,12 +49,13 @@
 	transition ease-in-out duration-300"
 >
 	<div class="max-w-[1600px] flex flex-row justify-between h-full w-full m-auto px-[25px]">
-		<img
-			src={hamburger}
-			alt="Settings"
-			class="h-[40px] my-auto cursor-pointer px-2 py-[6px] flex tablet:hidden 
-			{darkModeValue ? "svg-filter-dark" : "svg-filter"}"
-		/>
+		<div class="tablet:hidden {darkModeValue ? "svg-filter-dark" : "svg-filter"} flex">
+			<img
+				src={hamburger}
+				alt="Settings"
+				class="h-[40px] my-auto cursor-pointer px-2 py-[6px]"
+			/>
+		</div>
 		<div class="flex flex-row gap-4 h-full">
 			<img 
 				src={darkModeValue ? riotLogoDark : riotLogo} 
@@ -134,12 +135,11 @@
 				border-gray-100 dark:border-steel-700
 				transition ease-in-out duration-300"
 			/>
-			<div class="flex laptop:hidden">
+			<div class="flex laptop:hidden {darkModeValue ? "svg-filter-dark" : "svg-filter"}">
 				<img
 					src={settings}
 					alt="Settings"
-					class="h-[40px] tablet:h-[30px] m-auto cursor-pointer px-2 py-[6px] 
-					{darkModeValue ? "svg-filter-dark" : "svg-filter"}"
+					class="h-[40px] tablet:h-[35px] m-auto cursor-pointer px-2 py-[6px]"
 				/>
 			</div>
 			<div class="hidden laptop:flex">
@@ -164,7 +164,8 @@
 						<div class="absolute top-[110%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-steel-800 dark:bg-gray-50 transform rotate-45 {darkModeTooltip ? "inline" : "hidden"}"></div>
 
 					</button>
-					<button 
+					<a 
+						href="/settings"
 						on:pointerenter={() => {settingsTooltip = true}} 
 						on:pointerleave={() => {settingsTooltip = false}} 
 						class="m-auto p-[6px] rounded-md relative
@@ -177,11 +178,11 @@
 							class="h-[20px] desktop:h-[24px] desktop-lg:h-[28px] m-auto cursor-pointer"
 						/>
 						<div class="absolute bg-steel-800 dark:bg-gray-50 top-[120%] shadow-md rounded-md z-50 left-[50%] -ml-[60px] py-1 m-auto w-[120px] truncate {settingsTooltip ? "inline" : "hidden"}">
-							<h2 class="w-full m-auto text-blue-50 dark:text-blue-gray-500">Settings</h2>
+							<h2 class="w-full text-center text-blue-50 dark:text-blue-gray-500">Settings</h2>
 						</div>
 						<div class="absolute top-[110%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-steel-800 dark:bg-gray-50 transform rotate-45 {settingsTooltip ? "inline" : "hidden"}"></div>
 
-					</button>
+					</a>
 					<button 
 						on:pointerenter={() => {loginTooltip = true}} 
 						on:pointerleave={() => {loginTooltip = false}} 
