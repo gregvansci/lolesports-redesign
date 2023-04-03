@@ -17,6 +17,8 @@
 	import valLogo from '$lib/images/val-logo.png';
 	import wrLogo from '$lib/images/wr-logo.png';
 
+	export let specialHeader = false;
+
 	export let showGameDropdown = false;
 	let darkModeValue: boolean;
 
@@ -42,14 +44,15 @@
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <header class="
-	h-[60px] w-full border-b-[1px] shadow-sm dark:shadow-md select-none top-0 z-30 fixed
-	bg-white dark:bg-steel-900
-	border-gray-200 dark:border-steel-800
-	text-blue-gray-500 dark:text-blue-50
-	transition ease-in-out duration-300"
+	h-[60px] w-full select-none top-0 z-30 fixed transition ease-in-out duration-300
+	{specialHeader 
+	? "bg-transparent text-msi-text border-black border-b-[2px] backdrop-blur-sm backdrop-filter"
+	:"border-b-[1px] bg-white dark:bg-steel-900 border-gray-200 dark:border-steel-800 text-blue-gray-500 dark:text-blue-50 shadow-sm dark:shadow-md"}"
 >
 	<div class="max-w-[1600px] flex flex-row justify-between h-full w-full m-auto px-[25px]">
-		<div class="tablet:hidden {darkModeValue ? "svg-filter-dark" : "svg-filter"} flex">
+		<div class="tablet:hidden flex
+			{specialHeader ? "svg-filter-special" : darkModeValue ? "svg-filter-dark" : "svg-filter"}"
+		>
 			<img
 				src={hamburger}
 				alt="Settings"
@@ -58,25 +61,25 @@
 		</div>
 		<div class="flex flex-row gap-4 h-full">
 			<img 
-				src={darkModeValue ? riotLogoDark : riotLogo} 
+				src={specialHeader ? riotLogo : darkModeValue ? riotLogoDark : riotLogo} 
 				alt="Riot Games" 
 				class="h-[20px] desktop-lg:h-[25px] m-auto pl-2"
 			/>
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<div class="relative flex m-auto">
 				<div class="
-					m-auto px-2 py-1 mr-2 rounded-full flex flex-row cursor-pointer shadow-sm group
-					bg-gray-50 dark:bg-steel-800
-					hover:bg-gray-100 dark:hover:bg-steel-700
-					transition ease-in-out duration-300"
+					m-auto px-2 py-1 mr-2 rounded-full flex flex-row cursor-pointer border-[2px] group
+					{specialHeader ? "border-msi-text hover:bg-msi-text svg-filter-special" : 
+					"bg-gray-50 dark:bg-steel-800 hover:bg-gray-100 dark:hover:bg-steel-700 shadow-sm border-transparent"}				
+					"
 					on:click={() => {showGameDropdown = !showGameDropdown}}
 				>
 					<img
 						src={lolesportsLogo}
 						alt="LoL Esports"
-						class="h-[20px] desktop-lg:h-[25px] m-auto pl-2 {darkModeValue ? "logo-filter-dark" : "logo-filter"}"
+						class="h-[20px] desktop-lg:h-[25px] m-auto pl-2 {specialHeader ? "" : darkModeValue ? "logo-filter-dark" : "logo-filter"}"
 					/>
-					<div class="{darkModeValue ? "svg-filter-dark" : "svg-filter"}">
+					<div class="flex {specialHeader ? "svg-filter-special" : darkModeValue ? "svg-filter-dark" : "svg-filter"}">
 						<img src={expandArrow} alt="Expand" class="h-[20px] m-auto pointer-events-none"/>
 					</div>
 				</div>
@@ -114,28 +117,30 @@
 					text-sm laptop:text-base desktop:text-lg desktop-lg:text-xl"
 				>
 					<li class="group cursor-pointer">
-						<a class="group-hover:text-highlight" href="/">Live</a>
+						<a class="{specialHeader ? "group-hover:text-white" : "group-hover:text-highlight"}" href="/">Live</a>
 					</li>
 					<li class="group cursor-pointer">
-						<a class="group-hover:text-highlight" href="/schedule">Schedule</a>
+						<a class="{specialHeader ? "group-hover:text-white" : "group-hover:text-highlight"}" href="/schedule">Schedule</a>
 					</li>
 					<li class="group cursor-pointer">
-						<h2 class="group-hover:text-highlight">Regions</h2>
+						<h2 class="{specialHeader ? "group-hover:text-white" : "group-hover:text-highlight"}">Regions</h2>
 					</li>
 					<li class="group cursor-pointer">
-						<h2 class="group-hover:text-highlight">Following</h2>
+						<h2 class="{specialHeader ? "group-hover:text-white" : "group-hover:text-highlight"}">Following</h2>
 					</li>
 					<li class="group cursor-pointer">
-						<h2 class="group-hover:text-highlight">International</h2>
+						<a href="/msi" class="{specialHeader ? "group-hover:text-white" : "group-hover:text-highlight"}">International</a>
 					</li>
 				</ul>
 			</nav>
 			<div class=
 				"h-[24px] m-auto border-l-[2px] ml-2 hidden tablet:block
-				border-gray-100 dark:border-steel-700
+				{specialHeader ? "border-msi-text" : "border-gray-100 dark:border-steel-700"}
 				transition ease-in-out duration-300"
 			/>
-			<div class="flex laptop:hidden {darkModeValue ? "svg-filter-dark" : "svg-filter"}">
+			<div class="flex laptop:hidden
+				{specialHeader ? "svg-filter-special" : darkModeValue ? "svg-filter-dark" : "svg-filter"}"
+			>
 				<img
 					src={settings}
 					alt="Settings"
@@ -149,8 +154,8 @@
 						on:pointerleave={() => {darkModeTooltip = false}} 
 						on:click={toggleDarkMode} 
 						class="m-auto p-[6px] rounded-md relative inline-block
-						hover:bg-gray-50 dark:hover:bg-steel-800
-						{darkModeValue ? "svg-filter-dark" : "svg-filter"}"
+						{specialHeader ? "hover:bg-msi-text" : "hover:bg-gray-50 dark:hover:bg-steel-800"}
+						{specialHeader ? "svg-filter-special" : darkModeValue ? "svg-filter-dark" : "svg-filter"}"
 					>
 						<img
 							src={darkModeValue ? lightModeIcon : darkModeIcon}
@@ -169,8 +174,8 @@
 						on:pointerenter={() => {settingsTooltip = true}} 
 						on:pointerleave={() => {settingsTooltip = false}} 
 						class="m-auto p-[6px] rounded-md relative
-						hover:bg-gray-50 dark:hover:bg-steel-800
-						{darkModeValue ? "svg-filter-dark" : "svg-filter"}"
+						{specialHeader ? "hover:bg-msi-text" : "hover:bg-gray-50 dark:hover:bg-steel-800"}
+						{specialHeader ? "svg-filter-special" : darkModeValue ? "svg-filter-dark" : "svg-filter"}"
 					>
 						<img
 							src={settings}
@@ -187,8 +192,8 @@
 						on:pointerenter={() => {loginTooltip = true}} 
 						on:pointerleave={() => {loginTooltip = false}} 
 						class="m-auto p-[6px] rounded-md relative
-						hover:bg-gray-50 dark:hover:bg-steel-800
-						{darkModeValue ? "svg-filter-dark" : "svg-filter"}"
+						{specialHeader ? "hover:bg-msi-text" : "hover:bg-gray-50 dark:hover:bg-steel-800"}
+						{specialHeader ? "svg-filter-special" : darkModeValue ? "svg-filter-dark" : "svg-filter"}"
 					>
 						<img
 							src={login}
@@ -226,8 +231,16 @@
 	.svg-filter-dark:hover img {
 		filter: invert(58%) sepia(92%) saturate(3440%) hue-rotate(145deg) brightness(106%) contrast(101%);
 	}
+	.svg-filter-special img {
+		/* filter the image to black */
+		filter: invert(0%) sepia(50%) saturate(3816%) hue-rotate(55deg) brightness(84%) contrast(87%);
+	}
+	.svg-filter-special:hover img {
+		/* filter the image to white */
+		filter: invert(100%) sepia(21%) saturate(2%) hue-rotate(125deg) brightness(105%) contrast(101%);
+	}
 	img {
 		-webkit-user-drag: none;
 	}
-
+	
 </style>
