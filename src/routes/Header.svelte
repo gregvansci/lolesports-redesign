@@ -49,12 +49,13 @@
 	transition ease-in-out duration-300"
 >
 	<div class="max-w-[1600px] flex flex-row justify-between h-full w-full m-auto px-[25px]">
-		<img
-			src={hamburger}
-			alt="Settings"
-			class="h-[40px] my-auto cursor-pointer px-2 py-[6px] flex tablet:hidden 
-			{darkModeValue ? "svg-filter-dark" : "svg-filter"}"
-		/>
+		<div class="tablet:hidden {darkModeValue ? "svg-filter-dark" : "svg-filter"} flex">
+			<img
+				src={hamburger}
+				alt="Settings"
+				class="h-[40px] my-auto cursor-pointer px-2 py-[6px]"
+			/>
+		</div>
 		<div class="flex flex-row gap-4 h-full">
 			<img 
 				src={darkModeValue ? riotLogoDark : riotLogo} 
@@ -134,12 +135,11 @@
 				border-gray-100 dark:border-steel-700
 				transition ease-in-out duration-300"
 			/>
-			<div class="flex laptop:hidden">
+			<div class="flex laptop:hidden {darkModeValue ? "svg-filter-dark" : "svg-filter"}">
 				<img
 					src={settings}
 					alt="Settings"
-					class="h-[40px] tablet:h-[30px] m-auto cursor-pointer px-2 py-[6px] 
-					{darkModeValue ? "svg-filter-dark" : "svg-filter"}"
+					class="h-[40px] tablet:h-[35px] m-auto cursor-pointer px-2 py-[6px]"
 				/>
 			</div>
 			<div class="hidden laptop:flex">
