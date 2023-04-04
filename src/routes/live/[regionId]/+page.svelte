@@ -36,17 +36,33 @@
     function toggleLiveViewer() {
         if (showLiveViewer) {
             liveViewer = "";
+            if (chatShown == "Live Viewer") {
+                chatShown = "Broadcast";
+                chat = region;
+            }
         }
         showLiveViewer = !showLiveViewer;
     }
 
-    function submitLiveViewer() {
-        liveViewer = liveViewerValue;
+    function handleChatChange(event: Event) {
+        const selectedOption = (event.target as HTMLSelectElement).value;
+        if (selectedOption == "Broadcast") {
+            chatShown = "Broadcast";
+            chat = region;
+        } else if (selectedOption == "Live Viewer") {
+            chatShown = "Live Viewer";
+            chat = liveViewer;
+        } else if (selectedOption == "None") {
+            chatShown = "None";
+            chat = "";
+        }
     }
 
     export let data;
     const region = data.regionId;
-    console.log(region)
+
+    let chatShown = "Broadcast";
+    let chat = region;
 
     let useTwitch = true;
 
@@ -78,11 +94,11 @@
                         </select>
                     </div>
                     <div class="flex flex-row justify-between border-b-[1px] border-[#35353B] py-2">
-                        <h2>Chat Shown</h2>
-                        <select class="cursor-pointer bg-[#18181B] border-[1px] border-[#35353B] w-32 h-8 rounded-lg pl-2">
-                            <option>Broadcast</option>
-                            <option>Live Viewer</option>
-                            <option>None</option>
+                        <h2 class="my-auto">Chat Shown</h2>
+                        <select bind:value={chatShown} on:change={handleChatChange} class="cursor-pointer bg-[#18181B] border-[1px] border-[#35353B] w-32 h-8 rounded-lg pl-2">
+                            <option value="Broadcast">Broadcast</option>
+                            <option value="Live Viewer" class="{liveViewer == "" ? "hidden" : ""}">Live Viewer</option>
+                            <option value="None">None</option>
                         </select>
                     </div>
                 </div>
@@ -178,7 +194,7 @@
                     <div class="relative">
                         <input 
                             on:focus={() => isInputFocused = true} on:blur={() => isInputFocused = false} type="text" bind:value={liveViewerValue}  
-                            on:keydown={(event) => {if (event.key === "Enter") {submitLiveViewer();}}}
+                            on:keydown={(event) => {if (event.key === "Enter") {liveViewer = liveViewerValue}}}
                             class="px-2 bg-transparent text-sm outline-none h-8 rounded-sm border-2 border-white" 
                         />
                         <span 
@@ -202,12 +218,19 @@
             </div>
             <div class="tablet:hidden h-full border-r-[1px] border-[#35353B]" />
             <div class="{showLiveViewer ? "w-1/2" : "w-full"} h-full tablet:w-full">
+                {#if chatShown != "None"}
                 <iframe
+                    class="{chatShown == "None" ? "hidden" : "flex"}}"
                     title="Target iframe page"
-                    src="https://www.twitch.tv/embed/{region}/chat?darkpopout&parent=streamernews.example.com"
+                    src="https://www.twitch.tv/embed/{chat}/chat?darkpopout&parent=streamernews.example.com"
                     height="100%"
                     width="100%">
                 </iframe>
+                {:else}
+                <div class="h-full w-full bg-[#18181B] flex">
+                    <h2 class="m-auto font-semibold text-lg">No Chat Shown</h2>
+                </div>
+                {/if}
             </div>
         </div>
     </div>
