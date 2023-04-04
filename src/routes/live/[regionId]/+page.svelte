@@ -9,6 +9,7 @@
     import sidebar from '$lib/images/sidebar.svg';
     import plus from '$lib/images/plus.svg';
     import minus from '$lib/images/minus.svg';
+    import twitch from '$lib/images/twitch-icon.svg';
 
     let optionsTooltip = false;
     let liveViewerTooltip = false;
@@ -22,6 +23,7 @@
 
     let liveViewer = "";
     let liveViewerValue = "";
+    let isInputFocused = false;
 
     showHeader.subscribe((value) => {
 		showHeaderValue = value;
@@ -128,10 +130,15 @@
         <div class="h-full w-full tablet:w-[400px] flex-row tablet:flex-col {showSidebar ? "flex" : "hidden"}">
             <div class="{showLiveViewer ? "w-1/2 flex" : "hidden"} tablet:w-full h-full tablet:h-[233px] bg-[#18181B] tablet:border-b-[1px] tablet:border-[#35353B]">
                 <div class="{liveViewer == "" ? "flex flex-col" : "hidden"} gap-6 m-auto pb-4">
-                    <h2 class="font-semibold text-lg">Live Viewer</h2>
+                    <h2 class="font-semibold text-lg">
+                        <img src={twitch} class="h-4 inline-block" alt="Twitch" />
+                        Live Viewer
+                    </h2>
                     <div class="relative">
-                        <input class="bg-transparent outline-none h-8 rounded-sm border-2 border-white" type="text" on:submit={submitLiveViewer} bind:value={liveViewerValue} />
-                        <span class="absolute left-[2px] px-[6px] text-sm bottom-5 bg-[#18181B]">Twitch Channel</span>
+                        <input on:focus={() => isInputFocused = true} on:blur={() => isInputFocused = false} class="px-2 bg-transparent text-sm outline-none h-8 rounded-sm border-2 border-white" type="text" bind:value={liveViewerValue} 
+                            on:keydown={(event) => {if (event.key === "Enter") {submitLiveViewer();}}}
+                        />
+                        <span class="absolute {isInputFocused ? "-translate-y-4" : ""} left-[2px] px-[6px] text-sm bottom-5 bg-[#18181B]" style="transition: all 0.2s ease-in-out;">Twitch Channel</span>
                     </div>
                 </div>
                 <div class="h-full w-full {liveViewer != "" ? "flex flex-col" : "hidden"}">
@@ -168,5 +175,11 @@
 	img {
 		-webkit-user-drag: none;
 	}
+    .translate-y-1 {
+        transform: translateY(1rem);
+    }
+    .translate-y-2 {
+        transform: translateY(-2rem);
+    }
     
 </style>
