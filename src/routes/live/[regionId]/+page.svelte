@@ -1,20 +1,26 @@
 <script lang="ts">
     import { showHeader } from '../../../store';
+    import { onMount } from 'svelte';
+    import { page } from '$app/stores';
 
     import expandPage from '$lib/images/hide-header.svg';
     import shrinkPage from '$lib/images/show-header.svg';
     import options from '$lib/images/options.svg';
     import sidebar from '$lib/images/sidebar.svg';
-
-    let streamId = "challengersleague";
+    import plus from '$lib/images/plus.svg';
+    import minus from '$lib/images/minus.svg';
 
     let optionsTooltip = false;
+    let liveViewerTooltip = false;
     let expandTooltip = false;
     let sidebarTooltip = false;
 
     let showOptions = false;
+    let showLiveViewer = false;
     let showHeaderValue = true;
     let showSidebar = true;
+
+    let liveViewer = "";
 
     showHeader.subscribe((value) => {
 		showHeaderValue = value;
@@ -24,6 +30,16 @@
         showHeader.update(n => !n);
     }
 
+    function toggleLiveViewer() {
+        showLiveViewer = !showLiveViewer;
+    }
+
+    export let data;
+    const region = data.regionId;
+    console.log(region)
+
+    let useTwitch = true;
+
 </script>
 
 <svelte:head>
@@ -32,12 +48,12 @@
 </svelte:head>
 
 <div class="{showHeaderValue ? "pt-[60px]" : "pt-0"} w-full h-full flex text-blue-50">
-    <div class="flex flex-col laptop:flex-row w-full h-full">
+    <div class="flex flex-col tablet:flex-row w-full h-full">
         <div class="flex flex-col h-full w-full select-none">
             <div class="h-full w-full bg-black">
                 <iframe
                     title="Target iframe page"
-                    src="https://player.twitch.tv/?channel={streamId}&parent=streamernews.example.com&muted=false"
+                    src="https://player.twitch.tv/?channel={region}&parent=streamernews.example.com&muted=false"
                     height="100%"
                     width="100%"
                     allowfullscreen>
@@ -62,6 +78,17 @@
 						</div>
 						<div class="absolute bottom-[120%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-50 transform rotate-45 {optionsTooltip ? "inline" : "hidden"}"></div>
                     </div>
+                    <button
+                        on:pointerenter={() => {liveViewerTooltip = true}} 
+                        on:pointerleave={() => {liveViewerTooltip = false}} 
+                        on:click={() => {toggleLiveViewer()}}
+                        class="relative svg-filter-dark hover:bg-gray-800 m-auto p-[5px] rounded-md">
+                        <img src={showLiveViewer ? minus : plus} class="h-6 m-auto cursor-pointer" alt="Options" />
+                        <div class="absolute bg-gray-50 bottom-[130%] rounded-md z-50 left-[50%] -ml-[60px] w-[140px] py-1 {liveViewerTooltip ? "inline" : "hidden"}">
+							<h2 class="text-center text-blue-gray-500">{showLiveViewer ? "Hide Live Viewer" : "Add Live Viewer"}</h2>
+						</div>
+						<div class="absolute bottom-[120%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-50 transform rotate-45 {liveViewerTooltip ? "inline" : "hidden"}"></div>
+                    </button>
                     <!-- svelte-ignore a11y-click-events-have-key-events -->
                     <div 
                         on:pointerenter={() => {expandTooltip = true}} 
@@ -81,7 +108,7 @@
                         on:click={() => {showSidebar = !showSidebar}} 
                         class="relative svg-filter-dark hover:bg-gray-800 m-auto p-[5px] rounded-md">
                         <img src={sidebar} class="h-6 m-auto cursor-pointer" alt="Show Chat" />
-                        <div class="absolute bg-gray-50 bottom-[130%] rounded-md z-50 {showSidebar ? "right-0 laptop:right-auto laptop:left-[50%] laptop:-ml-[60px]" : "right-0"}  w-[120px] py-1 {sidebarTooltip ? "inline" : "hidden"}">
+                        <div class="absolute bg-gray-50 bottom-[130%] rounded-md z-50 {showSidebar ? "right-0 tablet:right-auto tablet:left-[50%] tablet:-ml-[60px]" : "right-0"}  w-[120px] py-1 {sidebarTooltip ? "inline" : "hidden"}">
 							<h2 class="text-center text-blue-gray-500">{showSidebar ? "Hide Sidebar" : "Show Sidebar"}</h2>
 						</div>
 						<div class="absolute bottom-[120%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-50 transform rotate-45 {sidebarTooltip ? "inline" : "hidden"}"></div>
@@ -89,16 +116,27 @@
                 </div>
             </div>
         </div>
-        <div class="laptop:hidden border-b-[1px] border-[#35353B]" />
-        <div class="h-full w-full laptop:w-[400px] flex-row laptop:flex-col {showSidebar ? "flex" : "hidden"}">
-            <div class="h-full laptop:h-16 w-2/3 laptop:w-full flex flex-row bg-[#18181B]">
-                <input class="h-6 rounded-md m-auto px-2 bg-gray-400 align-middle focus:outline-none" placeholder="Add Live View Channel">
+        <div class="tablet:hidden border-b-[1px] border-[#35353B]" />
+        <div class="h-full w-full tablet:w-[400px] flex-row tablet:flex-col {showSidebar ? "flex" : "hidden"}">
+            <div class="{showLiveViewer ? "w-1/2" : "hidden"} tablet:w-full h-full tablet:h-[233px] bg-[#18181B] tablet:border-b-[1px] tablet:border-[#35353B]">
+                <div class="{liveViewer == "" ? "flex flex-col" : "hidden"}">
+
+                </div>
+                <div class="h-full w-full {liveViewer != "" ? "flex flex-col" : "hidden"}">
+                    <iframe
+                        title="Target iframe page"
+                        src="https://player.twitch.tv/?channel={liveViewer}&parent=streamernews.example.com&muted=false"
+                        height="100%"
+                        width="100%"
+                        allowfullscreen>
+                    </iframe>
+                </div>
             </div>
-            <div class="laptop:hidden h-full border-r-[1px] border-[#35353B]" />
-            <div class="h-full w-1/3 laptop:w-full">
+            <div class="tablet:hidden h-full border-r-[1px] border-[#35353B]" />
+            <div class="{showLiveViewer ? "w-1/2" : "w-full"} h-full tablet:w-full">
                 <iframe
                     title="Target iframe page"
-                    src="https://www.twitch.tv/embed/{streamId}/chat?darkpopout&parent=streamernews.example.com"
+                    src="https://www.twitch.tv/embed/{region}/chat?darkpopout&parent=streamernews.example.com"
                     height="100%"
                     width="100%">
                 </iframe>
@@ -108,9 +146,6 @@
 </div>
 
 <style>
-    input {
-        text-align: center;
-    }
     ::placeholder {
         color: #F2F5F8;
         text-align: center;
