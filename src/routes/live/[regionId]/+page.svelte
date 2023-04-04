@@ -83,10 +83,16 @@
                         on:pointerleave={() => {optionsTooltip = false}} 
                         class="relative svg-filter-dark hover:bg-gray-800 m-auto p-[5px] rounded-md">
                         <img src={options} class="h-6 m-auto cursor-pointer" alt="Options" />
-                        <div class="absolute bg-gray-50 bottom-[130%] rounded-md z-50 left-[50%] -ml-[60px] w-[120px] py-1 {optionsTooltip ? "inline" : "hidden"}">
+                        <div 
+                            class="absolute bg-gray-50 bottom-[130%] rounded-md z-50 left-[50%] -ml-[60px] w-[120px] py-1 
+                            {optionsTooltip ? "inline" : "hidden"}"
+                        >
 							<h2 class="text-center text-blue-gray-500">Options</h2>
 						</div>
-						<div class="absolute bottom-[120%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-50 transform rotate-45 {optionsTooltip ? "inline" : "hidden"}"></div>
+						<div 
+                            class="absolute bottom-[120%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-50 transform rotate-45 
+                            {optionsTooltip ? "inline" : "hidden"}"
+                        />
                     </div>
                     <button
                         on:pointerenter={() => {liveViewerTooltip = true}} 
@@ -97,7 +103,10 @@
                         <div class="absolute bg-gray-50 bottom-[130%] rounded-md z-50 left-[50%] -ml-[60px] w-[140px] py-1 {liveViewerTooltip ? "inline" : "hidden"}">
 							<h2 class="text-center text-blue-gray-500">{showLiveViewer ? "Hide Live Viewer" : "Add Live Viewer"}</h2>
 						</div>
-						<div class="absolute bottom-[120%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-50 transform rotate-45 {liveViewerTooltip ? "inline" : "hidden"}"></div>
+						<div 
+                            class="absolute bottom-[120%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-50 transform rotate-45 
+                            {liveViewerTooltip ? "inline" : "hidden"}" 
+                        />
                     </button>
                     <!-- svelte-ignore a11y-click-events-have-key-events -->
                     <div 
@@ -106,10 +115,16 @@
                         on:click={() => {toggleHeader()}}
                         class="relative svg-filter-dark hover:bg-gray-800 m-auto p-[5px] rounded-md">
                         <img src={showHeaderValue ? expandPage : shrinkPage} class="h-6 m-auto cursor-pointer" alt="Hide Header" />
-                        <div class="absolute bg-gray-50 bottom-[130%] rounded-md z-50 left-[50%] -ml-[60px] w-[120px] py-1 {expandTooltip ? "inline" : "hidden"}">
+                        <div 
+                            class="absolute bg-gray-50 bottom-[130%] rounded-md z-50 left-[50%] -ml-[60px] w-[120px] py-1 
+                            {expandTooltip ? "inline" : "hidden"}"
+                        >
 							<h2 class="text-center text-blue-gray-500">{showHeaderValue ? "Hide Header" : "Show Header"}</h2>
 						</div>
-						<div class="absolute bottom-[120%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-50 transform rotate-45 {expandTooltip ? "inline" : "hidden"}"></div>
+						<div 
+                            class="absolute bottom-[120%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-50 transform rotate-45 
+                            {expandTooltip ? "inline" : "hidden"}"
+                        />
                     </div>
                     <!-- svelte-ignore a11y-click-events-have-key-events -->
                     <div
@@ -118,10 +133,17 @@
                         on:click={() => {showSidebar = !showSidebar}} 
                         class="relative svg-filter-dark hover:bg-gray-800 m-auto p-[5px] rounded-md">
                         <img src={sidebar} class="h-6 m-auto cursor-pointer" alt="Show Chat" />
-                        <div class="absolute bg-gray-50 bottom-[130%] rounded-md z-50 {showSidebar ? "right-0 tablet:right-auto tablet:left-[50%] tablet:-ml-[60px]" : "right-0"}  w-[120px] py-1 {sidebarTooltip ? "inline" : "hidden"}">
+                        <div 
+                            class="absolute bg-gray-50 bottom-[130%] rounded-md z-50 w-[120px] py-1
+                            {showSidebar ? "right-0 tablet:right-auto tablet:left-[50%] tablet:-ml-[60px]" : "right-0"}   
+                            {sidebarTooltip ? "inline" : "hidden"}"
+                        >
 							<h2 class="text-center text-blue-gray-500">{showSidebar ? "Hide Sidebar" : "Show Sidebar"}</h2>
 						</div>
-						<div class="absolute bottom-[120%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-50 transform rotate-45 {sidebarTooltip ? "inline" : "hidden"}"></div>
+						<div 
+                            class="absolute bottom-[120%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-50 transform rotate-45 
+                            {sidebarTooltip ? "inline" : "hidden"}"
+                        />
                     </div>
                 </div>
             </div>
@@ -135,10 +157,18 @@
                         Live Viewer
                     </h2>
                     <div class="relative">
-                        <input on:focus={() => isInputFocused = true} on:blur={() => isInputFocused = false} class="px-2 bg-transparent text-sm outline-none h-8 rounded-sm border-2 border-white" type="text" bind:value={liveViewerValue} 
+                        <input 
+                            on:focus={() => isInputFocused = true} on:blur={() => isInputFocused = false} type="text" bind:value={liveViewerValue}  
                             on:keydown={(event) => {if (event.key === "Enter") {submitLiveViewer();}}}
+                            class="px-2 bg-transparent text-sm outline-none h-8 rounded-sm border-2 border-white" 
                         />
-                        <span class="absolute {isInputFocused ? "-translate-y-4" : ""} left-[2px] px-[6px] text-sm bottom-5 bg-[#18181B]" style="transition: all 0.2s ease-in-out;">Twitch Channel</span>
+                        <span 
+                            class="absolute left-[2px] px-[6px] text-sm bottom-5 bg-[#18181B]
+                            {isInputFocused ? "-translate-y-4" : ""}" 
+                            style="transition: all 0.2s ease-in-out;"
+                        >
+                            Twitch Channel
+                        </span>
                     </div>
                 </div>
                 <div class="h-full w-full {liveViewer != "" ? "flex flex-col" : "hidden"}">
@@ -174,12 +204,5 @@
 	}
 	img {
 		-webkit-user-drag: none;
-	}
-    .translate-y-1 {
-        transform: translateY(1rem);
-    }
-    .translate-y-2 {
-        transform: translateY(-2rem);
-    }
-    
+	}   
 </style>
