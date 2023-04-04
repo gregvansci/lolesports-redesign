@@ -60,7 +60,7 @@
 <div class="{showHeaderValue ? "pt-[60px]" : "pt-0"} w-full h-full flex text-blue-50">
     <div class="flex flex-col tablet:flex-row w-full h-full">
         <div class="flex flex-col h-full w-full select-none">
-            <div class="h-full w-full bg-black">
+            <div class="h-full w-full bg-black relative">
                 <iframe
                     title="Target iframe page"
                     src="https://player.twitch.tv/?channel={region}&parent=streamernews.example.com&muted=false"
@@ -68,6 +68,24 @@
                     width="100%"
                     allowfullscreen>
                 </iframe>
+                <div class="{showOptions ? "flex flex-col gap-0 m-auto" : "hidden"} absolute p-8 pt-6 bottom-0 right-0 bg-[#18181B] border-[1px] border-[#35353B] w-[360px]">
+                    <h2 class="text-lg font-semibold pb-1">Options</h2>
+                    <div class="flex flex-row justify-between border-t-[1px] border-b-[1px] border-[#35353B] py-2">
+                        <h2 class="my-auto">Stream Provider</h2>
+                        <select class="cursor-pointer bg-[#18181B] border-[1px] border-[#35353B] w-32 h-8 rounded-lg pl-2">
+                            <option>Twitch</option>
+                            <option>Youtube</option>
+                        </select>
+                    </div>
+                    <div class="flex flex-row justify-between border-b-[1px] border-[#35353B] py-2">
+                        <h2>Chat Shown</h2>
+                        <select class="cursor-pointer bg-[#18181B] border-[1px] border-[#35353B] w-32 h-8 rounded-lg pl-2">
+                            <option>Broadcast</option>
+                            <option>Live Viewer</option>
+                            <option>None</option>
+                        </select>
+                    </div>
+                </div>
             </div>
             <div class="flex flex-row justify-between w-full h-12 px-4 bg-[#18181B]">
                 <div class="flex flex-row h-full gap-2">
@@ -78,22 +96,23 @@
                     <img class="h-10 m-auto" src="https://am-a.akamaihd.net/image?resize=72:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1673260049703_DPlusKIALOGO11.png" alt="Logo">
                 </div>
                 <div class="flex flex-row">
-                    <div
+                    <button
                         on:pointerenter={() => {optionsTooltip = true}} 
                         on:pointerleave={() => {optionsTooltip = false}} 
+                        on:click={() => {showOptions = !showOptions}}
                         class="relative svg-filter-dark hover:bg-gray-800 m-auto p-[5px] rounded-md">
                         <img src={options} class="h-6 m-auto cursor-pointer" alt="Options" />
                         <div 
                             class="absolute bg-gray-50 bottom-[130%] rounded-md z-50 left-[50%] -ml-[60px] w-[120px] py-1 
                             {optionsTooltip ? "inline" : "hidden"}"
                         >
-							<h2 class="text-center text-blue-gray-500">Options</h2>
+							<h2 class="text-center text-blue-gray-500">{showOptions ? "Hide Options" : "Show Options"}</h2>
 						</div>
 						<div 
                             class="absolute bottom-[120%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-gray-50 transform rotate-45 
                             {optionsTooltip ? "inline" : "hidden"}"
                         />
-                    </div>
+                    </button>
                     <button
                         on:pointerenter={() => {liveViewerTooltip = true}} 
                         on:pointerleave={() => {liveViewerTooltip = false}} 
