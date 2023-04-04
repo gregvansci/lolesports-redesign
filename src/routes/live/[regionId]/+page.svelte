@@ -21,6 +21,7 @@
     let showSidebar = true;
 
     let liveViewer = "";
+    let liveViewerValue = "";
 
     showHeader.subscribe((value) => {
 		showHeaderValue = value;
@@ -31,7 +32,14 @@
     }
 
     function toggleLiveViewer() {
+        if (showLiveViewer) {
+            liveViewer = "";
+        }
         showLiveViewer = !showLiveViewer;
+    }
+
+    function submitLiveViewer() {
+        liveViewer = liveViewerValue;
     }
 
     export let data;
@@ -118,9 +126,13 @@
         </div>
         <div class="tablet:hidden border-b-[1px] border-[#35353B]" />
         <div class="h-full w-full tablet:w-[400px] flex-row tablet:flex-col {showSidebar ? "flex" : "hidden"}">
-            <div class="{showLiveViewer ? "w-1/2" : "hidden"} tablet:w-full h-full tablet:h-[233px] bg-[#18181B] tablet:border-b-[1px] tablet:border-[#35353B]">
-                <div class="{liveViewer == "" ? "flex flex-col" : "hidden"}">
-
+            <div class="{showLiveViewer ? "w-1/2 flex" : "hidden"} tablet:w-full h-full tablet:h-[233px] bg-[#18181B] tablet:border-b-[1px] tablet:border-[#35353B]">
+                <div class="{liveViewer == "" ? "flex flex-col" : "hidden"} gap-6 m-auto pb-4">
+                    <h2 class="font-semibold text-lg">Live Viewer</h2>
+                    <div class="relative">
+                        <input class="bg-transparent outline-none h-8 rounded-sm border-2 border-white" type="text" on:submit={submitLiveViewer} bind:value={liveViewerValue} />
+                        <span class="absolute left-[2px] px-[6px] text-sm bottom-5 bg-[#18181B]">Twitch Channel</span>
+                    </div>
                 </div>
                 <div class="h-full w-full {liveViewer != "" ? "flex flex-col" : "hidden"}">
                     <iframe
@@ -156,4 +168,5 @@
 	img {
 		-webkit-user-drag: none;
 	}
+    
 </style>
