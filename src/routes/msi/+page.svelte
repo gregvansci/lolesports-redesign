@@ -1,6 +1,6 @@
 <script>
-
     import msiBg from '$lib/images/msi-bg.jpg'
+    import expand from '$lib/images/expand-arrow.svg'
 </script>
 
 <div class="w-full h-full relative flex">
@@ -12,7 +12,11 @@
                 <h1 class=" font-msi-title text-6xl tracking-wide mb-2 bg-msi-text px-4 mx-auto">MSI 2023</h1>
                 <h2 class="font-msi-title text-5xl mb-10 bg-msi-text px-4 mx-auto">DEFY</h2>
                 <h2 class="font-msi-body font-bold text-4xl mb-10">LONDON MAY 2-21</h2>
-                <h2 class="font-msi-body font-semibold">SPOILERS BELOW</h2>
+                <div class="flex flex-row justify-center gap-8">
+                    <img src={expand} class="h-10 svg-white" alt="expand">
+                    <h2 class="font-msi-body font-semibold my-auto">SPOILERS BELOW</h2>
+                    <img src={expand} class="h-10 svg-white" alt="expand">
+                </div>
             </div>
             <h1 class="text-center font-msi-body text-4xl font-semibold">QUALIFIED TEAMS</h1>
             <div class="text-center flex flex-col h-[400px]">
@@ -87,7 +91,7 @@
                 <h1 class="font-msi-body text-3xl font-semibold pb-4">MINOR</h1>
                 <h2 class="font-msi-body text-xl font-semibold pb-10">TO PLAYIN STAGE</h2>
                 <div class="bg-msi-text w-[700px] h-[275px] flex flex-row m-auto border-[1px] border-white font-msi-body text-lg font-semibold">
-                    <div class="w-1/5 flex flex-col">
+                    <div class="w-1/5 flex flex-col border-r-[1px] border-white">
                         <div class="h-1/2 w-full flex flex-col justify-between">
                             <img class="m-auto mb-0 h-[75px]" src="https://am-a.akamaihd.net/image?resize=120:&f=http%3A%2F%2Fstatic.lolesports.com%2Fleagues%2F1592515942679_PCS-01-FullonDark.png" alt="PCS" />
                             <h2 class="m-auto ">PCS</h2>
@@ -96,7 +100,7 @@
                             
                         </div>
                     </div>
-                    <div class="w-1/5 flex flex-col">
+                    <div class="w-1/5 flex flex-col border-r-[1px] border-white">
                         <div class="h-1/2 w-full flex flex-col justify-between">
                             <img class="m-auto mb-0 h-[75px]" src="https://am-a.akamaihd.net/image?resize=120:&f=http%3A%2F%2Fstatic.lolesports.com%2Fleagues%2F1677578094811_VCS_SYMBOL_TITANIUM_RGB.png" alt="VCS" />
                             <h2 class="m-auto">VCS</h2>
@@ -105,7 +109,7 @@
                             
                         </div>
                     </div>
-                    <div class="w-1/5 flex flex-col">
+                    <div class="w-1/5 flex flex-col border-r-[1px] border-white">
                         <div class="h-1/2 w-full flex flex-col justify-between">
                             <img class="m-auto mb-0 h-[75px]" src="https://am-a.akamaihd.net/image?resize=120:&f=http%3A%2F%2Fstatic.lolesports.com%2Fleagues%2F1592516354053_LJL-01-FullonDark.png" alt="LJL" />
                             <h2 class="m-auto">LJL</h2>
@@ -114,7 +118,7 @@
                             
                         </div>
                     </div>
-                    <div class="w-1/5 flex flex-col">
+                    <div class="w-1/5 flex flex-col border-r-[1px] border-white">
                         <div class="h-1/2 w-full flex flex-col justify-between">
                             <img class="m-auto mb-0 h-[75px]" src="https://am-a.akamaihd.net/image?resize=120:&f=http%3A%2F%2Fstatic.lolesports.com%2Fleagues%2Fcblol-logo-symbol-offwhite.png" alt="CBLOL" />
                             <h2 class="m-auto">CBLOL</h2>
@@ -143,5 +147,9 @@
 <style>
     .frosted-glass {
         box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.5);
+    }
+    /* a filter to make svgs turn white */
+    .svg-white {
+        filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(299deg) brightness(102%) contrast(102%);
     }
 </style>

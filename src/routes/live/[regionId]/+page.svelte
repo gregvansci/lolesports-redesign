@@ -90,7 +90,7 @@
                         <h2 class="my-auto">Stream Provider</h2>
                         <select class="cursor-pointer bg-[#18181B] border-[1px] border-[#35353B] w-32 h-8 rounded-lg pl-2">
                             <option>Twitch</option>
-                            <option>Youtube</option>
+                            <option>Youtube(Soon)</option>
                         </select>
                     </div>
                     <div class="flex flex-row justify-between border-b-[1px] border-[#35353B] py-2">

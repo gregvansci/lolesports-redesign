@@ -117,7 +117,7 @@
 					text-sm laptop:text-base desktop:text-lg desktop-lg:text-xl"
 				>
 					<li class="group cursor-pointer">
-						<a class="{specialHeader ? "group-hover:text-white" : "group-hover:text-highlight"}" href="/">Live</a>
+						<a class="{specialHeader ? "group-hover:text-white" : "group-hover:text-highlight"}" href="/">Overview</a>
 					</li>
 					<li class="group cursor-pointer">
 						<a class="{specialHeader ? "group-hover:text-white" : "group-hover:text-highlight"}" href="/schedule">Schedule</a>
@@ -233,11 +233,11 @@
 	}
 	.svg-filter-special img {
 		/* filter the image to black */
-		filter: invert(0%) sepia(50%) saturate(3816%) hue-rotate(55deg) brightness(84%) contrast(87%);
+		filter: invert(0%) sepia(1%) saturate(4%) hue-rotate(2deg) brightness(99%) contrast(105%);
 	}
 	.svg-filter-special:hover img {
 		/* filter the image to white */
-		filter: invert(100%) sepia(21%) saturate(2%) hue-rotate(125deg) brightness(105%) contrast(101%);
+		filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(299deg) brightness(102%) contrast(102%);
 	}
 	img {
 		-webkit-user-drag: none;
