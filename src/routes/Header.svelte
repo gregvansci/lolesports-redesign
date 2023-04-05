@@ -123,13 +123,13 @@
 						<a class="{specialHeader ? "group-hover:text-white" : "group-hover:text-highlight"}" href="/schedule">Schedule</a>
 					</li>
 					<li class="group cursor-pointer">
-						<h2 class="{specialHeader ? "group-hover:text-white" : "group-hover:text-highlight"}">Regions</h2>
+						<a class="{specialHeader ? "group-hover:text-white" : "group-hover:text-highlight"}" href="/region/lck">Regions</a>
 					</li>
 					<li class="group cursor-pointer">
 						<h2 class="{specialHeader ? "group-hover:text-white" : "group-hover:text-highlight"}">Following</h2>
 					</li>
 					<li class="group cursor-pointer">
-						<a href="/msi" class="{specialHeader ? "group-hover:text-white" : "group-hover:text-highlight"}">International</a>
+						<a class="{specialHeader ? "group-hover:text-white" : "group-hover:text-highlight"}" href="/msi">International</a>
 					</li>
 				</ul>
 			</nav>
