@@ -66,7 +66,6 @@
             regionDropdown.fill(false);
             regionDropdown[region] = true;
         }
-
     }
 
     function handleRegionInput(region: number, index: number) {

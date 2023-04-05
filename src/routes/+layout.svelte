@@ -23,7 +23,7 @@
 	transition ease-in-out duration-300
 	{specialHeader 
 	? "selection:bg-msi-text selection:text-white bg-msi-bg text-msi-text" 
-	: "selection:bg-highlight selection:text-blue-50bg-white dark:bg-steel-900 text-blue-gray-500 dark:text-blue-50" }"
+	: "selection:bg-highlight selection:text-blue-50 bg-white dark:bg-steel-900 text-blue-gray-500 dark:text-blue-50" }"
 >
 	{#if showHeaderValue == true}
 		<Header {specialHeader} />
