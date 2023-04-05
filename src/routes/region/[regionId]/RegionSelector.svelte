@@ -15,6 +15,8 @@
         darkModeValue = value;
     });
 
+    export let updateRegion = (region: string) => {};
+
     export let toggleDropdown = (region: number) => {};
 
     function handleToggleDropdown() {
@@ -54,7 +56,7 @@
     >
     <!-- link tag that goes to links[1]. if minor is true, make the link tag do nothing -->
         <a
-            href={links[1]} on:click={minor ? (e) => e.preventDefault() : () => {}}
+            href={links[1]} on:click={minor ? (e) => e.preventDefault() : () => {updateRegion(leagues[1])}}
             class="w-full py-2 hover:bg-gray-100 dark:hover:bg-steel-700"
         >
             <h2 class="my-auto w-full text-left pl-4  ">{minor ? leagues[0] : leagues[1]}</h2>
@@ -75,7 +77,7 @@
         {#if !minor}
             {#each leagues.slice(2) as league, i}
                 <a
-                    href={links[i+2]}
+                    href={"./"+links[i+2]} on:click={() => {updateRegion(leagues[i+2])}}
                     class="flex flex-row justify-between p-2 px-4 hover:bg-gray-100 dark:hover:bg-steel-700"
                 >
                     <h2>{league}</h2>
@@ -84,7 +86,7 @@
         {:else}
             {#each leagues.slice(1) as league, i}
                 <a
-                    href={links[i+2]}
+                    href={"./"+links[i+2]} on:click={() => {updateRegion(leagues[i+1])}}
                     class="flex flex-row justify-between p-2 px-4 hover:bg-gray-100 dark:hover:bg-steel-700"
                 >
                     <h2>{league}</h2>
