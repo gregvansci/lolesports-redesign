@@ -12,7 +12,7 @@ def get_region_future_games(region):
     )
     return response['cargoquery']
 
-region = "lec"
+region = "lck"
 response = get_region_future_games(region.upper())
 matches = []
 
@@ -44,20 +44,17 @@ for match in response:
     }
     matches.append(match_data)
 
-with open('./src/lib/data/curSplit/' + region + '.json', 'r') as f:
+filename='./src/lib/data/' + region + '.json'
+try:
+    with open(filename, 'x') as f:
+        f.write('{}')
+except FileExistsError:
+    pass
+
+with open(filename, 'r') as f:
     data = json.load(f)
 
 data['future'] = matches
 
-with open('./src/lib/data/curSplit/' + region + '.json', 'w') as f:
+with open(filename, 'w') as f:
     json.dump(data, f, indent=4)
-
-
-# for match in response:
-#     # If teams have no score, set team score to 0
-#     if match['title']['Team1Score'] == None:
-#         match['title']['Team1Score'] = "0"
-#     if match['title']['Team2Score'] == None:
-#         match['title']['Team2Score'] = "0"
-#     regionInfo = match['title']['MatchId'].split('/')[2].split("_")[0].split(" ");
-#     print(match['title']['MatchId'] + " " + match['title']['DateTime UTC'] + " " + match['title']['Team1'] + " " + match['title']['Team1Score'] + " " + match['title']['Team2'] + " " + match['title']['Team2Score'] + " " + region + " " + regionInfo[0] + " " + regionInfo[1] + " Best of: " + match['title']['BestOf'])

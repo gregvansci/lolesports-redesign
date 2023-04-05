@@ -4,7 +4,7 @@
             "matchId": "LCS/2023 Season/Spring Playoffs_Round 2_2",
             "matchDate": "2023-03-31T21:00:00Z",
             "team1": "Golden Guardians",
-            "team1Score": "2",
+            "team1Score": "3",
             "team2": "Evil Geniuses.NA",
             "team2Score": "0",
             "region": "LCS",
@@ -1187,32 +1187,6 @@
             "season": "Spring",
             "stage": "Season",
             "bestOf": 1
-        }
-    ],
-    "future": [
-        {
-            "matchId": "LCS/2023 Season/Spring Playoffs_Round 3_1",
-            "matchDate": "2023-04-08T21:00:00Z",
-            "team1": "FlyQuest",
-            "team1Score": 0,
-            "team2": "TBD",
-            "team2Score": 0,
-            "region": "LCS",
-            "season": "Spring",
-            "stage": "Playoffs",
-            "bestOf": 5
-        },
-        {
-            "matchId": "LCS/2023 Season/Spring Playoffs_Finals_1",
-            "matchDate": "2023-04-09T22:00:00Z",
-            "team1": "Cloud9",
-            "team1Score": 0,
-            "team2": "TBD",
-            "team2Score": 0,
-            "region": "LCS",
-            "season": "Spring",
-            "stage": "Playoffs",
-            "bestOf": 5
         }
     ]
 }

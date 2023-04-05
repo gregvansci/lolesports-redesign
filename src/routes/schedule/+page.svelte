@@ -1,14 +1,15 @@
 <script lang="ts">
     import { darkMode } from '../../store';
-    import lck from '$lib/data/curSplit/lck.json';
-    import lpl from '$lib/data/curSplit/lpl.json';
-    import lec from '$lib/data/curSplit/lec.json';
-    import lcs from '$lib/data/curSplit/lcs.json';
+    // import lck from '$lib/data/curSplit/lck.json';
+    // import lpl from '$lib/data/curSplit/lpl.json';
+    // import lec from '$lib/data/curSplit/lec.json';
+    // import lcs from '$lib/data/curSplit/lcs.json';
 
     import ScheduleNewDay from '../ScheduleNewDay.svelte';
     import ScheduleGame from '../ScheduleGame.svelte';
     import LiveGame from '../LiveGame.svelte';
     import RegionSelector from './RegionSelector.svelte';
+    import teamImage from '$lib/data/teamImage.json';
     import { onMount } from 'svelte';
 
     let darkModeValue: boolean;
@@ -107,6 +108,16 @@
             regionShown[region][0] = false;
         }
     }
+
+    const imageMap = teamImage as { [key: string]: { link: string, invert: boolean, outline: boolean} };
+
+    function getTeamImage(team: string): { link: string, invert: boolean, outline: boolean} {
+        if (team in imageMap) {
+            return imageMap[team];
+        } else {
+            return { link: "", invert: true, outline: false};
+        }
+    }
 </script>
 
 <svelte:head>
@@ -120,6 +131,12 @@
             <ScheduleNewDay date={new Date()}/>
             <LiveGame showLive={true}/>
             <LiveGame />
+            <ScheduleNewDay date={new Date()}/>
+            <ScheduleGame team1="T1" team1img={getTeamImage("T1")} team2="Gen.G" team2img={getTeamImage("Gen.G")}/>
+            <ScheduleGame team1="KT Rolster" team1img={getTeamImage("KT Rolster")} team2="DRX" team2img={getTeamImage("DRX")}/>
+            <ScheduleGame team1="Dplus KIA" team1img={getTeamImage("Dplus KIA")} team2="Liiv SANDBOX" team2img={getTeamImage("Liiv SANDBOX")}/>
+            <ScheduleGame team1="Hanwha Life Esports" team1img={getTeamImage("Hanwha Life Esports")} team2="Kwangdong Freecs" team2img={getTeamImage("Kwangdong Freecs")}/>
+            <ScheduleGame team1="Nongshim Redforce" team1img={getTeamImage("Nongshim Redforce")} team2="BRION" team2img={getTeamImage("BRION")} />
             <!-- Add future matches as scheduleGame's -->
             <!-- {#each shownFutureMatches as match, i}
                 {#if i == 0 && new Date(match.matchDate).getDate() != new Date().getDate()}
@@ -134,6 +151,7 @@
         <div class="select-none">
             <div class="pl-12 absolute top-[10vh] flex flex-col gap-6">
                 <div class="flex flex-col gap-6">
+                    <h2 class="font-semibold opacity-50">Filters</h2>
                     <button on:click={() => {showFollowing = !showFollowing; showFollowingLeft = true}} class="flex flex-row justify-between w-[200px]">
                         <h2>Show Following</h2>
                         <div class="{ showFollowing ? "bg-highlight" : "bg-gray-100 dark:bg-steel-700"} rounded-full w-12 flex transition ease-in-out duration-300">

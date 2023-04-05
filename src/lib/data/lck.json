@@ -1,5 +1,55 @@
 {
+    "future": [
+        {
+            "matchId": "LCK/2023 Season/Spring Playoffs_Round 3_2",
+            "matchDate": "2023-04-08T06:00:00Z",
+            "team1": "Gen.G",
+            "team1Score": 0,
+            "team2": "KT Rolster",
+            "team2Score": 0,
+            "region": "LCK",
+            "season": "Spring",
+            "stage": "Playoffs",
+            "bestOf": 5
+        },
+        {
+            "matchId": "LCK/2023 Season/Spring Playoffs_Finals_1",
+            "matchDate": "2023-04-09T06:00:00Z",
+            "team1": "T1",
+            "team1Score": 0,
+            "team2": "TBD",
+            "team2Score": 0,
+            "region": "LCK",
+            "season": "Spring",
+            "stage": "Playoffs",
+            "bestOf": 5
+        }
+    ],
     "past": [
+        {
+            "matchId": "LCK/2023 Season/Spring Playoffs_Round 2_3",
+            "matchDate": "2023-04-02T06:00:00Z",
+            "team1": "KT Rolster",
+            "team1Score": "3",
+            "team2": "Hanwha Life Esports",
+            "team2Score": "1",
+            "region": "LCK",
+            "season": "Spring",
+            "stage": "Playoffs",
+            "bestOf": 5
+        },
+        {
+            "matchId": "LCK/2023 Season/Spring Playoffs_Round 3_1",
+            "matchDate": "2023-04-01T06:00:00Z",
+            "team1": "T1",
+            "team1Score": "3",
+            "team2": "Gen.G",
+            "team2Score": "1",
+            "region": "LCK",
+            "season": "Spring",
+            "stage": "Playoffs",
+            "bestOf": 5
+        },
         {
             "matchId": "LCK/2023 Season/Spring Playoffs_Round 2_2",
             "matchDate": "2023-03-26T06:00:00Z",
@@ -1127,56 +1177,6 @@
             "season": "Spring",
             "stage": "Season",
             "bestOf": 3
-        }
-    ],
-    "future": [
-        {
-            "matchId": "LCK/2023 Season/Spring Playoffs_Round 3_1",
-            "matchDate": "2023-04-01T06:00:00Z",
-            "team1": "T1",
-            "team1Score": 0,
-            "team2": "Gen.G",
-            "team2Score": 0,
-            "region": "LCK",
-            "season": "Spring",
-            "stage": "Playoffs",
-            "bestOf": 5
-        },
-        {
-            "matchId": "LCK/2023 Season/Spring Playoffs_Round 2_3",
-            "matchDate": "2023-04-02T06:00:00Z",
-            "team1": "KT Rolster",
-            "team1Score": 0,
-            "team2": "Hanwha Life Esports",
-            "team2Score": 0,
-            "region": "LCK",
-            "season": "Spring",
-            "stage": "Playoffs",
-            "bestOf": 5
-        },
-        {
-            "matchId": "LCK/2023 Season/Spring Playoffs_Round 3_2",
-            "matchDate": "2023-04-08T06:00:00Z",
-            "team1": "TBD",
-            "team1Score": 0,
-            "team2": "TBD",
-            "team2Score": 0,
-            "region": "LCK",
-            "season": "Spring",
-            "stage": "Playoffs",
-            "bestOf": 5
-        },
-        {
-            "matchId": "LCK/2023 Season/Spring Playoffs_Finals_1",
-            "matchDate": "2023-04-09T06:00:00Z",
-            "team1": "TBD",
-            "team1Score": 0,
-            "team2": "TBD",
-            "team2Score": 0,
-            "region": "LCK",
-            "season": "Spring",
-            "stage": "Playoffs",
-            "bestOf": 5
         }
     ]
 }

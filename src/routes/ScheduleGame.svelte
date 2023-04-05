@@ -1,7 +1,7 @@
 <script lang="ts">
     import { darkMode } from '../store';
+    import defaultTeam from '$lib/images/lolesports-icon.png';
 
-    import defaultTeam from '$lib/images/lolesports-icon-black.png';
     export let matchDate = "";
     export let team1 = "Team 1";
     export let team1Score = 0;
@@ -13,15 +13,20 @@
     export let season = "";
     export let stage = "";
     export let bestOf = 1;
-
-    export let team1Invert = true;
-    export let team2Invert = true;
     
     export let showSpoilers = false;
     export let past = false;
 
-    let team1img = "";
-    let team2img = "";
+    export let team1img = {
+        link: "",
+        invert: true,
+        outline: false
+    };
+    export let team2img = {
+        link: "",
+        invert: true,
+        outline: false
+    };
 
     let firstTo = bestOf / 2 + 0.5;
     let darkModeValue: boolean;
@@ -49,7 +54,7 @@
                     <h2 class="flex justify-end text-sm">{past && showSpoilers ? team2History : ""}</h2>
                 </div>
                 <div class="my-auto">
-                    <img class="w-[55px] {darkModeValue && team2Invert ? "teamLogoInvert" : ""} transition ease-in-out duration-300" src={team2img === "" ? defaultTeam : team2img} alt={team2}>
+                    <img class="w-[55px] {!darkModeValue && team2img["invert"] ? "teamLogoInvert" : ""} {!darkModeValue && team2img["outline"] ? "img-outline" : ""} transition ease-in-out duration-300" src={team2img["link"] == "" ? defaultTeam : team2img["link"]} alt={team2}>
                 </div>
             </div>        
         </div>
@@ -64,7 +69,7 @@
         <div class="w-[325px] flex justify-start">
             <div class="flex flex-row gap-2 hover:bg-gray-50 dark:hover:bg-steel-800 rounded-lg px-4 cursor-pointer">
                 <div class="my-auto">
-                    <img class="w-[55px] {darkModeValue ? team1Invert ? "teamLogoInvert" : "" : ""} transition ease-in-out duration-300" src={team1img === "" ? defaultTeam : team1img} alt={team1}>
+                    <img class="w-[55px] {!darkModeValue ? team1img["invert"] ? "teamLogoInvert" : "" : ""} {!darkModeValue && team1img["outline"] ? "img-outline" : ""} transition ease-in-out duration-300" src={team1img["link"] == "" ? defaultTeam : team1img["link"]} alt={team1}>
                 </div>
                 <div class="my-auto">
                     <h2 class="font-semibold text-xl">{team1}</h2>
@@ -90,4 +95,10 @@
     .teamLogoInvert {
         filter: invert(1);
     }    
+    .img-outline {
+        -webkit-filter: drop-shadow(2px 1px 0 black)
+                        drop-shadow(-1px -1px 0 black);
+        filter: drop-shadow(1px 1px 0 black) 
+                drop-shadow(-1px -1px 0 black);
+    }
 </style>

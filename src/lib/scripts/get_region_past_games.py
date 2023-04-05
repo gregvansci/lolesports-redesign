@@ -12,7 +12,7 @@ def get_region_past_games(region):
     )
     return response['cargoquery']
 
-region = "lcs"
+region = "lck"
 response = get_region_past_games(region.upper())
 matches = []
 
@@ -44,12 +44,19 @@ for match in response:
     }
     matches.append(match_data)
 
-with open('./src/lib/data/curSplit/' + region + '.json', 'r') as f:
+filename='./src/lib/data/' + region + '.json'
+try:
+    with open(filename, 'x') as f:
+        f.write('{}')
+except FileExistsError:
+    pass
+
+with open(filename, 'r') as f:
     data = json.load(f)
 
 data['past'] = matches
 
-with open('./src/lib/data/curSplit/' + region + '.json', 'w') as f:
+with open(filename, 'w') as f:
     json.dump(data, f, indent=4)
 
     
