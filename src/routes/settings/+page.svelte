@@ -8,7 +8,7 @@
                 <h2 class="text-lg">Preferred Streaming Platform</h2>
                 <select class="bg-gray-100 dark:bg-steel-800 cursor-pointer w-32 h-8 rounded-lg pl-2">
                     <option value="twitch">Twitch</option>
-                    <option value="youtube">YouTube</option>
+                    <option value="youtube">YouTube(Soon)</option>
                 </select>
             </div>
             <div class="flex flex-row justify-between">
