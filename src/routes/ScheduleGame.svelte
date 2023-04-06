@@ -44,36 +44,36 @@
 
 </script>
 
-<div class="h-[85px] w-full flex flex-row justify-between border-y-[1px] border-gray-100 dark:border-steel-800 transition ease-in-out duration-300">
+<div class="h-[85px] w-full flex flex-row justify-between select-none border-y-[1px] border-gray-100 dark:border-steel-800 transition ease-in-out duration-300">
     <div class="my-auto ml-4 w-[80px] text-blue-gray-400 dark:text-blue-200 font-bold text-3xl flex flex-row transition ease-in-out duration-300">{convertedHour}<span class="text-sm pt-[3px] pl-[2px]">{AM}</span></div>
     <div class="flex m-auto text-blue-gray-500 dark:text-blue-50 transition ease-in-out duration-300">
         <div class="w-[325px] flex justify-end">
             <div class="flex flex-row gap-2 justify-end hover:bg-gray-50 dark:hover:bg-steel-800 rounded-lg px-4 py-[6px] cursor-pointer">
                 <div class="my-auto">
-                    <h2 class="font-semibold text-xl">{team2}</h2>
-                    <h2 class="flex justify-end text-sm">{past && showSpoilers ? team2History : ""}</h2>
+                    <h2 class="font-semibold text-xl">{team1}</h2>
+                    <h2 class="flex justify-end text-sm">{past && showSpoilers ? team1History : ""}</h2>
                 </div>
                 <div class="my-auto">
-                    <img class="w-[55px] {!darkModeValue && team2img["invert"] ? "teamLogoInvert" : ""} {!darkModeValue && team2img["outline"] ? "img-outline" : ""} transition ease-in-out duration-300" src={team2img["link"] == "" ? defaultTeam : team2img["link"]} alt={team2}>
+                    <img class="w-[55px] {!darkModeValue && team1img["invert"] ? "teamLogoInvert" : ""} {!darkModeValue && team1img["outline"] ? "img-outline" : ""} transition ease-in-out duration-300" src={team1img["link"] == "" ? defaultTeam : team1img["link"]} alt={team1}>
                 </div>
             </div>        
         </div>
         <div class="m-auto mx-2 text-lg font-medium w-[28px] flex">
             <div class="m-auto flex flex-row">
                 <span class="{past && showSpoilers ? 'hidden' : 'block'}">vs</span>
-                <span class="{past && showSpoilers ? team2Score === firstTo ? 'block text-blue-gray-700 dark:text-blue-gray-100 transition ease-in-out duration-300' : 'block text-blue-gray-400 dark:text-blue-gray-300 transition ease-in-out duration-300' : 'hidden'}">{team1Score}</span>
+                <span class="{past && showSpoilers ? team1Score === firstTo ? 'block text-blue-gray-700 dark:text-blue-gray-100 transition ease-in-out duration-300' : 'block text-blue-gray-400 dark:text-blue-gray-300 transition ease-in-out duration-300' : 'hidden'}">{team1Score}</span>
                 <span class="{past && showSpoilers ? 'block px-[1px]' : 'hidden'}">-</span>
-                <span class="{past && showSpoilers ? team1Score === firstTo ? 'block text-blue-gray-700 dark:text-blue-gray-100 transition ease-in-out duration-300' : 'block text-blue-gray-400 dark:text-blue-gray-300 transition ease-in-out duration-300' : 'hidden'}">{team2Score}</span>
+                <span class="{past && showSpoilers ? team2Score === firstTo ? 'block text-blue-gray-700 dark:text-blue-gray-100 transition ease-in-out duration-300' : 'block text-blue-gray-400 dark:text-blue-gray-300 transition ease-in-out duration-300' : 'hidden'}">{team2Score}</span>
             </div>
         </div>
         <div class="w-[325px] flex justify-start">
             <div class="flex flex-row gap-2 hover:bg-gray-50 dark:hover:bg-steel-800 rounded-lg px-4 cursor-pointer">
                 <div class="my-auto">
-                    <img class="w-[55px] {!darkModeValue ? team1img["invert"] ? "teamLogoInvert" : "" : ""} {!darkModeValue && team1img["outline"] ? "img-outline" : ""} transition ease-in-out duration-300" src={team1img["link"] == "" ? defaultTeam : team1img["link"]} alt={team1}>
+                    <img class="w-[55px] {!darkModeValue ? team2img["invert"] ? "teamLogoInvert" : "" : ""} {!darkModeValue && team2img["outline"] ? "img-outline" : ""} transition ease-in-out duration-300" src={team2img["link"] == "" ? defaultTeam : team2img["link"]} alt={team2}>
                 </div>
                 <div class="my-auto">
-                    <h2 class="font-semibold text-xl">{team1}</h2>
-                    <h2 class="flex justify-start text-sm">{past && showSpoilers ? team1History : ""}</h2>
+                    <h2 class="font-semibold text-xl">{team2}</h2>
+                    <h2 class="flex justify-start text-sm">{past && showSpoilers ? team2History : ""}</h2>
                 </div>
             </div>
         </div>
@@ -92,6 +92,9 @@
 </div>
 
 <style>
+	img {
+		-webkit-user-drag: none;
+	}   
     .teamLogoInvert {
         filter: invert(1);
     }    
