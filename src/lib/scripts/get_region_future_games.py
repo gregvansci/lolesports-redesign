@@ -12,7 +12,7 @@ def get_region_future_games(region):
     )
     return response['cargoquery']
 
-region = "lck"
+region = "lcs"
 response = get_region_future_games(region.upper())
 matches = []
 

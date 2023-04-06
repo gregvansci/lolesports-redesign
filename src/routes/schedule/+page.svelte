@@ -4,6 +4,8 @@
     
     import lck from '$lib/data/lck.json';
     import lpl from '$lib/data/lpl.json';
+    import lec from '$lib/data/lec.json';
+    import lcs from '$lib/data/lcs.json';
     import ScheduleNewDay from '../ScheduleNewDay.svelte';
     import ScheduleGame from '../ScheduleGame.svelte';
     import LiveGame from '../LiveGame.svelte';
@@ -28,21 +30,6 @@
         season: string;
         stage: string;
         bestOf: number;
-    }
-
-    onMount(() => {
-        const container = document.getElementById('schedule-container');
-        if (container) {
-            container.addEventListener('scroll', handleScroll);
-        }
-    })
-    
-    function handleScroll() {
-        // const container = document.getElementById('schedule-container');
-        // if (container) {
-        //     if (container.scrollTop < 200)
-        //         getPastMatches();
-        // }
     }
 
     let regionShown = [ 
@@ -82,6 +69,8 @@
     // go through regions, if selected, add all matches to pastMatches and futureMatches
     addRegion(lck);
     addRegion(lpl);
+    addRegion(lec);
+    addRegion(lcs);
 
     // sort pastMatches and futureMatches by date
     // sort pastMatches by date, newest first
@@ -94,9 +83,6 @@
     let shownFutureMatches: Match[] = [];
     getFutureMatches(10);
     getPastMatches(10);
-
-    // console.log(shownFutureMatches);
-    console.log(shownPastMatches);
 
     // to start, add all matches from regions selected to pastMatches and futureMatches
     // then order them by date, call 
@@ -121,8 +107,27 @@
     // if shownMatches of one side total goes over 100 when adding, remove matches from the other side
     // when following, add a filter in the #each loop to only show matches with the a followed team in it
 
-
-
+    onMount(() => {
+        const container = document.getElementById('schedule-container');
+        var live = document.getElementById('live-games');
+        var topPos = live?.offsetTop;
+        if (container && topPos) {
+            container.scrollTo(0, topPos);
+        }
+        if (container) {
+            container.addEventListener('scroll', handleScroll);
+        }
+    })
+    
+    function handleScroll() {
+        const container = document.getElementById('schedule-container');
+        if (container) {
+            if (container.scrollTop < 1000)
+                getPastMatches();
+            else if (container.scrollTop > container.scrollHeight - container.offsetHeight - 200)
+                getFutureMatches();
+        }
+    }
 
     function addRegion(region: { past: Match[], future: Match[] }) {
         // if server, dont run this code
@@ -158,7 +163,7 @@
         });
     }
 
-    function getPastMatches(numMatches: number = 10) {
+    function getPastMatches(numMatches: number = 30) {
         let temp = shownPastMatches;
         let matchesAdded = 0;
         let i = temp.length;
@@ -387,13 +392,15 @@
                 {#if i > 0 && new Date(match.matchDate).getDate() != new Date(shownPastMatches[i - 1].matchDate).getDate()}
                     <ScheduleNewDay date={new Date(match.matchDate)}/>
                 {/if}
-                <ScheduleGame matchDate={match.matchDate} team1={match.team1} team1Score={match.team1Score} team1img={getTeamImage(match.team1)} team2={match.team2} team2Score={match.team2Score} team2img={getTeamImage(match.team2)} region={match.region} season={match.season} stage={match.stage} bestOf={match.bestOf}/>
+                <ScheduleGame matchDate={match.matchDate} team1={match.team1} team1Score={match.team1Score} team1img={getTeamImage(match.team1)} team2={match.team2} team2Score={match.team2Score} team2img={getTeamImage(match.team2)} region={match.region} season={match.season} stage={match.stage} bestOf={match.bestOf} {showSpoilers}/>
             {/each}
             {#if shownPastMatches[shownPastMatches.length - 1].matchDate != new Date().toISOString()}
                 <ScheduleNewDay date={new Date()}/>
             {/if}
-            <LiveGame showLive={true}/>
-            <LiveGame />
+            <div id="live-games">
+                <LiveGame showLive={true}/>
+                <LiveGame />
+            </div>
 
             {#each shownFutureMatches as match, i}
                 {#if i == 0 && new Date(match.matchDate).getDate() != new Date().getDate()}
@@ -405,17 +412,6 @@
                 <!-- <h1>{match.matchDate}</h1> -->
                 <ScheduleGame matchDate={match.matchDate} team1={match.team1} team1Score={match.team1Score} team1img={getTeamImage(match.team1)} team2={match.team2} team2Score={match.team2Score} team2img={getTeamImage(match.team2)} region={match.region} season={match.season} stage={match.stage} bestOf={match.bestOf} showSpoilers={showSpoilers} past={false}/> 
             {/each}
-            
-            <!-- Add future matches as scheduleGame's -->
-            <!-- {#each shownFutureMatches as match, i}
-                {#if i == 0 && new Date(match.matchDate).getDate() != new Date().getDate()}
-                    <ScheduleNewDay date={new Date(match.matchDate)}/>
-                {/if}
-                {#if i != 0 && new Date(match.matchDate).getDate() != new Date(shownFutureMatches[i-1].matchDate).getDate()}
-                    <ScheduleNewDay date={new Date(match.matchDate)}/>
-                {/if}
-                <ScheduleGame matchDate={match.matchDate} team1={match.team1} team1Score={match.team1Score} team2={match.team2} team2Score={match.team2Score} region={match.region} season={match.season} stage={match.stage} bestOf={match.bestOf} {showSpoilers} past={false}/> 
-            {/each} -->
             <div class="h-[94vh]">
 
             </div>
@@ -484,9 +480,3 @@
         }
     }
 </style>
-
-<!-- <div class="w-[80px] absolute -left-[128px] flex rounded-full top-4  py-1
-    bg-black dark:bg-gray-700
-    text-blue-50">
-    <h2 class="m-auto">Today</h2>
-</div> -->
