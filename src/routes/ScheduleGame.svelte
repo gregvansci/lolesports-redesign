@@ -35,17 +35,30 @@
         darkModeValue = value;
     });
 
+    function getHour(mD: string) {
+        let date = new Date(mD);
+        let hour = date.getHours();
+        return hour > 12 ? hour - 12 : hour;
+    }
+
+    function getMeridian(mD: string) {
+        let date = new Date(mD);
+        let hour = date.getHours();
+        return hour > 12 ? "PM" : "AM";
+    }
+
+
     // get date hour, if it's past 12, subtract 12 and add PM, else add AM
     // BUGGED, FIX LATER
-    let date = new Date(matchDate);
-    let hour = date.getHours();
-    let convertedHour = hour > 12 ? hour - 12 : hour;
-    let AM = hour > 12 ? "PM" : "AM";
+    // let date = new Date(matchDate);
+    // let hour = date.getHours();
+    // let convertedHour = hour > 12 ? hour - 12 : hour;
+    // let AM = hour > 12 ? "PM" : "AM";
 
 </script>
 
 <div class="h-[85px] w-full flex flex-row justify-between select-none border-y-[1px] border-gray-100 dark:border-steel-800 transition ease-in-out duration-300">
-    <div class="my-auto ml-4 w-[80px] text-blue-gray-400 dark:text-blue-200 font-bold text-3xl flex flex-row transition ease-in-out duration-300">{convertedHour}<span class="text-sm pt-[3px] pl-[2px]">{AM}</span></div>
+    <div class="my-auto ml-4 w-[80px] text-blue-gray-400 dark:text-blue-200 font-bold text-3xl flex flex-row transition ease-in-out duration-300">{getHour(matchDate)}<span class="text-sm pt-[3px] pl-[2px]">{getMeridian(matchDate)}</span></div>
     <div class="flex m-auto text-blue-gray-500 dark:text-blue-50 transition ease-in-out duration-300">
         <div class="w-[325px] flex justify-end">
             <div class="flex flex-row gap-2 justify-end hover:bg-gray-50 dark:hover:bg-steel-800 rounded-lg px-4 py-[6px] cursor-pointer">
