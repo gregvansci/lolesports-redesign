@@ -4,6 +4,8 @@
     let dayOfTheWeek = date.getDay();
     let daysOfTheWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     let dayOfWeek = daysOfTheWeek[dayOfTheWeek];
+    if (isYesterday(date))
+        dayOfWeek = "Yesterday";
     if (isToday(date))
         dayOfWeek = "Today";
     if (isTomorrow(date))
@@ -11,6 +13,14 @@
 
     let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     
+
+    function isYesterday(date: Date) {
+        const yesterday = new Date()
+        yesterday.setDate(yesterday.getDate() - 1)
+        return date.getDate() == yesterday.getDate() &&
+            date.getMonth() == yesterday.getMonth() &&
+            date.getFullYear() == yesterday.getFullYear()
+    }
 
     function isToday(date: Date) {
         const today = new Date()

@@ -1,0 +1,237 @@
+{
+    "T1": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1631819523085_t1-2021-worlds.png",
+        "invert": false,
+        "outline": false
+    },
+    "Gen.G": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1655210113163_GenG_logo_200407-05.png",
+        "invert": false,
+        "outline": true
+    },
+    "KT Rolster": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2Fkt_darkbackground.png",
+        "invert": false,
+        "outline": true
+    },
+    "Dplus KIA": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1673260049703_DPlusKIALOGO11.png",
+        "invert": true,
+        "outline": false
+    },
+    "Hanwha Life Esports": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1631819564399_hle-2021-worlds.png",
+        "invert": false,
+        "outline": true
+    },
+    "Liiv SANDBOX": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2Fliiv-sandbox-new.png",
+        "invert": false,
+        "outline": false
+    },
+    "Kwangdong Freecs": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1641186009897_KDF_KR_logo.png",
+        "invert": false,
+        "outline": false
+    },
+    "BRION": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1672911299140_BRIONlogo_profile1.png",
+        "invert": false,
+        "outline": false
+    },
+    "DRX": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1672910733664_01.Basic_W.png",
+        "invert": true,
+        "outline": false
+    },
+    "Nongshim RedForce": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2FNSFullonDark.png",
+        "invert": false,
+        "outline": false
+    },
+    "JD Gaming": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1627457924722_29.png",
+        "invert": false,
+        "outline": false
+    },
+    "EDward Gaming": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1631819297476_edg-2021-worlds.png",
+        "invert": true,
+        "outline": false
+    },
+    "LNG Esports": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1631819402484_lng-2021-worlds.png",
+        "invert": false,
+        "outline": false
+    },
+    "Weibo Gaming": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1641202879910_3.png",
+        "invert": false,
+        "outline": false
+    },
+    "Bilibili Gaming": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1641200475679_Bilibili_Gaminglogo_profile.png",
+        "invert": false,
+        "outline": false
+    },
+    "Oh My God": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1652821189001_f7745369.png",
+        "invert": false,
+        "outline": false
+    },
+    "Top Esports": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1592592064571_TopEsportsTES-01-FullonDark.png",
+        "invert": false,
+        "outline": false
+    },
+    "ThunderTalk Gaming": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2FTT-FullonDark.png",
+        "invert": false,
+        "outline": false
+    },
+    "Royal Never Give Up": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1631819360134_rng-2021-worlds.png",
+        "invert": false,
+        "outline": false
+    },
+    "Team WE": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1634763008788_220px-Team_WE_logo.png",
+        "invert": false,
+        "outline": false
+    },
+    "Invictus Gaming": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1634762917340_300px-Invictus_Gaming_logo.png",
+        "invert": false,
+        "outline": false
+    },
+    "Rare Atom": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2FRA-FullonDark.png",
+        "invert": false,
+        "outline": false
+    },
+    "Ninjas in Pyjamas.CN": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1673425724696_NIP-Symbol-RGB-NeonYellow1.png",
+        "invert": false,
+        "outline": false
+    },
+    "LGD Gaming": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2FLGD-FullonDark-1.png",
+        "invert": false,
+        "outline": false
+    },
+    "FunPlus Phoenix": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1627457887494_7_720.png",
+        "invert": false,
+        "outline": false
+    },
+    "Anyone's Legend": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1641199582689_.png",
+        "invert": false,
+        "outline": false
+    },
+    "Ultra Prime": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2Fultraprime.png",
+        "invert": false,
+        "outline": false
+    },
+    "Team BDS": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1641292031788_Team_BDSlogo_square.png",
+        "invert": false,
+        "outline": false
+    },
+    "Astralis": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2FAST-FullonDark.png",
+        "invert": false,
+        "outline": false
+    },
+    "G2 Esports": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2FG2-FullonDark.png",
+        "invert": true,
+        "outline": false
+    },
+    "Team Vitality": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1675865863968_Vitality_FullColor.png",
+        "invert": false,
+        "outline": true
+    },
+    "SK Gaming": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1643979272144_SK_Monochrome.png",
+        "invert": true,
+        "outline": false
+    },
+    "Fnatic": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1631819669150_fnc-2021-worlds.png",
+        "invert": false,
+        "outline": false
+    },
+    "KOI (Spanish Team)": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1673718797685_image.webp",
+        "invert": false,
+        "outline": false
+    },
+    "MAD Lions": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1631819614211_mad-2021-worlds.png",
+        "invert": false,
+        "outline": false
+    },
+    "Team Heretics": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1672933861879_Heretics-Full-Color.png",
+        "invert": false,
+        "outline": false
+    },
+    "Excel Esports": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2FExcel_FullColor2.png",
+        "invert": true,
+        "outline": false
+    },
+    "Cloud9": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1631820065346_cloud9-2021-worlds.png",
+        "invert": false,
+        "outline": false
+    },
+    "FlyQuest": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2Fflyquest-new-on-dark.png",
+        "invert": false,
+        "outline": false
+    },
+    "100 Thieves": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1631819887423_100t-2021-worlds.png",
+        "invert": false,
+        "outline": false
+    },
+    "Counter Logic Gaming": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1592590248482_CounterLogicGamingCLG-01-FullonDark.png",
+        "invert": false,
+        "outline": false
+    },
+    "Evil Geniuses.NA": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1592590374862_EvilGeniusesEG-01-FullonDark.png",
+        "invert": true,
+        "outline": false
+    },
+    "Golden Guardians": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1592590586919_GoldenGuardiansGGS-01-FullonDark.png",
+        "invert": false,
+        "outline": false
+    },
+    "TSM": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1672824696002_White-Logo-Mark.png",
+        "invert": true,
+        "outline": false
+    },
+    "Team Liquid": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1631820014208_tl-2021-worlds.png",
+        "invert": false,
+        "outline": false
+    },
+    "Immortals": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2Fimt-new-color.png",
+        "invert": false,
+        "outline": false
+    },
+    "Dignitas": {
+        "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2FDIG-FullonDark.png",
+        "invert": false,
+        "outline": false
+    }
+}
