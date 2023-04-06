@@ -1,17 +1,14 @@
 <script lang="ts">
+    import { onMount } from 'svelte';
     import { darkMode } from '../../store';
-    // import lck from '$lib/data/curSplit/lck.json';
-    // import lpl from '$lib/data/curSplit/lpl.json';
-    // import lec from '$lib/data/curSplit/lec.json';
-    // import lcs from '$lib/data/curSplit/lcs.json';
-
+    
+    import lck from '$lib/data/lck.json';
     import ScheduleNewDay from '../ScheduleNewDay.svelte';
     import ScheduleGame from '../ScheduleGame.svelte';
     import LiveGame from '../LiveGame.svelte';
     import RegionSelector from './RegionSelector.svelte';
     import teamImage from '$lib/data/teamImage.json';
-    import { onMount } from 'svelte';
-
+    
     let darkModeValue: boolean;
 
     darkMode.subscribe(value => {
@@ -32,6 +29,71 @@
         bestOf: number;
     }
 
+    let pastMatches: Match[] = [];
+    let shownPastMatches: Match[] = [];
+    let futureMatches: Match[] = [];
+
+    onMount(() => {
+        const container = document.getElementById('schedule-container');
+        if (container) {
+            container.addEventListener('scroll', handleScroll);
+        }
+    })
+
+    function handleScroll() {
+        const container = document.getElementById('schedule-container');
+        if (container) {
+            if (container.scrollTop < 200)
+                getPastMatches();
+        }
+    }
+
+    let regionPastCount = [ 0, 0, 0, 0, 0 ];  // MSI, LCK, LPL, LEC, LCS
+    getFutureMatches();
+
+    // look at past matches and add them to pastMatches by date
+    // save an iterator for each region
+    function getPastMatches(numMatches: number = 20) {
+        // add numMatches to beginning of pastMatches
+        for (let i = 0; i < numMatches; i++) {
+            if (regionPastCount[1] < lck["past"].length) {
+                pastMatches.unshift({
+                    matchId: lck["past"][regionPastCount[1]].matchId,
+                    matchDate: new Date(lck["past"][regionPastCount[1]].matchDate).toLocaleString(),
+                    team1: lck["past"][regionPastCount[1]].team1,
+                    team1Score: lck["past"][regionPastCount[1]].team1Score,
+                    team2: lck["past"][regionPastCount[1]].team2,
+                    team2Score: lck["past"][regionPastCount[1]].team2Score,
+                    region: lck["past"][regionPastCount[1]].region,
+                    season: lck["past"][regionPastCount[1]].season,
+                    stage: lck["past"][regionPastCount[1]].stage,
+                    bestOf: lck["past"][regionPastCount[1]].bestOf
+                })
+                regionPastCount[1]++;
+            }
+        }
+        shownPastMatches = pastMatches;
+        console.log(shownPastMatches)
+    }
+
+    // look at future matches and add them to futureMatches by date
+    // save an iterator for each region
+    function getFutureMatches() {
+        lck["future"].forEach(match => {
+            futureMatches.push({
+                matchId: match.matchId,
+                matchDate: new Date(match.matchDate).toLocaleString(),
+                team1: match.team1,
+                team1Score: match.team1Score,
+                team2: match.team2,
+                team2Score: match.team2Score,
+                region: match.region,
+                season: match.season,
+                stage: match.stage,
+                bestOf: match.bestOf
+            })
+        });
+    }
 
 
     let showFollowingLeft = false;
@@ -125,18 +187,26 @@
 	<meta name="description" content="Schedule page" />
 </svelte:head>
 
-<section class="mt-[60px] w-full overflow-y-scroll">
+<section id="schedule-container" class="mt-[60px] w-full overflow-y-scroll">
     <div class="w-full justify-center flex flex-row pl-[128px] pr-[248px]">
         <div class="w-[900px] flex flex-col h-auto relative pt-4">
+            {#each shownPastMatches as match, i}
+                <ScheduleGame matchDate={match.matchDate} team1={match.team1} team1Score={match.team1Score} team1img={getTeamImage(match.team1)} team2={match.team2} team2Score={match.team2Score} team2img={getTeamImage(match.team2)} region={match.region} season={match.season} stage={match.stage} bestOf={match.bestOf}/>
+            {/each}
             <ScheduleNewDay date={new Date()}/>
-            <LiveGame showLive={true}/>
+            <LiveGame  showLive={true}/>
             <LiveGame />
-            <ScheduleNewDay date={new Date()}/>
-            <ScheduleGame team1="T1" team1img={getTeamImage("T1")} team2="Gen.G" team2img={getTeamImage("Gen.G")}/>
-            <ScheduleGame team1="KT Rolster" team1img={getTeamImage("KT Rolster")} team2="DRX" team2img={getTeamImage("DRX")}/>
-            <ScheduleGame team1="Dplus KIA" team1img={getTeamImage("Dplus KIA")} team2="Liiv SANDBOX" team2img={getTeamImage("Liiv SANDBOX")}/>
-            <ScheduleGame team1="Hanwha Life Esports" team1img={getTeamImage("Hanwha Life Esports")} team2="Kwangdong Freecs" team2img={getTeamImage("Kwangdong Freecs")}/>
-            <ScheduleGame team1="Nongshim Redforce" team1img={getTeamImage("Nongshim Redforce")} team2="BRION" team2img={getTeamImage("BRION")} />
+
+            {#each futureMatches as match, i}
+                {#if i == 0 && new Date(match.matchDate).getDate() != new Date().getDate()}
+                    <ScheduleNewDay date={new Date(match.matchDate)}/>
+                {/if}
+                {#if i > 0 && new Date(match.matchDate).getDate() != new Date(futureMatches[i-1].matchDate).getDate()}
+                    <ScheduleNewDay date={new Date(match.matchDate)}/>
+                {/if}
+                <ScheduleGame matchDate={match.matchDate} team1={match.team1} team1Score={match.team1Score} team1img={getTeamImage(match.team1)} team2={match.team2} team2Score={match.team2Score} team2img={getTeamImage(match.team2)} region={match.region} season={match.season} stage={match.stage} bestOf={match.bestOf} showSpoilers={showSpoilers} past={false}/> 
+            {/each}
+            
             <!-- Add future matches as scheduleGame's -->
             <!-- {#each shownFutureMatches as match, i}
                 {#if i == 0 && new Date(match.matchDate).getDate() != new Date().getDate()}
@@ -147,12 +217,15 @@
                 {/if}
                 <ScheduleGame matchDate={match.matchDate} team1={match.team1} team1Score={match.team1Score} team2={match.team2} team2Score={match.team2Score} region={match.region} season={match.season} stage={match.stage} bestOf={match.bestOf} {showSpoilers} past={false}/> 
             {/each} -->
+            <div class="h-[94vh]">
+
+            </div>
         </div>
         <div class="select-none">
             <div class="pl-12 absolute top-[10vh] flex flex-col gap-6">
-                <div class="flex flex-col gap-6">
-                    <h2 class="font-semibold opacity-50">Filters</h2>
-                    <button on:click={() => {showFollowing = !showFollowing; showFollowingLeft = true}} class="flex flex-row justify-between w-[200px]">
+                <div class="flex flex-col">
+                    <h2 class="font-semibold opacity-50 mb-4">Filters</h2>
+                    <button on:click={() => {showFollowing = !showFollowing; showFollowingLeft = true}} class="mb-6 flex flex-row justify-between w-[200px]">
                         <h2>Show Following</h2>
                         <div class="{ showFollowing ? "bg-highlight" : "bg-gray-100 dark:bg-steel-700"} rounded-full w-12 flex transition ease-in-out duration-300">
                             <div class="bg-white rounded-full w-5 h-5 m-[2px] transition ease-in-out duration-300 {showFollowing ? "animate-right" : showFollowingLeft ? "animate-left" : ""}"/>

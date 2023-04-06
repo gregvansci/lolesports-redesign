@@ -96,9 +96,9 @@
         filter: invert(1);
     }    
     .img-outline {
-        -webkit-filter: drop-shadow(2px 1px 0 black)
-                        drop-shadow(-1px -1px 0 black);
-        filter: drop-shadow(1px 1px 0 black) 
-                drop-shadow(-1px -1px 0 black);
+        -webkit-filter: drop-shadow(2px 1px 0 #A3A3A3)
+                        drop-shadow(-1px -1px 0 #A3A3A3);
+        filter: drop-shadow(1px 1px 0 #A3A3A3) 
+                drop-shadow(-1px -1px 0 #A3A3A3);
     }
 </style>
