@@ -3,6 +3,7 @@
     import { darkMode } from '../../store';
     
     import lck from '$lib/data/lck.json';
+    import lpl from '$lib/data/lpl.json';
     import ScheduleNewDay from '../ScheduleNewDay.svelte';
     import ScheduleGame from '../ScheduleGame.svelte';
     import LiveGame from '../LiveGame.svelte';
@@ -29,57 +30,93 @@
         bestOf: number;
     }
 
-    let pastMatches: Match[] = [];
-    let shownPastMatches: Match[] = [];
-    let futureMatches: Match[] = [];
-
     onMount(() => {
         const container = document.getElementById('schedule-container');
         if (container) {
             container.addEventListener('scroll', handleScroll);
         }
     })
-
+    
     function handleScroll() {
-        const container = document.getElementById('schedule-container');
-        if (container) {
-            if (container.scrollTop < 200)
-                getPastMatches();
-        }
+        // const container = document.getElementById('schedule-container');
+        // if (container) {
+        //     if (container.scrollTop < 200)
+        //         getPastMatches();
+        // }
     }
 
-    let regionPastCount = [ 0, 0, 0, 0, 0 ];  // MSI, LCK, LPL, LEC, LCS
-    getFutureMatches();
+    let regionShown = [ 
+        [ true ],                                           // International
+        [ true, true, false ],                              // Korea, LCK, LCK CL
+        [ true, true, false ],                            // China, LPL, LDL
+        [ false, false, false ],                            // Europe, LEC, EMEA Masters
+        [ false, false, false ],                              // North America, LCS, NACL
+        [ false, false, false, false, false, false, false ] // Minor Regions, PCS, VCS, LJL, CBLOL, LLA, LCO
+    ];
 
-    // look at past matches and add them to pastMatches by date
-    // save an iterator for each region
-    function getPastMatches(numMatches: number = 20) {
-        // add numMatches to beginning of pastMatches
-        for (let i = 0; i < numMatches; i++) {
-            if (regionPastCount[1] < lck["past"].length) {
-                pastMatches.unshift({
-                    matchId: lck["past"][regionPastCount[1]].matchId,
-                    matchDate: new Date(lck["past"][regionPastCount[1]].matchDate).toLocaleString(),
-                    team1: lck["past"][regionPastCount[1]].team1,
-                    team1Score: lck["past"][regionPastCount[1]].team1Score,
-                    team2: lck["past"][regionPastCount[1]].team2,
-                    team2Score: lck["past"][regionPastCount[1]].team2Score,
-                    region: lck["past"][regionPastCount[1]].region,
-                    season: lck["past"][regionPastCount[1]].season,
-                    stage: lck["past"][regionPastCount[1]].stage,
-                    bestOf: lck["past"][regionPastCount[1]].bestOf
-                })
-                regionPastCount[1]++;
-            }
-        }
-        shownPastMatches = pastMatches;
-        console.log(shownPastMatches)
-    }
+    let futureMatches: Match[] = [];
+    let pastMatches: Match[] = [];
 
-    // look at future matches and add them to futureMatches by date
-    // save an iterator for each region
-    function getFutureMatches() {
-        lck["future"].forEach(match => {
+    // go through regions, if selected, add all matches to pastMatches and futureMatches
+    addRegion(lck);
+    addRegion(lpl);
+
+    // sort pastMatches and futureMatches by date
+    pastMatches.sort((a, b) => new Date(a.matchDate).getTime() - new Date(b.matchDate).getTime());
+    futureMatches.sort((a, b) => new Date(a.matchDate).getTime() - new Date(b.matchDate).getTime());
+    
+    // call getFutureMatches() to fill shownFutureMatches
+    let shownFutureMatches: Match[] = [];
+    getFutureMatches(20);
+    let shownPastMatches: Match[] = [];
+
+    console.log(shownFutureMatches);
+
+
+    // to start, add all matches from regions selected to pastMatches and futureMatches
+    // then order them by date, call 
+
+    // function to add all matches that are initially selected - fillmatches()
+    // function to add all matches from a new region - addRegion()
+    // when regions are unselected, they remain in the array but are removed from the shownMatches array
+
+    // past
+    // function to add as scrolling up - handleScroll(), getPastMatches(numMatches: number = 10), removeFutureMatches()
+    //      - go through pastMatches and find the 
+    // function to add when region is selected / unselected - updateRegionShown()
+    //      - 
+
+    // future
+    // function to add as scrolling down - handleScroll(), getFutureMatches(numMatches: number = 10), removePastMatches()
+    //      - go through futureMatches and add to shownFuture until numMatches is hit
+    // function to add when region is selected / unselected - updateRegionShown()
+    //      - if selected, get the matchDate of the last match in shownFuture, add all matches from that region after that date
+    //      - if unselected, go through shownMatches and remove all matches from that region
+
+    // if shownMatches of one side total goes over 100 when adding, remove matches from the other side
+    // when following, add a filter in the #each loop to only show matches with the a followed team in it
+
+
+
+
+    function addRegion(region: { past: Match[], future: Match[] }) {
+        // if server, dont run this code
+        if (typeof window === 'undefined') return;
+        region.past.forEach(match => {
+            pastMatches.push({
+                matchId: match.matchId,
+                matchDate: new Date(match.matchDate).toLocaleString(),
+                team1: match.team1,
+                team1Score: match.team1Score,
+                team2: match.team2,
+                team2Score: match.team2Score,
+                region: match.region,
+                season: match.season,
+                stage: match.stage,
+                bestOf: match.bestOf
+            })
+        });
+        region.future.forEach(match => {
             futureMatches.push({
                 matchId: match.matchId,
                 matchDate: new Date(match.matchDate).toLocaleString(),
@@ -95,21 +132,28 @@
         });
     }
 
+    function getFutureMatches(numMatches: number = 10) {
+        let matchesAdded = 0;
+        let i = shownFutureMatches.length;
+        while (matchesAdded < numMatches && i < futureMatches.length) {
+            if (isRegionShown(futureMatches[i].region)) {
+                shownFutureMatches.push(futureMatches[i]);
+                matchesAdded++;
+            }
+            i++;
+        }
+    }
+
+    function updateRegionShown() {
+
+    }
+
 
     let showFollowingLeft = false;
     let showFollowing = false;
     let showSpoilersLeft = false;
     let showSpoilers = false;
-
-    // If any of the items in the array after the 0th index are true, the 0th index is true
-    let regionShown = [ 
-        [ true ],                                           // International
-        [ true, true, false ],                              // Korea, LCK, LCK CL
-        [ false, false, false ],                            // China, LPL, LDL
-        [ false, false, false ],                            // Europe, LEC, EMEA Masters
-        [ true, true, false ],                              // North America, LCS, NACL
-        [ false, false, false, false, false, false, false ] // Minor Regions, PCS, VCS, LJL, CBLOL, LLA, LCO
-    ];
+    
 
     function isRegionShown(region: string): boolean {
         if (region === 'LCK') return regionShown[1][1];
@@ -190,9 +234,9 @@
 <section id="schedule-container" class="mt-[60px] w-full overflow-y-scroll">
     <div class="w-full justify-center flex flex-row pl-[128px] pr-[248px]">
         <div class="w-[900px] flex flex-col h-auto relative pt-4">
-            {#each shownPastMatches as match, i}
+            <!-- {#each shownPastMatches as match, i}
                 <ScheduleGame matchDate={match.matchDate} team1={match.team1} team1Score={match.team1Score} team1img={getTeamImage(match.team1)} team2={match.team2} team2Score={match.team2Score} team2img={getTeamImage(match.team2)} region={match.region} season={match.season} stage={match.stage} bestOf={match.bestOf}/>
-            {/each}
+            {/each} -->
             <ScheduleNewDay date={new Date()}/>
             <LiveGame  showLive={true}/>
             <LiveGame />
@@ -259,6 +303,9 @@
 </section>
 
 <style>
+    body {
+        overflow-anchor: auto;
+    }
     .animate-right {
         animation: slide-right 0.2s ease forwards;
     }
