@@ -38,6 +38,7 @@
     function getHour(mD: string) {
         let date = new Date(mD);
         let hour = date.getHours();
+        if (hour == 0) return 12;
         return hour > 12 ? hour - 12 : hour;
     }
 
@@ -46,14 +47,6 @@
         let hour = date.getHours();
         return hour > 12 ? "PM" : "AM";
     }
-
-
-    // get date hour, if it's past 12, subtract 12 and add PM, else add AM
-    // BUGGED, FIX LATER
-    // let date = new Date(matchDate);
-    // let hour = date.getHours();
-    // let convertedHour = hour > 12 ? hour - 12 : hour;
-    // let AM = hour > 12 ? "PM" : "AM";
 
 </script>
 

@@ -41,9 +41,11 @@
         [ false, false, false, false, false, false, false ] // Minor Regions, PCS, VCS, LJL, CBLOL, LLA, LCO
     ];
     let regionsShown: number;
+
     onMount(() => {
         countRegionsShown();
     })
+
     function countRegionsShown() {
         // count all regions except 0th index for all but 0th
         regionsShown = 0;
@@ -54,6 +56,7 @@
             }
         }
     }
+
     let regionName = [
         [ 'International' ],
         [ 'Korea', 'LCK', 'LCK CL' ],
@@ -66,16 +69,12 @@
     let pastMatches: Match[] = [];
     let futureMatches: Match[] = [];
 
-    // go through regions, if selected, add all matches to pastMatches and futureMatches
     addRegion(lck);
     addRegion(lpl);
     addRegion(lec);
     addRegion(lcs);
 
-    // sort pastMatches and futureMatches by date
-    // sort pastMatches by date, newest first
     pastMatches.sort((a, b) => new Date(b.matchDate).getTime() - new Date(a.matchDate).getTime());
-    // sort futureMatches by date, oldest first
     futureMatches.sort((a, b) => new Date(a.matchDate).getTime() - new Date(b.matchDate).getTime());
     
     // call getFutureMatches() to fill shownFutureMatches
@@ -83,29 +82,6 @@
     let shownFutureMatches: Match[] = [];
     getFutureMatches(10);
     getPastMatches(10);
-
-    // to start, add all matches from regions selected to pastMatches and futureMatches
-    // then order them by date, call 
-
-    // function to add all matches that are initially selected - fillmatches()
-    // function to add all matches from a new region - addRegion()
-    // when regions are unselected, they remain in the array but are removed from the shownMatches array
-
-    // past
-    // function to add as scrolling up - handleScroll(), getPastMatches(numMatches: number = 10), removeFutureMatches()
-    //      - go through pastMatches and find the 
-    // function to add when region is selected / unselected - updateRegionShown()
-    //      - 
-
-    // future
-    // function to add as scrolling down - handleScroll(), getFutureMatches(numMatches: number = 10), removePastMatches()
-    //      - go through futureMatches and add to shownFuture until numMatches is hit
-    // function to add when region is selected / unselected - updateRegionShown()
-    //      - if selected, get the matchDate of the last match in shownFuture, add all matches from that region before that date
-    //      - if unselected, go through shownMatches and remove all matches from that region
-
-    // if shownMatches of one side total goes over 100 when adding, remove matches from the other side
-    // when following, add a filter in the #each loop to only show matches with the a followed team in it
 
     onMount(() => {
         const container = document.getElementById('schedule-container');
@@ -244,7 +220,7 @@
         shownFutureMatches = temp;
     }
 
-    async function removeRegionShown(region: number, index: number) {
+    function removeRegionShown(region: number, index: number) {
         let temp: Match[] = [];
         if (index === 0) {
             shownPastMatches.forEach(match => {
@@ -263,8 +239,6 @@
         }
         shownPastMatches = temp;
 
-        // if index is 0, remove all matches from that region row
-        // if index is greater than 0, remove just the region row index value
         temp = [];
         if (index === 0) {
             shownFutureMatches.forEach(match => {
