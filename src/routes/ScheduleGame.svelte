@@ -51,7 +51,7 @@
             <div class="flex flex-row gap-2 justify-end hover:bg-gray-50 dark:hover:bg-steel-800 rounded-lg px-4 py-[6px] cursor-pointer">
                 <div class="my-auto">
                     <h2 class="font-semibold text-xl">{team1}</h2>
-                    <h2 class="flex justify-end text-sm">{past && showSpoilers ? team1History : ""}</h2>
+                    <!-- <h2 class="flex justify-end text-sm">{past && showSpoilers ? team1History : ""}</h2> -->
                 </div>
                 <div class="my-auto">
                     <img class="w-[55px] {!darkModeValue && team1img["invert"] ? "teamLogoInvert" : ""} {!darkModeValue && team1img["outline"] ? "img-outline" : ""} transition ease-in-out duration-300" src={team1img["link"] == "" ? defaultTeam : team1img["link"]} alt={team1}>
@@ -73,7 +73,7 @@
                 </div>
                 <div class="my-auto">
                     <h2 class="font-semibold text-xl">{team2}</h2>
-                    <h2 class="flex justify-start text-sm">{past && showSpoilers ? team2History : ""}</h2>
+                    <!-- <h2 class="flex justify-start text-sm">{past && showSpoilers ? team2History : ""}</h2> -->
                 </div>
             </div>
         </div>

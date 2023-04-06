@@ -36,8 +36,8 @@
         [ false ],                                           // International
         [ true, true, false ],                              // Korea, LCK, LCK CL
         [ true, true, false ],                            // China, LPL, LDL
-        [ false, false, false ],                            // Europe, LEC, EMEA Masters
-        [ false, false, false ],                              // North America, LCS, NACL
+        [ true, true, false ],                            // Europe, LEC, EMEA Masters
+        [ true, true, false ],                              // North America, LCS, NACL
         [ false, false, false, false, false, false, false ] // Minor Regions, PCS, VCS, LJL, CBLOL, LLA, LCO
     ];
     let regionsShown: number;
@@ -219,7 +219,6 @@
         } else {
             getPastMatches(10);
         }
-        console.log(shownPastMatches)
         let max = new Date(shownFutureMatches[shownFutureMatches.length - 1].matchDate);
         i = 0;
         temp = shownFutureMatches;
@@ -312,7 +311,6 @@
         }
     }
 
-
     function handleRegionInput(region: number, index: number) {
         if (regionDropdown[region]) {
             if (index == 0) {
@@ -389,12 +387,12 @@
                 {#if i == 0}
                     <ScheduleNewDay date={new Date(match.matchDate)}/>
                 {/if}
-                {#if i > 0 && new Date(match.matchDate).getDate() != new Date(shownPastMatches[i - 1].matchDate).getDate()}
+                {#if i > 0 && match && shownPastMatches[i - 1] && new Date(match.matchDate).getDate() != new Date(shownPastMatches[i - 1].matchDate).getDate()}
                     <ScheduleNewDay date={new Date(match.matchDate)}/>
                 {/if}
-                <ScheduleGame matchDate={match.matchDate} team1={match.team1} team1Score={match.team1Score} team1img={getTeamImage(match.team1)} team2={match.team2} team2Score={match.team2Score} team2img={getTeamImage(match.team2)} region={match.region} season={match.season} stage={match.stage} bestOf={match.bestOf} {showSpoilers}/>
+                <ScheduleGame matchDate={match.matchDate} team1={match.team1} team1Score={match.team1Score} team1img={getTeamImage(match.team1)} team2={match.team2} team2Score={match.team2Score} team2img={getTeamImage(match.team2)} region={match.region} season={match.season} stage={match.stage} bestOf={match.bestOf} {showSpoilers} past={true}/>
             {/each}
-            {#if shownPastMatches[shownPastMatches.length - 1].matchDate != new Date().toISOString()}
+            {#if shownPastMatches && shownPastMatches.length > 0 && shownPastMatches[shownPastMatches.length - 1].matchDate != new Date().toISOString()}
                 <ScheduleNewDay date={new Date()}/>
             {/if}
             <div id="live-games">

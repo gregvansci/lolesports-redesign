@@ -44,7 +44,7 @@
         "invert": true,
         "outline": false
     },
-    "Nongshim Redforce": {
+    "Nongshim RedForce": {
         "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2FNSFullonDark.png",
         "invert": false,
         "outline": false
@@ -146,13 +146,13 @@
     },
     "G2 Esports": {
         "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2FG2-FullonDark.png",
-        "invert": false,
-        "outline": true
+        "invert": true,
+        "outline": false
     },
     "Team Vitality": {
         "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1675865863968_Vitality_FullColor.png",
         "invert": false,
-        "outline": false
+        "outline": true
     },
     "SK Gaming": {
         "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1643979272144_SK_Monochrome.png",
@@ -181,7 +181,7 @@
     },
     "Excel Esports": {
         "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2FExcel_FullColor2.png",
-        "invert": false,
+        "invert": true,
         "outline": false
     },
     "Cloud9": {
@@ -206,7 +206,7 @@
     },
     "Evil Geniuses.NA": {
         "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1592590374862_EvilGeniusesEG-01-FullonDark.png",
-        "invert": false,
+        "invert": true,
         "outline": false
     },
     "Golden Guardians": {
@@ -216,7 +216,7 @@
     },
     "TSM": {
         "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1672824696002_White-Logo-Mark.png",
-        "invert": false,
+        "invert": true,
         "outline": false
     },
     "Team Liquid": {
