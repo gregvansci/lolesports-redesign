@@ -36,7 +36,7 @@
     });
 
     // get date hour, if it's past 12, subtract 12 and add PM, else add AM
-    // 
+    // BUGGED, FIX LATER
     let date = new Date(matchDate);
     let hour = date.getHours();
     let convertedHour = hour > 12 ? hour - 12 : hour;

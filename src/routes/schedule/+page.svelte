@@ -46,32 +46,57 @@
     }
 
     let regionShown = [ 
-        [ true ],                                           // International
+        [ false ],                                           // International
         [ true, true, false ],                              // Korea, LCK, LCK CL
         [ true, true, false ],                            // China, LPL, LDL
         [ false, false, false ],                            // Europe, LEC, EMEA Masters
         [ false, false, false ],                              // North America, LCS, NACL
         [ false, false, false, false, false, false, false ] // Minor Regions, PCS, VCS, LJL, CBLOL, LLA, LCO
     ];
+    let regionsShown: number;
+    onMount(() => {
+        countRegionsShown();
+    })
+    function countRegionsShown() {
+        // count all regions except 0th index for all but 0th
+        regionsShown = 0;
+        if (regionShown[0][0]) regionsShown = 1;
+        for (let i = 1; i < regionShown.length; i++) {
+            for (let j = 1; j < regionShown[i].length; j++) {
+                if (regionShown[i][j]) regionsShown++;
+            }
+        }
+    }
+    let regionName = [
+        [ 'International' ],
+        [ 'Korea', 'LCK', 'LCK CL' ],
+        [ 'China', 'LPL', 'LDL' ],
+        [ 'Europe', 'LEC', 'EMEA Masters' ],
+        [ 'North America', 'LCS', 'NACL' ],
+        [ 'Minor Regions', 'PCS', 'VCS', 'LJL', 'CBLOL', 'LLA', 'LCO' ]
+    ];
 
-    let futureMatches: Match[] = [];
     let pastMatches: Match[] = [];
+    let futureMatches: Match[] = [];
 
     // go through regions, if selected, add all matches to pastMatches and futureMatches
     addRegion(lck);
     addRegion(lpl);
 
     // sort pastMatches and futureMatches by date
-    pastMatches.sort((a, b) => new Date(a.matchDate).getTime() - new Date(b.matchDate).getTime());
+    // sort pastMatches by date, newest first
+    pastMatches.sort((a, b) => new Date(b.matchDate).getTime() - new Date(a.matchDate).getTime());
+    // sort futureMatches by date, oldest first
     futureMatches.sort((a, b) => new Date(a.matchDate).getTime() - new Date(b.matchDate).getTime());
     
     // call getFutureMatches() to fill shownFutureMatches
-    let shownFutureMatches: Match[] = [];
-    getFutureMatches(20);
     let shownPastMatches: Match[] = [];
+    let shownFutureMatches: Match[] = [];
+    getFutureMatches(10);
+    getPastMatches(10);
 
-    console.log(shownFutureMatches);
-
+    // console.log(shownFutureMatches);
+    console.log(shownPastMatches);
 
     // to start, add all matches from regions selected to pastMatches and futureMatches
     // then order them by date, call 
@@ -90,7 +115,7 @@
     // function to add as scrolling down - handleScroll(), getFutureMatches(numMatches: number = 10), removePastMatches()
     //      - go through futureMatches and add to shownFuture until numMatches is hit
     // function to add when region is selected / unselected - updateRegionShown()
-    //      - if selected, get the matchDate of the last match in shownFuture, add all matches from that region after that date
+    //      - if selected, get the matchDate of the last match in shownFuture, add all matches from that region before that date
     //      - if unselected, go through shownMatches and remove all matches from that region
 
     // if shownMatches of one side total goes over 100 when adding, remove matches from the other side
@@ -103,7 +128,7 @@
         // if server, dont run this code
         if (typeof window === 'undefined') return;
         region.past.forEach(match => {
-            pastMatches.push({
+            pastMatches.unshift({
                 matchId: match.matchId,
                 matchDate: new Date(match.matchDate).toLocaleString(),
                 team1: match.team1,
@@ -115,7 +140,8 @@
                 stage: match.stage,
                 bestOf: match.bestOf
             })
-        });
+        })
+
         region.future.forEach(match => {
             futureMatches.push({
                 matchId: match.matchId,
@@ -132,6 +158,20 @@
         });
     }
 
+    function getPastMatches(numMatches: number = 10) {
+        let temp = shownPastMatches;
+        let matchesAdded = 0;
+        let i = temp.length;
+        while (matchesAdded < numMatches && i < pastMatches.length) {
+            if (isRegionShown(pastMatches[i].region)) {
+                temp.unshift(pastMatches[i]);
+                matchesAdded++;
+            }
+            i++;
+        }
+        shownPastMatches = temp;
+    }
+
     function getFutureMatches(numMatches: number = 10) {
         let matchesAdded = 0;
         let i = shownFutureMatches.length;
@@ -144,8 +184,100 @@
         }
     }
 
-    function updateRegionShown() {
+    function addRegionShown(region: number, index: number) {
+        let i;
+        let temp;
+        if (shownPastMatches.length !== 0) {
+            let min = new Date(shownPastMatches[0].matchDate);
+            i = 0;
+            temp = shownPastMatches;
+            if (index === 0) {
+                while (i < pastMatches.length && new Date(pastMatches[i].matchDate) > min) {
+                    for (let j = 0; j < regionName[region].length; j++) {
+                        if (pastMatches[i].region === regionName[region][j]) {
+                            temp.unshift(pastMatches[i]);
+                        }
+                    }
+                    i++;
+                }
+            } else {
+                while (i < pastMatches.length && new Date(pastMatches[i].matchDate) > min) {
+                    if (pastMatches[i].region === regionName[region][index]) {
+                        temp.unshift(pastMatches[i]);
+                    }
+                    i++;
+                }
+            }
+            temp.sort((a, b) => new Date(a.matchDate).getTime() - new Date(b.matchDate).getTime());
+            shownPastMatches = temp;
+            
+        } else {
+            getPastMatches(10);
+        }
+        console.log(shownPastMatches)
+        let max = new Date(shownFutureMatches[shownFutureMatches.length - 1].matchDate);
+        i = 0;
+        temp = shownFutureMatches;
+        if (index === 0) {
+            while (i < futureMatches.length && new Date(futureMatches[i].matchDate) < max) {
+                for (let j = 0; j < regionName[region].length; j++) {
+                    if (futureMatches[i].region === regionName[region][j]) {
+                        temp.push(futureMatches[i]);
+                    }
+                }
+                i++;
+            }
+        } else {
+            while (i < futureMatches.length && new Date(futureMatches[i].matchDate) < max) {
+                if (futureMatches[i].region === regionName[region][index]) {
+                    temp.push(futureMatches[i]);
+                }
+                i++;
+            }
+        }
+        // sort temp
+        temp.sort((a, b) => new Date(a.matchDate).getTime() - new Date(b.matchDate).getTime());
+        shownFutureMatches = temp;
+    }
 
+    async function removeRegionShown(region: number, index: number) {
+        let temp: Match[] = [];
+        if (index === 0) {
+            shownPastMatches.forEach(match => {
+                for (let i = 0; i < regionName[region].length; i++) {
+                    if (match.region !== regionName[region][i]) {
+                        temp.push(match);
+                    }
+                }
+            })
+        } else {
+            shownPastMatches.forEach(match => {
+                if (match.region !== regionName[region][index]) {
+                    temp.push(match);
+                }
+            })
+        }
+        shownPastMatches = temp;
+
+        // if index is 0, remove all matches from that region row
+        // if index is greater than 0, remove just the region row index value
+        temp = [];
+        if (index === 0) {
+            shownFutureMatches.forEach(match => {
+                for (let i = 0; i < regionName[region].length; i++) {
+                    if (match.region !== regionName[region][i]) {
+                        temp.push(match);
+                    }
+                }
+            })
+        } else {
+            shownFutureMatches.forEach(match => {
+                if (match.region !== regionName[region][index]) {
+                    temp.push(match);
+                }
+            })
+        }
+        shownFutureMatches = temp;
     }
 
 
@@ -175,33 +307,46 @@
         }
     }
 
+
     function handleRegionInput(region: number, index: number) {
         if (regionDropdown[region]) {
             if (index == 0) {
                 if (regionShown[region][0]) {
+                    if (regionsShown === 1) return;
                     regionShown[region].fill(false);
+                    removeRegionShown(region, index);
                 } else {
                     regionShown[region].fill(true);
+                    addRegionShown(region, index);
                 }
             } else {
                 if (regionShown[region][index]) {
+                    if (regionsShown === 1) return;
                     regionShown[region][index] = false;
+                    removeRegionShown(region, index);
                 } else {
                     regionShown[region][index] = true;
+                    addRegionShown(region, index);
                 }
             }
         } else {
-            if (region == 5) {
+            if (region === 5) {
                 if (regionShown[region][0]) {
                     regionShown[region].fill(false);
+                    if (regionsShown === 1) return;
+                    removeRegionShown(region, index);
                 } else {
                     regionShown[region].fill(true);
+                    addRegionShown(region, index);
                 }
             } else {
                 if (regionShown[region][0]) {
+                    if (regionsShown === 1) return;
                     regionShown[region] = [ false, false, false ];
+                    removeRegionShown(region, index);
                 } else {
                     regionShown[region] = [ true, true, false ];
+                    addRegionShown(region, index);
                 }
             }
         }
@@ -213,6 +358,7 @@
         } else {
             regionShown[region][0] = false;
         }
+        countRegionsShown();
     }
 
     const imageMap = teamImage as { [key: string]: { link: string, invert: boolean, outline: boolean} };
@@ -231,23 +377,32 @@
 	<meta name="description" content="Schedule page" />
 </svelte:head>
 
-<section id="schedule-container" class="mt-[60px] w-full overflow-y-scroll">
+<section id="schedule-container" class="anchor mt-[60px] w-full overflow-y-scroll">
     <div class="w-full justify-center flex flex-row pl-[128px] pr-[248px]">
         <div class="w-[900px] flex flex-col h-auto relative pt-4">
-            <!-- {#each shownPastMatches as match, i}
+            {#each shownPastMatches as match, i}
+                {#if i == 0}
+                    <ScheduleNewDay date={new Date(match.matchDate)}/>
+                {/if}
+                {#if i > 0 && new Date(match.matchDate).getDate() != new Date(shownPastMatches[i - 1].matchDate).getDate()}
+                    <ScheduleNewDay date={new Date(match.matchDate)}/>
+                {/if}
                 <ScheduleGame matchDate={match.matchDate} team1={match.team1} team1Score={match.team1Score} team1img={getTeamImage(match.team1)} team2={match.team2} team2Score={match.team2Score} team2img={getTeamImage(match.team2)} region={match.region} season={match.season} stage={match.stage} bestOf={match.bestOf}/>
-            {/each} -->
-            <ScheduleNewDay date={new Date()}/>
-            <LiveGame  showLive={true}/>
+            {/each}
+            {#if shownPastMatches[shownPastMatches.length - 1].matchDate != new Date().toISOString()}
+                <ScheduleNewDay date={new Date()}/>
+            {/if}
+            <LiveGame showLive={true}/>
             <LiveGame />
 
-            {#each futureMatches as match, i}
+            {#each shownFutureMatches as match, i}
                 {#if i == 0 && new Date(match.matchDate).getDate() != new Date().getDate()}
                     <ScheduleNewDay date={new Date(match.matchDate)}/>
                 {/if}
-                {#if i > 0 && new Date(match.matchDate).getDate() != new Date(futureMatches[i-1].matchDate).getDate()}
+                {#if i > 0 && new Date(match.matchDate).getDate() != new Date(shownFutureMatches[i-1].matchDate).getDate()}
                     <ScheduleNewDay date={new Date(match.matchDate)}/>
                 {/if}
+                <!-- <h1>{match.matchDate}</h1> -->
                 <ScheduleGame matchDate={match.matchDate} team1={match.team1} team1Score={match.team1Score} team1img={getTeamImage(match.team1)} team2={match.team2} team2Score={match.team2Score} team2img={getTeamImage(match.team2)} region={match.region} season={match.season} stage={match.stage} bestOf={match.bestOf} showSpoilers={showSpoilers} past={false}/> 
             {/each}
             
@@ -303,7 +458,7 @@
 </section>
 
 <style>
-    body {
+    .anchor {
         overflow-anchor: auto;
     }
     .animate-right {
