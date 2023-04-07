@@ -30,6 +30,10 @@
             // get from localStorage
             followedTeams = JSON.parse(localStorage.getItem("followedTeams") || "{}");
         }
+        // check if noFollowedTeams is true
+        if (Object.keys(followedTeams).length == 0) {
+            noFollowedTeams = true;
+        }
     });
 
     let noFollowedTeams = false;
@@ -62,7 +66,6 @@
     }
 
     function syncFollowedTeams() {
-        console.log(authValue)
         if (authValue) {
             // sync with database
         } else {
@@ -73,7 +76,7 @@
 
     // syncFollowedTeams() // if logged in, sync with database, else sync with localStorage
     // syncFollowedTeams any time followedTeams is changed
-    $: console.log(followedTeams)
+    // $: console.log(followedTeams)
 
 </script>
 <svelte:head>

@@ -1,6 +1,7 @@
 <script lang="ts">
     import { onMount } from 'svelte';
     import { darkMode } from '../../store';
+    import { auth } from '../../store'
     
     import lck from '$lib/data/lck.json';
     import lpl from '$lib/data/lpl.json';
@@ -16,6 +17,12 @@
 
     darkMode.subscribe(value => {
         darkModeValue = value;
+    });
+
+    let authValue: boolean;
+
+    auth.subscribe(value => {
+        authValue = value;
     });
 
     // create an interface for matches
@@ -347,6 +354,61 @@
             return { link: "", invert: true, outline: false};
         }
     }
+
+    let followedTeams : {
+        [key: string]: string[]
+    } = {};
+ 
+    onMount(() => {
+        if (authValue) {
+            // get from database
+        } else {
+            // get from localStorage
+            followedTeams = JSON.parse(localStorage.getItem("followedTeams") || "{}");
+        }
+    });
+
+    function handleFollow(region: string, team: string) {
+        if (region in followedTeams) {
+            followedTeams[region].push(team);
+        } else {
+            followedTeams[region] = [team];
+        }
+        syncFollowedTeams();
+    }
+
+    function handleUnfollow(region: string, team: string) {
+        if (region in followedTeams) {
+            followedTeams[region] = followedTeams[region].filter((value) => value !== team);
+        }
+        if (followedTeams[region].length == 0) {
+            delete followedTeams[region];
+        }
+        syncFollowedTeams();
+    }
+
+    function syncFollowedTeams() {
+        if (authValue) {
+            // sync to database
+        } else {
+            // sync to localStorage
+            localStorage.setItem("followedTeams", JSON.stringify(followedTeams));
+        }
+    }
+
+    function checkFollowing(region: string, team: string): boolean {
+        if (region in followedTeams) {
+            // return followedTeams[region].includes(team);
+            if (followedTeams[region].includes(team)) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
 </script>
 
 <svelte:head>
@@ -382,7 +444,7 @@
                     <ScheduleNewDay date={new Date(match.matchDate)}/>
                 {/if}
                 <!-- <h1>{match.matchDate}</h1> -->
-                <ScheduleGame matchDate={match.matchDate} team1={match.team1} team1Score={match.team1Score} team1img={getTeamImage(match.team1)} team2={match.team2} team2Score={match.team2Score} team2img={getTeamImage(match.team2)} region={match.region} season={match.season} stage={match.stage} bestOf={match.bestOf} showSpoilers={showSpoilers} past={false}/> 
+                <ScheduleGame matchDate={match.matchDate} team1={match.team1} team1Score={match.team1Score} team1img={getTeamImage(match.team1)} team2={match.team2} team2Score={match.team2Score} team2img={getTeamImage(match.team2)} region={match.region} season={match.season} stage={match.stage} bestOf={match.bestOf} showSpoilers={showSpoilers} past={false} {handleFollow} {handleUnfollow} {checkFollowing}/> 
             {/each}
             <div class="h-[94vh]">
 
