@@ -126,7 +126,7 @@
 						<a class="{specialHeader ? "group-hover:text-white" : "group-hover:text-highlight"}" href="/region/lck">Regions</a>
 					</li>
 					<li class="group cursor-pointer">
-						<h2 class="{specialHeader ? "group-hover:text-white" : "group-hover:text-highlight"}">Following</h2>
+						<a class="{specialHeader ? "group-hover:text-white" : "group-hover:text-highlight"}" href="/following">Following</a>
 					</li>
 					<li class="group cursor-pointer">
 						<a class="{specialHeader ? "group-hover:text-white" : "group-hover:text-highlight"}" href="/msi">International</a>
@@ -203,7 +203,7 @@
 						<div class="absolute bg-steel-800 dark:bg-gray-50 top-[120%] shadow-md rounded-md z-50 right-0 py-1 m-auto w-[190px] truncate {loginTooltip ? "inline" : "hidden"}">
 							<h2 class="w-full m-auto text-blue-50 dark:text-blue-gray-500">Log In To Save Follows</h2>
 						</div>
-						<div class="absolute top-[110%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-steel-800 dark:bg-gray-50 transform rotate-45 {loginTooltip ? "inline" : "hidden"}"></div>
+						<div class="absolute top-[110%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-steel-800 dark:bg-gray-50 transform rotate-45 {loginTooltip ? "inline" : "hidden"}"/>
 					</button>
 				</div>
 			</div>

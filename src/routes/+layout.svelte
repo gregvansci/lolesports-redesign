@@ -32,4 +32,3 @@
 			<slot />
 		</main>
 </div>
-
