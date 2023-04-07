@@ -200,8 +200,8 @@
 							alt="Login"
 							class="h-[20px] desktop:h-[24px] desktop-lg:h-[28px] m-auto cursor-pointer"
 						/>
-						<div class="absolute bg-steel-800 dark:bg-gray-50 top-[120%] shadow-md rounded-md z-50 right-0 py-1 m-auto w-[190px] truncate {loginTooltip ? "inline" : "hidden"}">
-							<h2 class="w-full m-auto text-blue-50 dark:text-blue-gray-500">Log In To Save Follows</h2>
+						<div class="absolute bg-steel-800 dark:bg-gray-50 top-[120%] shadow-md rounded-md z-50 right-0 py-1 m-auto w-[150px] truncate {loginTooltip ? "inline" : "hidden"}">
+							<h2 class="w-full m-auto text-blue-50 dark:text-blue-gray-500">Log In To Settings</h2>
 						</div>
 						<div class="absolute top-[110%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-steel-800 dark:bg-gray-50 transform rotate-45 {loginTooltip ? "inline" : "hidden"}"/>
 					</button>

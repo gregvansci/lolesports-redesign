@@ -10,9 +10,12 @@
 
     export let region = "";
     export let teams: string[] = [];
+
+    export let unfollowRegion: (region: string) => void = () => {};
+    export let unfollowTeam: (region: string, team: string) => void = () => {};
+
     let expanded = true;
 
-    console.log(teams);
 </script>
 
 <div class="w-full flex flex-col px-4 mb-10">
@@ -23,7 +26,7 @@
             </button>
             <h1 class="text-xl font-semibold m-auto">{region}</h1>
         </div>
-        <button class="flex rounded-lg border-2 h-full box-border bg-gray-50 dark:bg-steel-800 border-gray-100 dark:border-steel-700 hover:bg-gray-100 dark:hover:bg-steel-700">
+        <button on:click={() => unfollowRegion(region)} class="flex rounded-lg border-2 h-full box-border bg-gray-50 dark:bg-steel-800 border-gray-100 dark:border-steel-700 hover:bg-gray-100 dark:hover:bg-steel-700">
             <h2 class="text-base m-auto py-[2px] px-2 font-semibold ">Unfollow Region</h2>
         </button>
     </div>
@@ -31,7 +34,7 @@
         {#each teams as team}
             <div class="flex flex-row justify-between w-full pt-2">
                 <h2 class="font-semibold tracking-wide text-lg ml-12">{team}</h2>
-                <button class="flex rounded-lg border-2 h-full box-border bg-gray-50 dark:bg-steel-800 border-gray-100 dark:border-steel-700 hover:bg-gray-100 dark:hover:bg-steel-700">
+                <button on:click={() => unfollowTeam(region, team)} class="flex rounded-lg border-2 h-full box-border bg-gray-50 dark:bg-steel-800 border-gray-100 dark:border-steel-700 hover:bg-gray-100 dark:hover:bg-steel-700">
                     <h2 class="text-base m-auto py-[2px] px-2 font-semibold ">Unfollow</h2>
                 </button>
             </div>
