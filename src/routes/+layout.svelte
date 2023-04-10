@@ -3,6 +3,9 @@
 	import Header from "./Header.svelte";
 	import { showHeader } from "../store";
 	import { page } from '$app/stores';
+	import { onMount } from "svelte";
+    import { invalidateAll } from "$app/navigation";
+    import { supabaseClient } from "$lib/supabase";
 
 	let showHeaderValue = true;
 	showHeader.subscribe((value) => {
@@ -15,6 +18,16 @@
 		pageValue = value.route.id;
 		pageValue == "/msi" ? specialHeader = true : specialHeader = false;
 	})
+
+	onMount(() => {
+        const { data: { subscription }} = supabaseClient.auth.onAuthStateChange(() => {
+            invalidateAll();
+        })
+
+        return () => {
+            subscription.unsubscribe();
+        }
+    });
 
 </script>
 

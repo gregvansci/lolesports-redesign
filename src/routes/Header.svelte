@@ -10,12 +10,14 @@
 	import darkModeIcon from '$lib/images/dark.svg';
 	import settings from '$lib/images/settings.svg';
 	import login from '$lib/images/login.svg';
+	import logout from '$lib/images/logout.svg';
 
 	import lolLogo from '$lib/images/lol-logo.png';
 	import tftLogo from '$lib/images/tft-logo.png';
 	import lorLogo from '$lib/images/lor-logo.png';
 	import valLogo from '$lib/images/val-logo.png';
 	import wrLogo from '$lib/images/wr-logo.png';
+    import { onMount } from 'svelte';
 
 	export let specialHeader = false;
 
@@ -40,6 +42,7 @@
 	let darkModeTooltip = false;
 	let settingsTooltip = false;
 	let loginTooltip = false;
+	
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -188,9 +191,10 @@
 						<div class="absolute top-[110%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-steel-800 dark:bg-gray-50 transform rotate-45 {settingsTooltip ? "inline" : "hidden"}"></div>
 
 					</a>
-					<button 
+					<a 
 						on:pointerenter={() => {loginTooltip = true}} 
 						on:pointerleave={() => {loginTooltip = false}} 
+						href="/login"
 						class="m-auto p-[6px] rounded-md relative
 						{specialHeader ? "hover:bg-msi-text" : "hover:bg-gray-50 dark:hover:bg-steel-800"}
 						{specialHeader ? "svg-filter-special" : darkModeValue ? "svg-filter-dark" : "svg-filter"}"
@@ -200,11 +204,11 @@
 							alt="Login"
 							class="h-[20px] desktop:h-[24px] desktop-lg:h-[28px] m-auto cursor-pointer"
 						/>
-						<div class="absolute bg-steel-800 dark:bg-gray-50 top-[120%] shadow-md rounded-md z-50 right-0 py-1 m-auto w-[180px] truncate {loginTooltip ? "inline" : "hidden"}">
-							<h2 class="w-full m-auto text-blue-50 dark:text-blue-gray-500">Log In To Save Settings</h2>
+						<div class="text-blue-50 dark:text-blue-gray-500 absolute flex bg-steel-800 dark:bg-gray-50 top-[120%] shadow-md rounded-md z-50 right-0 py-1 m-auto w-[120px] {loginTooltip ? "inline" : "hidden"}">
+							<h2 class="w-full text-center m-auto">Log In</h2>
 						</div>
 						<div class="absolute top-[110%] z-40 left-[50%] -ml-[6px] m-auto w-[12px] h-[12px] bg-steel-800 dark:bg-gray-50 transform rotate-45 {loginTooltip ? "inline" : "hidden"}"/>
-					</button>
+					</a>
 				</div>
 			</div>
 		</div>
@@ -242,5 +246,5 @@
 	img {
 		-webkit-user-drag: none;
 	}
-	
+
 </style>
