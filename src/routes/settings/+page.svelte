@@ -1,7 +1,8 @@
 
 
-<div class="flex flex-col gap-8 mt-[60px] pt-12 w-full mx-[70px] tablet:w-[800px] tablet:mx-auto select-none">
+<div class="flex flex-col gap-8 mt-[60px] pt-10 w-full mx-[70px] tablet:w-[800px] tablet:mx-auto select-none">
     <div>
+        <h1 class="text-3xl font-semibold pb-8 opacity-50">Settings</h1>
         <h1 class="text-2xl font-semibold">Stream</h1>
         <div class="flex flex-col gap-4 border-t-[1px] border-gray-200 dark:border-steel-700 mt-2 pt-2">
             <div class="flex flex-row justify-between">

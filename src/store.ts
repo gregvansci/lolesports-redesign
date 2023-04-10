@@ -11,3 +11,7 @@ export const darkMode = writable(darkModeValue);
 let showHeaderValue = true;
 
 export const showHeader = writable(showHeaderValue);
+
+let authValue = false;
+
+export const auth = writable(authValue);

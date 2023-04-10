@@ -12,7 +12,7 @@
     "KT Rolster": {
         "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2Fkt_darkbackground.png",
         "invert": false,
-        "outline": true
+        "outline": false
     },
     "Dplus KIA": {
         "link": "https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1673260049703_DPlusKIALOGO11.png",
