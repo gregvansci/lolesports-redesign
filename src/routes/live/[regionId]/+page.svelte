@@ -105,11 +105,11 @@
             </div>
             <div class="flex flex-row justify-between w-full h-12 px-4 bg-[#18181B]">
                 <div class="flex flex-row h-full gap-2">
-                    <img class="h-10 m-auto" src="https://am-a.akamaihd.net/image?resize=72:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1631819523085_t1-2021-worlds.png" alt="Logo">
+                    <img class="h-10 m-auto" src="https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1641292031788_Team_BDSlogo_square.png" alt="Logo">
                     <div class="m-auto pb-1">
-                        <h2 class="font-bold">T1 vs D Plus</h2>
+                        <h2 class="font-bold">Team BDS vs KOI</h2>
                     </div>
-                    <img class="h-10 m-auto" src="https://am-a.akamaihd.net/image?resize=72:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1673260049703_DPlusKIALOGO11.png" alt="Logo">
+                    <img class="h-10 m-auto" src="https://am-a.akamaihd.net/image?resize=140:&f=http%3A%2F%2Fstatic.lolesports.com%2Fteams%2F1673718797685_image.webp" alt="Logo">
                 </div>
                 <div class="flex flex-row">
                     <button

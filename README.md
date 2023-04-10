@@ -1,38 +1,58 @@
-# create-svelte
+# Redesign of [`lolesports`](https://lolesports.com)
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+## Project Focus
 
-## Creating a project
+- Adding new features, namely:
+    - Followed teams
+    - Live Viewing window
+    - International page
+- Adding more purpose to the home page
+- Cleaning the UI for region filters
+- Adding color themes
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Pages
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+### Home Page - Unfinished
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+![Home Page](/src/lib/images/readme/home.png)
 
-## Developing
+- Smaller header to increase content area
+- Larger viewing window for live game previews
+- Swappable previews
+- List of followed team upcoming games
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
-```bash
-npm run dev
+### Live Page
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+![Live Page](/src/lib/images/readme/live.png)
 
-## Building
+- More configurable viewing window
+- Header and sidebar visibility toggle
+- Live Viewing window
+- Ability to show live view chat
 
-To create a production version of your app:
 
-```bash
-npm run build
-```
+### Schedule Page - Unfinished
 
-You can preview the production build with `npm run preview`.
+![Schedule Page](/src/lib/images/readme/schedule.png)
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+- Smaller rows to show more games
+- Cleaner filter interface
+- Following and Spoiler toggle buttons
+- Team interactability
+
+
+### Followed Page
+
+![Followed Page](/src/lib/images/readme/following.png)
+
+- Interface to manage followed teams
+
+
+## International Page
+
+![International Page](/src/lib/images/readme/international.png)
+
+- Portal to follow international events more easily
+- Expands on an upcoming event's theme  
+
